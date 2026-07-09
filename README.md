@@ -1,3 +1,5 @@
+Vincent adding a new comment
+
 # DataScience
 
 A day-by-day learning log for Python and data science, following the [30 Days of Python](https://github.com/Asabeneh/30-Days-Of-Python) challenge format. Each `NN_Day_*` folder contains the notes and code for that day.
