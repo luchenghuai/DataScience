@@ -25,3 +25,16 @@ Data: 700x10 tabular regression samples (standardized features), MSE loss target
 ## Key difference between the two notebooks
 
 `numpy_mlp.ipynb` trains on the full dataset for a fixed number of epochs with no validation signal, so it can't detect or stop overfitting — it only visualizes the effect via the loss curve. `regression_model.ipynb` adds the missing piece: a validation split plus patience-based early stopping, which is exactly the generalization safeguard the `numpy_mlp.ipynb` discussion section calls out as missing.
+
+## Parameter count vs. the lecture-note (PDF) example
+
+The PDF's toy MLP has 1 hidden layer — 2 weight matrices + 2 bias vectors (`W1, b1, W2, b2`) = 4 parameter tensors. Comparing every model built in this lab against that baseline:
+
+| File | Layers (weight matrices) | Parameter tensors |
+| --- | --- | --- |
+| PDF example | 2 (input→hidden, hidden→output) | 4 |
+| `numpy_mlp.ipynb` §2.1 (simplest MLP) | 2 (same shape as PDF) | 4 |
+| `numpy_mlp.ipynb` §2.3 (deeper and wider) | 3 (input→h1, h1→h2, h2→output) | 6 |
+| `regression_model.ipynb` (`RegressionNet`) | 4 (10→64, 64→32, 32→16, 16→1) | 8 |
+
+`regression_model.ipynb` is the deepest model built in this lab (4 layers / 8 parameter tensors), sitting beyond `numpy_mlp.ipynb`'s deepest variant (3 layers / 6 parameter tensors), which in turn goes beyond the PDF's single-hidden-layer toy example (2 layers / 4 parameter tensors).
