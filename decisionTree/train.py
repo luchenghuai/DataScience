@@ -23,6 +23,24 @@ from decision_tree import DecisionTreeClassifier
 #      encoding table).
 #    - y_train.csv holds the single target column, one row per example,
 #      aligned by row order with X_train.csv.
+#
+#    pd.read_csv(path) just opens the file at `path`. How `path` is
+#    interpreted depends on what you write:
+#      - Just a filename, like "X_train.csv", means "look for this file
+#        in the folder you are currently standing in in the terminal"
+#        (this is called the "current working directory"). It is the
+#        folder you were in when you typed `python train.py`, which is
+#        usually - but not always - the same folder the script is in.
+#          pd.read_csv("X_train.csv")
+#      - A filename with a folder in front of it works the same way,
+#        just starting from a subfolder (or a parent folder, using "..").
+#          pd.read_csv("data/X_train.csv")      # a "data" subfolder
+#          pd.read_csv("../X_train.csv")        # one folder up
+#      - A full/absolute path (starts from the very top of the disk)
+#        always points to the same file no matter where you run the
+#        script from.
+#          pd.read_csv("/Users/me/project/X_train.csv")   # macOS/Linux
+#          pd.read_csv("C:/Users/me/project/X_train.csv")  # Windows
 # ----------------------------------------------------------------------
 X_df = pd.read_csv("X_train.csv")
 y_df = pd.read_csv("y_train.csv")
