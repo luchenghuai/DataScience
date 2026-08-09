@@ -10,6 +10,12 @@
 
 <main class="ds-home">
   <section class="ds-hero" aria-labelledby="home-title">
+    <div class="ds-data-field" aria-hidden="true">
+      <span style="--x:8%;--y:24%;--s:8px"></span><span style="--x:19%;--y:72%;--s:5px"></span>
+      <span style="--x:35%;--y:15%;--s:6px"></span><span style="--x:52%;--y:64%;--s:9px"></span>
+      <span style="--x:68%;--y:31%;--s:5px"></span><span style="--x:81%;--y:77%;--s:7px"></span>
+      <span style="--x:93%;--y:18%;--s:5px"></span>
+    </div>
     <div class="ds-hero-copy">
       <p class="ds-kicker">Data Science Club · BASIS Independent Fremont</p>
       <h1 id="home-title">Learn from data.<br>Build with evidence.</h1>
@@ -20,6 +26,11 @@
         <a class="ds-text-link" href="{{ $submissions }}">See student submissions <span aria-hidden="true">→</span></a>
         <a class="ds-text-link" href="{{ $github }}">View source on GitHub <span aria-hidden="true">↗</span></a>
       </div>
+      <ul class="ds-proof" aria-label="What the club offers">
+        <li><strong>05</strong><span>learning tracks</span></li>
+        <li><strong>01</strong><span>featured field study</span></li>
+        <li><strong>Open</strong><span>materials on GitHub</span></li>
+      </ul>
     </div>
     <div class="ds-chart" aria-hidden="true">
       <svg viewBox="0 0 480 320" role="presentation" focusable="false">
@@ -96,12 +107,16 @@
 
 <style>
   main.main { max-width: none; padding: 0; margin: 0; }
-  .ds-home { --navy:#0b1f33; --blue:#1769aa; --cyan:#4fb3bf; --paper:#f7f8f4; --white:#fff; --muted:#526272; --line:#d6dde2; color:var(--navy); background:var(--paper); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+  .ds-home { --navy:#071b2f; --blue:#1769aa; --cyan:#36a9b8; --paper:#f7f8f4; --white:#fff; --muted:#526272; --line:#d6dde2; color:var(--navy); background:var(--paper); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; overflow:hidden; }
   .ds-home *, .ds-home *::before, .ds-home *::after { box-sizing:border-box; }
   .ds-home a { color:inherit; }
   .ds-home a:focus-visible { outline:3px solid #d17b0f; outline-offset:4px; border-radius:3px; }
   .ds-hero,.ds-section,.ds-closing { width:min(1180px,calc(100% - 3rem)); margin-inline:auto; }
-  .ds-hero { min-height:650px; display:grid; grid-template-columns:minmax(0,1.12fr) minmax(280px,.88fr); align-items:center; gap:clamp(3rem,7vw,7rem); padding:clamp(5rem,10vw,9rem) 0; }
+  .ds-hero { min-height:680px; display:grid; grid-template-columns:minmax(0,1.12fr) minmax(280px,.88fr); align-items:center; gap:clamp(3rem,7vw,7rem); padding:clamp(5rem,10vw,9rem) 0; position:relative; isolation:isolate; }
+  .ds-hero::before { content:""; position:absolute; z-index:-2; width:650px; height:650px; right:-26%; top:-28%; border-radius:50%; background:radial-gradient(circle,rgba(54,169,184,.16),rgba(23,105,170,.06) 46%,transparent 70%); }
+  .ds-hero::after { content:""; position:absolute; z-index:-2; inset:0 -50vw; background-image:linear-gradient(rgba(23,105,170,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(23,105,170,.055) 1px,transparent 1px); background-size:56px 56px; mask-image:linear-gradient(to bottom,black,transparent 82%); }
+  .ds-data-field { position:absolute; z-index:-1; inset:0 -12vw; pointer-events:none; }
+  .ds-data-field span { position:absolute; left:var(--x); top:var(--y); width:var(--s); height:var(--s); border:2px solid var(--cyan); border-radius:50%; box-shadow:0 0 0 7px rgba(54,169,184,.08); }
   .ds-kicker,.ds-number,.ds-label { margin:0 0 1.1rem; color:var(--blue); font-size:.74rem; font-weight:750; letter-spacing:.14em; text-transform:uppercase; }
   .ds-hero h1 { margin:0; max-width:760px; font-size:clamp(3.1rem,7vw,6.8rem); line-height:.94; letter-spacing:-.065em; }
   .ds-lede { max-width:650px; margin:1.8rem 0 0; color:var(--muted); font-size:clamp(1.05rem,2vw,1.3rem); line-height:1.65; }
@@ -110,6 +125,10 @@
   .ds-button-primary { color:var(--white)!important; background:var(--navy); }
   .ds-button:hover { color:var(--white); background:var(--blue); border-color:var(--blue); }
   .ds-text-link,.ds-inline-link { color:var(--blue)!important; font-weight:700; text-underline-offset:4px; }
+  .ds-proof { list-style:none; display:flex; flex-wrap:wrap; gap:1.5rem 2rem; margin:2.6rem 0 0; padding:1.4rem 0 0; border-top:1px solid var(--line); }
+  .ds-proof li { display:grid; gap:.18rem; }
+  .ds-proof strong { font-size:1.12rem; letter-spacing:-.02em; }
+  .ds-proof span { color:var(--muted); font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
   .ds-chart { align-self:center; }
   .ds-chart svg { display:block; width:100%; height:auto; }
   .ds-chart .grid { fill:none; stroke:#cbd5db; stroke-width:1; }
@@ -122,6 +141,8 @@
   .ds-section-head > p:last-child { margin:0; color:var(--muted); line-height:1.65; }
   .ds-topic-grid { list-style:none; display:grid; grid-template-columns:repeat(5,1fr); padding:0; margin:0 0 2rem; border:1px solid var(--line); }
   .ds-topic-grid li { min-height:190px; display:flex; flex-direction:column; padding:1.25rem; border-right:1px solid var(--line); }
+  .ds-topic-grid li { transition:background-color .2s ease,transform .2s ease; }
+  .ds-topic-grid li:hover { background:#edf4f3; transform:translateY(-4px); }
   .ds-topic-grid li:last-child { border:0; }
   .ds-topic-grid span { color:var(--blue); font-size:.73rem; font-weight:750; }
   .ds-topic-grid strong { margin-top:auto; font-size:1.08rem; }
@@ -162,6 +183,8 @@
     .ds-topic-grid,.ds-route-grid { grid-template-columns:1fr; }
     .ds-topic-grid li,.ds-topic-grid li:last-child,.ds-route-grid a,.ds-route-grid a:last-child { border-right:0; border-bottom:1px solid var(--line); }
     .ds-route-grid a { min-height:150px; }
+    .ds-proof { gap:1rem; }
+    .ds-proof li { width:calc(50% - .5rem); }
   }
   @media (prefers-reduced-motion:reduce) { .ds-home * { scroll-behavior:auto!important; transition:none!important; animation:none!important; } }
 </style>
