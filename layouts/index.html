@@ -1,64 +1,168 @@
 {{- define "main" }}
+{{- $class := "class/" | relURL -}}
+{{- $project := "project/" | relURL -}}
+{{- $submissions := "submissions/" | relURL -}}
+{{- $members := "members/" | relURL -}}
+{{- $logs := "logs/" | relURL -}}
+{{- $photos := "photos/" | relURL -}}
+{{- $traffic := "project/test/" | relURL -}}
+{{- $github := "https://github.com/luchenghuai/DataScience" -}}
 
-{{- $class := "class/" | relURL }}
-{{- $project := "project/" | relURL }}
-
-{{/* Logo renders at min(100%, 34rem) = 544px, so 1088px covers 2x displays. */}}
-{{- $logo := (resources.Get "data_science_logo.png").Resize "1088x webp q85" }}
-
-<div class="dl">
-  <section class="hero">
-    <h1 class="brand">Data Science Club (BIF)</h1>
-
-    <div class="links">
-      <a class="link-card" href="{{ $class }}"><span class="lc-ic">&#128101;</span><span class="lc-t">Class</span><span class="lc-d">The learners</span></a>
-      <a class="link-card" href="{{ $project }}"><span class="lc-ic">&#129504;</span><span class="lc-t">Project</span><span class="lc-d">What we build</span></a>
+<main class="ds-home">
+  <section class="ds-hero" aria-labelledby="home-title">
+    <div class="ds-hero-copy">
+      <p class="ds-kicker">Data Science Club · BASIS Independent Fremont</p>
+      <h1 id="home-title">Learn from data.<br>Build with evidence.</h1>
+      <p class="ds-lede">A student learning hub for developing practical data science skills through class materials, analysis, and projects.</p>
+      <div class="ds-actions" aria-label="Primary destinations">
+        <a class="ds-button ds-button-primary" href="{{ $class }}">Browse class materials</a>
+        <a class="ds-button" href="{{ $project }}">View projects</a>
+        <a class="ds-text-link" href="{{ $submissions }}">See student submissions <span aria-hidden="true">→</span></a>
+        <a class="ds-text-link" href="{{ $github }}">View source on GitHub <span aria-hidden="true">↗</span></a>
+      </div>
     </div>
-
-    <img class="hero-logo" src="{{ $logo.RelPermalink }}" alt="Data Science Club logo" width="{{ $logo.Width }}" height="{{ $logo.Height }}" loading="lazy">
+    <div class="ds-chart" aria-hidden="true">
+      <svg viewBox="0 0 480 320" role="presentation" focusable="false">
+        <g class="grid"><path d="M48 48V272M128 48V272M208 48V272M288 48V272M368 48V272M448 48V272"/><path d="M48 48H448M48 104H448M48 160H448M48 216H448M48 272H448"/></g>
+        <path class="trend" d="M48 244C88 238 101 203 136 207S185 231 216 184 270 124 304 142 351 111 376 94 414 72 448 61"/>
+        <g class="points"><circle cx="48" cy="244" r="5"/><circle cx="136" cy="207" r="5"/><circle cx="216" cy="184" r="5"/><circle cx="304" cy="142" r="5"/><circle cx="376" cy="94" r="5"/><circle cx="448" cy="61" r="5"/></g>
+      </svg>
+      <p><span>question</span><span>analysis</span><span>insight</span></p>
+    </div>
   </section>
-</div>
+
+  <section class="ds-section" aria-labelledby="learn-heading">
+    <div class="ds-section-head">
+      <p class="ds-number">01 / Learn</p>
+      <h2 id="learn-heading">A curriculum you can scan</h2>
+      <p>Start with the foundations, then move from describing data to modeling it.</p>
+    </div>
+    <ol class="ds-topic-grid">
+      <li><span>01</span><strong>Introduction</strong><small>Tools, workflows, and core ideas</small></li>
+      <li><span>02</span><strong>Python &amp; data analysis</strong><small>Pandas, notebooks, and visualization</small></li>
+      <li><span>03</span><strong>Statistics</strong><small>Exploratory analysis and case studies</small></li>
+      <li><span>04</span><strong>Regression</strong><small>Linear and logistic regression</small></li>
+      <li><span>05</span><strong>Ensemble models</strong><small>Decision trees, boosting, and XGBoost</small></li>
+    </ol>
+    <a class="ds-inline-link" href="{{ $class }}">Open the complete class library <span aria-hidden="true">→</span></a>
+  </section>
+
+  <section class="ds-section ds-build" aria-labelledby="build-heading">
+    <div class="ds-section-head">
+      <p class="ds-number">02 / Build</p>
+      <h2 id="build-heading">Projects begin with materials</h2>
+      <p>Review the club’s Traffic Light Analysis project and the files used to plan, observe, and document the work.</p>
+    </div>
+    <article class="ds-project-card">
+      <div>
+        <p class="ds-label">Featured project</p>
+        <h3>Traffic Light Analysis</h3>
+        <p>A project collection with a proposal, field notes, a data collection sheet, tally log, and Fremont–Mission Boulevard reference.</p>
+        <a class="ds-button ds-button-primary" href="{{ $traffic }}">View project materials</a>
+      </div>
+      <ul aria-label="Available project materials">
+        <li>Project proposal <span>DOCX</span></li>
+        <li>Notes <span>DOCX</span></li>
+        <li>Data collection sheet <span>XLSX</span></li>
+        <li>Tally log <span>DOCX</span></li>
+        <li>Intersection reference <span>PDF</span></li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="ds-section" aria-labelledby="explore-heading">
+    <div class="ds-section-head">
+      <p class="ds-number">03 / Explore</p>
+      <h2 id="explore-heading">Related student archives</h2>
+      <p>These COSMOS pages are related, archived student work and are separate from the club curriculum above.</p>
+    </div>
+    <div class="ds-route-grid">
+      <a href="{{ $members }}"><span>Related archive</span><strong>COSMOS members</strong><small>Student member page</small></a>
+      <a href="{{ $logs }}"><span>Related archive</span><strong>COSMOS logs</strong><small>Archived log page</small></a>
+      <a href="{{ $photos }}"><span>Related archive</span><strong>COSMOS photos</strong><small>Student photo archive</small></a>
+      <a href="https://ucd-cosmos-data.github.io/"><span>Related external site</span><strong>COSMOS course website</strong><small>Visit the course archive <b aria-hidden="true">↗</b></small></a>
+    </div>
+  </section>
+
+  <section class="ds-closing" aria-labelledby="next-heading">
+    <p class="ds-number">Continue</p>
+    <h2 id="next-heading">Choose your next step.</h2>
+    <div class="ds-actions">
+      <a class="ds-button ds-button-primary" href="{{ $class }}">Study class materials</a>
+      <a class="ds-button" href="{{ $submissions }}">Browse student submissions</a>
+    </div>
+  </section>
+</main>
 
 <style>
-  main.main { max-width: 100%; padding: 0; margin: 0; }
-
-  .dl {
-    --ink: #0f172a;
-    --dim: #475569;
-    --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
-    width: 100%;
-    background: linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 100%);
-    color: var(--ink);
+  main.main { max-width: none; padding: 0; margin: 0; }
+  .ds-home { --navy:#0b1f33; --blue:#1769aa; --cyan:#4fb3bf; --paper:#f7f8f4; --white:#fff; --muted:#526272; --line:#d6dde2; color:var(--navy); background:var(--paper); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+  .ds-home *, .ds-home *::before, .ds-home *::after { box-sizing:border-box; }
+  .ds-home a { color:inherit; }
+  .ds-home a:focus-visible { outline:3px solid #d17b0f; outline-offset:4px; border-radius:3px; }
+  .ds-hero,.ds-section,.ds-closing { width:min(1180px,calc(100% - 3rem)); margin-inline:auto; }
+  .ds-hero { min-height:650px; display:grid; grid-template-columns:minmax(0,1.12fr) minmax(280px,.88fr); align-items:center; gap:clamp(3rem,7vw,7rem); padding:clamp(5rem,10vw,9rem) 0; }
+  .ds-kicker,.ds-number,.ds-label { margin:0 0 1.1rem; color:var(--blue); font-size:.74rem; font-weight:750; letter-spacing:.14em; text-transform:uppercase; }
+  .ds-hero h1 { margin:0; max-width:760px; font-size:clamp(3.1rem,7vw,6.8rem); line-height:.94; letter-spacing:-.065em; }
+  .ds-lede { max-width:650px; margin:1.8rem 0 0; color:var(--muted); font-size:clamp(1.05rem,2vw,1.3rem); line-height:1.65; }
+  .ds-actions { display:flex; flex-wrap:wrap; align-items:center; gap:.8rem 1.2rem; margin-top:2rem; }
+  .ds-button { display:inline-flex; min-height:48px; align-items:center; justify-content:center; padding:.72rem 1.05rem; border:1px solid var(--navy); font-weight:700; text-decoration:none; }
+  .ds-button-primary { color:var(--white)!important; background:var(--navy); }
+  .ds-button:hover { color:var(--white); background:var(--blue); border-color:var(--blue); }
+  .ds-text-link,.ds-inline-link { color:var(--blue)!important; font-weight:700; text-underline-offset:4px; }
+  .ds-chart { align-self:center; }
+  .ds-chart svg { display:block; width:100%; height:auto; }
+  .ds-chart .grid { fill:none; stroke:#cbd5db; stroke-width:1; }
+  .ds-chart .trend { fill:none; stroke:var(--blue); stroke-width:5; stroke-linecap:round; }
+  .ds-chart .points { fill:var(--paper); stroke:var(--blue); stroke-width:4; }
+  .ds-chart p { display:flex; justify-content:space-between; margin:.3rem 2rem 0 3rem; color:var(--muted); font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+  .ds-section { padding:clamp(4.5rem,9vw,8rem) 0; border-top:1px solid var(--line); }
+  .ds-section-head { display:grid; grid-template-columns:.65fr 1.4fr 1fr; gap:2rem; align-items:start; margin-bottom:3rem; }
+  .ds-section-head h2,.ds-closing h2 { margin:0; font-size:clamp(2.2rem,5vw,4.5rem); line-height:1; letter-spacing:-.045em; }
+  .ds-section-head > p:last-child { margin:0; color:var(--muted); line-height:1.65; }
+  .ds-topic-grid { list-style:none; display:grid; grid-template-columns:repeat(5,1fr); padding:0; margin:0 0 2rem; border:1px solid var(--line); }
+  .ds-topic-grid li { min-height:190px; display:flex; flex-direction:column; padding:1.25rem; border-right:1px solid var(--line); }
+  .ds-topic-grid li:last-child { border:0; }
+  .ds-topic-grid span { color:var(--blue); font-size:.73rem; font-weight:750; }
+  .ds-topic-grid strong { margin-top:auto; font-size:1.08rem; }
+  .ds-topic-grid small { margin-top:.45rem; color:var(--muted); line-height:1.45; }
+  .ds-build { width:100%; padding-inline:max(1.5rem,calc((100% - 1180px)/2)); color:var(--white); background:var(--navy); border:0; }
+  .ds-build .ds-number,.ds-build .ds-label { color:#75cad2; }
+  .ds-build .ds-section-head > p:last-child,.ds-build .ds-project-card p { color:#c6d2dc; }
+  .ds-project-card { display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(3rem,8vw,8rem); padding:clamp(2rem,5vw,4rem); border:1px solid #526779; background:#102a43; }
+  .ds-project-card h3 { margin:.2rem 0 1rem; font-size:clamp(2rem,4vw,3.5rem); letter-spacing:-.04em; }
+  .ds-project-card p { max-width:620px; line-height:1.65; }
+  .ds-project-card .ds-button { color:var(--navy)!important; background:var(--white); border-color:var(--white); }
+  .ds-project-card ul { list-style:none; align-self:center; margin:0; padding:0; border-top:1px solid #526779; }
+  .ds-project-card li { display:flex; justify-content:space-between; gap:1rem; padding:1rem 0; border-bottom:1px solid #526779; }
+  .ds-project-card li span { color:#75cad2; font-size:.72rem; font-weight:800; letter-spacing:.1em; }
+  .ds-route-grid { display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--line); }
+  .ds-route-grid a { min-height:210px; display:flex; flex-direction:column; padding:1.3rem; text-decoration:none; border-right:1px solid var(--line); }
+  .ds-route-grid a:last-child { border:0; }
+  .ds-route-grid a:hover { background:#e9f1f2; }
+  .ds-route-grid span { color:var(--blue); font-size:.68rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+  .ds-route-grid strong { margin-top:auto; font-size:1.12rem; }
+  .ds-route-grid small { margin-top:.4rem; color:var(--muted); }
+  .ds-closing { padding:clamp(4.5rem,9vw,8rem) 0; border-top:1px solid var(--line); }
+  @media (max-width:800px) {
+    .ds-hero { min-height:auto; grid-template-columns:1fr; }
+    .ds-chart { max-width:520px; }
+    .ds-section-head { grid-template-columns:1fr; gap:.8rem; }
+    .ds-topic-grid { grid-template-columns:1fr 1fr; }
+    .ds-topic-grid li,.ds-topic-grid li:last-child { min-height:145px; border:0; border-right:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .ds-project-card { grid-template-columns:1fr; }
+    .ds-route-grid { grid-template-columns:1fr 1fr; }
+    .ds-route-grid a,.ds-route-grid a:last-child { border:0; border-right:1px solid var(--line); border-bottom:1px solid var(--line); }
   }
-
-  .hero {
-    max-width: 760px; margin: 0 auto; padding: 4.5rem 1.5rem 5rem;
-    display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.6rem;
+  @media (max-width:520px) {
+    .ds-hero,.ds-section,.ds-closing { width:min(100% - 2rem,1180px); }
+    .ds-actions { align-items:stretch; flex-direction:column; }
+    .ds-actions > * { width:100%; }
+    .ds-text-link { padding:.65rem 0; }
+    .ds-topic-grid,.ds-route-grid { grid-template-columns:1fr; }
+    .ds-topic-grid li,.ds-topic-grid li:last-child,.ds-route-grid a,.ds-route-grid a:last-child { border-right:0; border-bottom:1px solid var(--line); }
+    .ds-route-grid a { min-height:150px; }
   }
-
-  .brand { margin: 0; font-family: 'Fredoka', var(--mono), sans-serif; font-size: clamp(2.4rem, 7vw, 4rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.05;
-    background: linear-gradient(115deg, #0ea5e9 0%, #14b8a6 30%, #a855f7 65%, #ec4899 100%);
-    -webkit-background-clip: text; background-clip: text; color: transparent; }
-
-  .links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.9rem; margin-top: 0.8rem; width: min(100%, 26rem); }
-  .link-card {
-    display: flex; flex-direction: column; align-items: center; gap: 4px;
-    padding: 1.2rem 0.7rem; border-radius: 16px; text-decoration: none;
-    border: 1px solid rgba(15,23,42,0.08);
-    background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.78));
-    box-shadow: 0 10px 30px rgba(15,23,42,0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .link-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(15,23,42,0.14); }
-  .lc-ic { font-size: 1.7rem; }
-  .lc-t { font-weight: 700; color: var(--ink); }
-  .lc-d { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.1em; color: var(--dim); }
-
-  .hero-logo {
-    width: min(100%, 34rem); height: auto; margin-top: 0.8rem;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(15,23,42,0.08);
-  }
+  @media (prefers-reduced-motion:reduce) { .ds-home * { scroll-behavior:auto!important; transition:none!important; animation:none!important; } }
 </style>
-
 {{- end }}
