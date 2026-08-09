@@ -35,22 +35,6 @@ menu:
       name: Student Submissions
       url: /submissions/
       weight: 30
-    - identifier: Members
-      name: COSMOS Members
-      url: /members/
-      weight: 40
-    - identifier: Logs
-      name: COSMOS Logs
-      url: /logs/
-      weight: 50
-    - identifier: Photos
-      name: COSMOS Photos
-      url: /photos/
-      weight: 60
-    - identifier: course-site
-      name: COSMOS Course Website
-      url: https://ucd-cosmos-data.github.io/
-      weight: 70
 
 markup:
   goldmark:

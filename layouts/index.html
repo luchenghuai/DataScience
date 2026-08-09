@@ -2,9 +2,6 @@
 {{- $class := "class/" | relURL -}}
 {{- $project := "project/" | relURL -}}
 {{- $submissions := "submissions/" | relURL -}}
-{{- $members := "members/" | relURL -}}
-{{- $logs := "logs/" | relURL -}}
-{{- $photos := "photos/" | relURL -}}
 {{- $traffic := "project/test/" | relURL -}}
 {{- $github := "https://github.com/luchenghuai/DataScience" -}}
 
@@ -81,20 +78,6 @@
     </article>
   </section>
 
-  <section class="ds-section" aria-labelledby="explore-heading">
-    <div class="ds-section-head">
-      <p class="ds-number">03 / Explore</p>
-      <h2 id="explore-heading">Related student archives</h2>
-      <p>These COSMOS pages are related, archived student work and are separate from the club curriculum above.</p>
-    </div>
-    <div class="ds-route-grid">
-      <a href="{{ $members }}"><span>Related archive</span><strong>COSMOS members</strong><small>Student member page</small></a>
-      <a href="{{ $logs }}"><span>Related archive</span><strong>COSMOS logs</strong><small>Archived log page</small></a>
-      <a href="{{ $photos }}"><span>Related archive</span><strong>COSMOS photos</strong><small>Student photo archive</small></a>
-      <a href="https://ucd-cosmos-data.github.io/"><span>Related external site</span><strong>COSMOS course website</strong><small>Visit the course archive <b aria-hidden="true">↗</b></small></a>
-    </div>
-  </section>
-
   <section class="ds-closing" aria-labelledby="next-heading">
     <p class="ds-number">Continue</p>
     <h2 id="next-heading">Choose your next step.</h2>
@@ -157,13 +140,6 @@
   .ds-project-card ul { list-style:none; align-self:center; margin:0; padding:0; border-top:1px solid #526779; }
   .ds-project-card li { display:flex; justify-content:space-between; gap:1rem; padding:1rem 0; border-bottom:1px solid #526779; }
   .ds-project-card li span { color:#75cad2; font-size:.72rem; font-weight:800; letter-spacing:.1em; }
-  .ds-route-grid { display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--line); }
-  .ds-route-grid a { min-height:210px; display:flex; flex-direction:column; padding:1.3rem; text-decoration:none; border-right:1px solid var(--line); }
-  .ds-route-grid a:last-child { border:0; }
-  .ds-route-grid a:hover { background:#e9f1f2; }
-  .ds-route-grid span { color:var(--blue); font-size:.68rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
-  .ds-route-grid strong { margin-top:auto; font-size:1.12rem; }
-  .ds-route-grid small { margin-top:.4rem; color:var(--muted); }
   .ds-closing { padding:clamp(4.5rem,9vw,8rem) 0; border-top:1px solid var(--line); }
   @media (max-width:800px) {
     .ds-hero { min-height:auto; grid-template-columns:1fr; }
@@ -172,17 +148,14 @@
     .ds-topic-grid { grid-template-columns:1fr 1fr; }
     .ds-topic-grid li,.ds-topic-grid li:last-child { min-height:145px; border:0; border-right:1px solid var(--line); border-bottom:1px solid var(--line); }
     .ds-project-card { grid-template-columns:1fr; }
-    .ds-route-grid { grid-template-columns:1fr 1fr; }
-    .ds-route-grid a,.ds-route-grid a:last-child { border:0; border-right:1px solid var(--line); border-bottom:1px solid var(--line); }
   }
   @media (max-width:520px) {
     .ds-hero,.ds-section,.ds-closing { width:min(100% - 2rem,1180px); }
     .ds-actions { align-items:stretch; flex-direction:column; }
     .ds-actions > * { width:100%; }
     .ds-text-link { padding:.65rem 0; }
-    .ds-topic-grid,.ds-route-grid { grid-template-columns:1fr; }
-    .ds-topic-grid li,.ds-topic-grid li:last-child,.ds-route-grid a,.ds-route-grid a:last-child { border-right:0; border-bottom:1px solid var(--line); }
-    .ds-route-grid a { min-height:150px; }
+    .ds-topic-grid { grid-template-columns:1fr; }
+    .ds-topic-grid li,.ds-topic-grid li:last-child { border-right:0; border-bottom:1px solid var(--line); }
     .ds-proof { gap:1rem; }
     .ds-proof li { width:calc(50% - .5rem); }
   }
