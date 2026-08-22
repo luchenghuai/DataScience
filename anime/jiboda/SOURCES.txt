@@ -1,0 +1,3 @@
+jiboda_01.jpg	https://i.ytimg.com/vi/aZdk8Y87jlA/maxresdefault.jpg
+jiboda_02.jpg	https://i.ytimg.com/vi/BMa63QtXAb4/maxresdefault.jpg
+jiboda_03.jpg	https://i.ytimg.com/vi/dp4XT4qnJbk/maxresdefault.jpg
