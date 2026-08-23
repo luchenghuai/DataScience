@@ -209,7 +209,46 @@
       "seed_strategy": "shot-002-locked-character-continuity",
       "style": "cinematic 2D Chinese anime storyboard",
       "text_in_artwork": false
-    }
+    },
+    "bridge_frames": [
+      {
+        "id": "002A",
+        "type": "silent_bridge_keyframe",
+        "file": "jpg/shot_002A.jpg",
+        "artwork_file": "artwork/shot_002A.jpg",
+        "after_shot": 2,
+        "before_shot": 3,
+        "recommended_duration_seconds": 2.0,
+        "purpose": "季伯达从震惊转为克制愤怒的无对白反应桥帧。",
+        "actors": [
+          "季伯达",
+          "柳如烟",
+          "伊藤诚"
+        ],
+        "focus": [
+          "季伯达"
+        ],
+        "performance": "季伯达从震惊转为克制愤怒的无对白反应桥帧。",
+        "action_timeline": [
+          {
+            "time": "0.0–0.7秒",
+            "action": "季伯达短暂停顿，视线锁定沙发上的二人。"
+          },
+          {
+            "time": "0.7–1.5秒",
+            "action": "季伯达眼睛收窄、下颌绷紧，右手开始抬起。"
+          },
+          {
+            "time": "1.5–2.0秒",
+            "action": "保持将要指向伊藤诚的预备姿态，衔接镜头003。"
+          }
+        ],
+        "camera": "中近景，平视，70mm等效，固定镜头，浅景深",
+        "continuity_rule": "Use preceding shot final frame as motion reference and this bridge JPG as target keyframe; preserve identities, wardrobe, positions, lighting, props, and screen axis.",
+        "seedance_usage": "Generate as a short silent transition clip; no speech or lip movement. End exactly on this keyframe before continuing to the next numbered shot.",
+        "negative_prompt": "错误人物身份，额外人物，重复人物，换座，服装变化，越轴，镜头抖动，错误口型，画内文字，水印，畸形手指，背景跳变"
+      }
+    ]
   },
   {
     "shot": 3,
@@ -315,7 +354,49 @@
       "seed_strategy": "shot-003-locked-character-continuity",
       "style": "cinematic 2D Chinese anime storyboard",
       "text_in_artwork": false
-    }
+    },
+    "bridge_frames": [
+      {
+        "id": "003A",
+        "type": "silent_bridge_keyframe",
+        "file": "jpg/shot_003A.jpg",
+        "artwork_file": "artwork/shot_003A.jpg",
+        "after_shot": 3,
+        "before_shot": 4,
+        "recommended_duration_seconds": 2.5,
+        "purpose": "季伯达骂完后，柳如烟和全组转向他的群体反应桥帧。",
+        "actors": [
+          "季伯达",
+          "柳如烟",
+          "伊藤诚",
+          "闺蜜甲",
+          "闺蜜乙"
+        ],
+        "focus": [
+          "柳如烟",
+          "季伯达"
+        ],
+        "performance": "季伯达骂完后，柳如烟和全组转向他的群体反应桥帧。",
+        "action_timeline": [
+          {
+            "time": "0.0–0.8秒",
+            "action": "季伯达放低指向动作但继续怒视沙发。"
+          },
+          {
+            "time": "0.8–1.8秒",
+            "action": "柳如烟猛然转头和上身面向季伯达；伊藤诚笑意消失。"
+          },
+          {
+            "time": "1.8–2.5秒",
+            "action": "两位闺蜜转向冲突中心，全员停在柳如烟开口前。"
+          }
+        ],
+        "camera": "中广景，平视，50mm等效，固定镜头",
+        "continuity_rule": "Use preceding shot final frame as motion reference and this bridge JPG as target keyframe; preserve identities, wardrobe, positions, lighting, props, and screen axis.",
+        "seedance_usage": "Generate as a short silent transition clip; no speech or lip movement. End exactly on this keyframe before continuing to the next numbered shot.",
+        "negative_prompt": "错误人物身份，额外人物，重复人物，换座，服装变化，越轴，镜头抖动，错误口型，画内文字，水印，畸形手指，背景跳变"
+      }
+    ]
   },
   {
     "shot": 4,
@@ -422,7 +503,50 @@
       "seed_strategy": "shot-004-locked-character-continuity",
       "style": "cinematic 2D Chinese anime storyboard",
       "text_in_artwork": false
-    }
+    },
+    "bridge_frames": [
+      {
+        "id": "004A",
+        "type": "silent_bridge_keyframe",
+        "file": "jpg/shot_004A.jpg",
+        "artwork_file": "artwork/shot_004A.jpg",
+        "after_shot": 4,
+        "before_shot": 5,
+        "recommended_duration_seconds": 2.5,
+        "purpose": "在季伯达反击前重新建立五人座位、距离和对峙轴线。",
+        "actors": [
+          "季伯达",
+          "柳如烟",
+          "伊藤诚",
+          "闺蜜甲",
+          "闺蜜乙"
+        ],
+        "focus": [
+          "季伯达",
+          "柳如烟",
+          "伊藤诚"
+        ],
+        "performance": "在季伯达反击前重新建立五人座位、距离和对峙轴线。",
+        "action_timeline": [
+          {
+            "time": "0.0–0.8秒",
+            "action": "保持五人空间全貌：季伯达在左前景，四人在沙发。"
+          },
+          {
+            "time": "0.8–1.8秒",
+            "action": "季伯达抬起开放手掌制止众人；两位闺蜜停止前倾。"
+          },
+          {
+            "time": "1.8–2.5秒",
+            "action": "柳如烟仍紧靠伊藤诚并怒视季伯达，定格到镜头005开口姿态。"
+          }
+        ],
+        "camera": "中广景，平视，35mm等效，固定镜头",
+        "continuity_rule": "Use preceding shot final frame as motion reference and this bridge JPG as target keyframe; preserve identities, wardrobe, positions, lighting, props, and screen axis.",
+        "seedance_usage": "Generate as a short silent transition clip; no speech or lip movement. End exactly on this keyframe before continuing to the next numbered shot.",
+        "negative_prompt": "错误人物身份，额外人物，重复人物，换座，服装变化，越轴，镜头抖动，错误口型，画内文字，水印，畸形手指，背景跳变"
+      }
+    ]
   },
   {
     "shot": 5,
