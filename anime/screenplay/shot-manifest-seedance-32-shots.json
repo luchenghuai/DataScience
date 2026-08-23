@@ -86,7 +86,14 @@
       }
     ],
     "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images.",
-    "dialogue_and_action_timing": "0.0–0.4s: hold the established composition; 闺蜜甲 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.4–2.7s: 闺蜜甲 speaks the exact Mandarin line “如烟，你输了！” once, with natural restrained lip sync and the shot-specific performance: During the wide party tableau, 闺蜜甲 turns toward 柳如烟, leans forward slightly, raises one hand to claim attention, and says “如烟，你输了！” with playful excitement; 柳如烟 shifts her gaze toward her while the others quiet down and watch. 2.7–3.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line. Supporting motion detail: {'start_sec': 0, 'end_sec': 1, 'beat': 'Hold the full seating geography; guests breathe and shift naturally around the coffee table.'} {'start_sec': 1, 'end_sec': 2, 'beat': 'A restrained toast and tiny glass movement create party life; bottles remain fixed.'} {'start_sec': 2, 'end_sec': 3, 'beat': 'Conversation settles and attention begins to gather toward the game, ready for the cut.'}"
+    "dialogue_and_action_timing": "0.0–0.4s: hold the established composition; 闺蜜甲 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.4–2.7s: 闺蜜甲 speaks the exact Mandarin line “如烟，你输了！” once, with natural restrained lip sync and the shot-specific performance: During the wide party tableau, 闺蜜甲 turns toward 柳如烟, leans forward slightly, raises one hand to claim attention, and says “如烟，你输了！” with playful excitement; 柳如烟 shifts her gaze toward her while the others quiet down and watch. 2.7–3.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line. Supporting motion detail: {'start_sec': 0, 'end_sec': 1, 'beat': 'Hold the full seating geography; guests breathe and shift naturally around the coffee table.'} {'start_sec': 1, 'end_sec': 2, 'beat': 'A restrained toast and tiny glass movement create party life; bottles remain fixed.'} {'start_sec': 2, 'end_sec': 3, 'beat': 'Conversation settles and attention begins to gather toward the game, ready for the cut.'}",
+    "ktv_continuity_reference": "references/ktv-continuity.md",
+    "ktv_continuity_sheet": "references/ktv-continuity-sheet.jpg",
+    "clean_start_frame": true,
+    "start_frame_dimensions": "1672x941",
+    "continuity_correction_2026_08_23": {
+      "ensemble_rule": "exactly 6 people: 4 women (柳如烟, 闺蜜甲, 闺蜜乙, 闺蜜丙) and 2 men (季伯达, 伊藤诚); no background guests"
+    }
   },
   {
     "shot": 2,
@@ -171,7 +178,14 @@
       }
     ],
     "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images.",
-    "dialogue_and_action_timing": "0.0–0.2s: hold the established composition; 闺蜜甲 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.2–1.8s: 闺蜜甲 speaks the exact Mandarin line “选真心话还是大冒险？” once, with natural restrained lip sync and the shot-specific performance: 闺蜜甲 remains leaning forward after announcing the loss, keeps her attention on 柳如烟, and asks “选真心话还是大冒险？” with playful excitement; 闺蜜乙 turns to listen and 闺蜜丙 lounges with her drink. 1.8–2.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line. Supporting motion detail: {'start_sec': 0, 'end_sec': 1, 'beat': '闺蜜甲 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 闺蜜甲 leans forward, lifts one hand and asks with playful excitement; 闺蜜乙 turns to listen; 闺蜜丙 lounges with her drink.'} {'start_sec': 1, 'end_sec': 2, 'beat': '闺蜜甲 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut.'}"
+    "dialogue_and_action_timing": "0.0–0.2s: hold the established composition; 闺蜜甲 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.2–1.8s: 闺蜜甲 speaks the exact Mandarin line “选真心话还是大冒险？” once, with natural restrained lip sync and the shot-specific performance: 闺蜜甲 remains leaning forward after announcing the loss, keeps her attention on 柳如烟, and asks “选真心话还是大冒险？” with playful excitement; 闺蜜乙 turns to listen and 闺蜜丙 lounges with her drink. 1.8–2.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line. Supporting motion detail: {'start_sec': 0, 'end_sec': 1, 'beat': '闺蜜甲 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 闺蜜甲 leans forward, lifts one hand and asks with playful excitement; 闺蜜乙 turns to listen; 闺蜜丙 lounges with her drink.'} {'start_sec': 1, 'end_sec': 2, 'beat': '闺蜜甲 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut.'}",
+    "ktv_continuity_reference": "references/ktv-continuity.md",
+    "ktv_continuity_sheet": "references/ktv-continuity-sheet.jpg",
+    "clean_start_frame": true,
+    "start_frame_dimensions": "1672x941",
+    "continuity_correction_2026_08_23": {
+      "ensemble_rule": "exactly the same three girlfriends only, left-to-right 闺蜜甲/闺蜜乙/闺蜜丙; no fourth person"
+    }
   },
   {
     "shot": 3,
@@ -250,7 +264,14 @@
       }
     ],
     "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images.",
-    "dialogue_and_action_timing": "0.0–0.1s: hold the established composition; 柳如烟 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.1–0.9s: 柳如烟 speaks the exact Mandarin line “真心话。” once, with natural restrained lip sync and the shot-specific performance: 柳如烟 answers promptly and evenly, a tiny nod and confident eye contact. 0.9–1.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line. Supporting motion detail: {'start_sec': 0, 'end_sec': 1, 'beat': '柳如烟 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 柳如烟 answers promptly and evenly, a tiny nod and confident eye contact.'}"
+    "dialogue_and_action_timing": "0.0–0.1s: hold the established composition; 柳如烟 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.1–0.9s: 柳如烟 speaks the exact Mandarin line “真心话。” once, with natural restrained lip sync and the shot-specific performance: 柳如烟 answers promptly and evenly, a tiny nod and confident eye contact. 0.9–1.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line. Supporting motion detail: {'start_sec': 0, 'end_sec': 1, 'beat': '柳如烟 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 柳如烟 answers promptly and evenly, a tiny nod and confident eye contact.'}",
+    "ktv_continuity_reference": "references/ktv-continuity.md",
+    "ktv_continuity_sheet": "references/ktv-continuity-sheet.jpg",
+    "clean_start_frame": true,
+    "start_frame_dimensions": "1672x941",
+    "continuity_correction_2026_08_23": {
+      "identity_rule": "柳如烟 is the primary subject; 伊藤诚 is immediately to her right/behind; lock both identities to references"
+    }
   },
   {
     "shot": 4,
@@ -340,7 +361,14 @@
       }
     ],
     "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images.",
-    "dialogue_and_action_timing": "0.0–0.4s: hold the established composition; 闺蜜乙 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.4–2.7s: 闺蜜乙 speaks the exact Mandarin line “那就说说，你今天穿的内裤是什么颜色？” once, with natural restrained lip sync and the shot-specific performance: 闺蜜乙 taps/indicates the table lightly and teases; 闺蜜甲 turns toward her; 闺蜜丙 watches 柳如烟. 2.7–3.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line. Supporting motion detail: {'start_sec': 0, 'end_sec': 1, 'beat': '闺蜜乙 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 闺蜜乙 taps/indicates the table lightly and teases; 闺蜜甲 turns toward her; 闺蜜丙 watches 柳如烟.'} {'start_sec': 1, 'end_sec': 2, 'beat': '闺蜜乙 continues the line with coherent restrained lip sync; the primary expression/gesture develops without changing seat or props.'} {'start_sec': 2, 'end_sec': 3, 'beat': '闺蜜乙 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut.'}"
+    "dialogue_and_action_timing": "0.0–0.4s: hold the established composition; 闺蜜乙 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.4–2.7s: 闺蜜乙 speaks the exact Mandarin line “那就说说，你今天穿的内裤是什么颜色？” once, with natural restrained lip sync and the shot-specific performance: 闺蜜乙 taps/indicates the table lightly and teases; 闺蜜甲 turns toward her; 闺蜜丙 watches 柳如烟. 2.7–3.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line. Supporting motion detail: {'start_sec': 0, 'end_sec': 1, 'beat': '闺蜜乙 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 闺蜜乙 taps/indicates the table lightly and teases; 闺蜜甲 turns toward her; 闺蜜丙 watches 柳如烟.'} {'start_sec': 1, 'end_sec': 2, 'beat': '闺蜜乙 continues the line with coherent restrained lip sync; the primary expression/gesture develops without changing seat or props.'} {'start_sec': 2, 'end_sec': 3, 'beat': '闺蜜乙 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut.'}",
+    "ktv_continuity_reference": "references/ktv-continuity.md",
+    "ktv_continuity_sheet": "references/ktv-continuity-sheet.jpg",
+    "clean_start_frame": true,
+    "start_frame_dimensions": "1672x941",
+    "continuity_correction_2026_08_23": {
+      "ensemble_rule": "exactly the same three girlfriends and left-to-right order as shot 002; 闺蜜乙 centered"
+    }
   },
   {
     "shot": 5,
@@ -419,7 +447,14 @@
       }
     ],
     "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images.",
-    "dialogue_and_action_timing": "0.0–0.1s: hold the established composition; 伊藤诚 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.1–0.9s: 伊藤诚 speaks the exact Mandarin line “粉红色。” once, with natural restrained lip sync and the shot-specific performance: 伊藤诚 answers too quickly with casual certainty; 柳如烟 registers immediate discomfort. 0.9–1.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line. Supporting motion detail: {'start_sec': 0, 'end_sec': 1, 'beat': '伊藤诚 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 伊藤诚 answers too quickly with casual certainty; 柳如烟 registers immediate discomfort.'}"
+    "dialogue_and_action_timing": "0.0–0.1s: hold the established composition; 伊藤诚 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.1–0.9s: 伊藤诚 speaks the exact Mandarin line “粉红色。” once, with natural restrained lip sync and the shot-specific performance: 伊藤诚 answers too quickly with casual certainty; 柳如烟 registers immediate discomfort. 0.9–1.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line. Supporting motion detail: {'start_sec': 0, 'end_sec': 1, 'beat': '伊藤诚 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 伊藤诚 answers too quickly with casual certainty; 柳如烟 registers immediate discomfort.'}",
+    "ktv_continuity_reference": "references/ktv-continuity.md",
+    "ktv_continuity_sheet": "references/ktv-continuity-sheet.jpg",
+    "clean_start_frame": true,
+    "start_frame_dimensions": "1672x940",
+    "continuity_correction_2026_08_23": {
+      "identity_rule": "伊藤诚 is the speaking subject beside 柳如烟; lock both identities, wardrobe, and adjacent seating to shot 003"
+    }
   },
   {
     "shot": 6,
