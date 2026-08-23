@@ -1,84 +1,103 @@
 {{- define "main" }}
-{{- $class := "class/" | relURL -}}
-{{- $project := "project/" | relURL -}}
-{{- $submissions := "submissions/" | relURL -}}
+{{- $lectures := "class/" | relURL -}}
+{{- $assignments := "submissions/" | relURL -}}
+{{- $projects := "project/" | relURL -}}
 
-<main class="club-home">
-  <section class="club-intro" aria-labelledby="home-title">
-    <p class="club-eyebrow">BASIS Independent Fremont</p>
-    <h1 id="home-title">Data Science Club</h1>
-    <p class="club-summary">Learn practical data science, build projects with real data, and share what you discover.</p>
-    <div class="club-actions">
-      <a class="club-button club-button-primary" href="{{ $class }}">Start learning</a>
-      <a class="club-button" href="{{ $project }}">View projects</a>
+<main class="learning-home">
+  <section class="learning-hero" aria-labelledby="home-title">
+    <p class="learning-kicker">A personally maintained learning site</p>
+    <h1 id="home-title">Learn machine learning by doing.</h1>
+    <p class="learning-summary">A practical path through lectures, assignments, and projects—made for curious learners who want to understand data science one step at a time.</p>
+    <a class="learning-start" href="{{ $lectures }}">Start with the lectures <span aria-hidden="true">→</span></a>
+  </section>
+
+  <section class="learning-path" aria-labelledby="path-title">
+    <div class="learning-section-heading">
+      <p class="learning-kicker">Learning path</p>
+      <h2 id="path-title">Read. Practice. Build.</h2>
+    </div>
+
+    <div class="learning-grid">
+      <a class="learning-card" href="{{ $lectures }}">
+        <span class="learning-number">01</span>
+        <div>
+          <h3>Lectures</h3>
+          <p>Start with Python and statistics, then move into regression and machine learning.</p>
+        </div>
+        <strong>Browse lectures <span aria-hidden="true">→</span></strong>
+      </a>
+      <a class="learning-card" href="{{ $assignments }}">
+        <span class="learning-number">02</span>
+        <div>
+          <h3>Assignments</h3>
+          <p>Practice with notebooks, spreadsheets, visualizations, and real datasets.</p>
+        </div>
+        <strong>Try assignments <span aria-hidden="true">→</span></strong>
+      </a>
+      <a class="learning-card" href="{{ $projects }}">
+        <span class="learning-number">03</span>
+        <div>
+          <h3>Projects</h3>
+          <p>See how questions become plans, data collection, analysis, and conclusions.</p>
+        </div>
+        <strong>Explore projects <span aria-hidden="true">→</span></strong>
+      </a>
     </div>
   </section>
 
-  <section class="club-links" aria-label="Club resources">
-    <a href="{{ $class }}">
-      <span>01</span>
-      <h2>Learn</h2>
-      <p>Lessons covering Python, statistics, regression, and machine learning.</p>
-      <strong>Class materials →</strong>
-    </a>
-    <a href="{{ $project }}">
-      <span>02</span>
-      <h2>Build</h2>
-      <p>Explore club projects, methods, data collection, and analysis.</p>
-      <strong>Club projects →</strong>
-    </a>
-    <a href="{{ $submissions }}">
-      <span>03</span>
-      <h2>Share</h2>
-      <p>See work and discoveries contributed by club members.</p>
-      <strong>Student submissions →</strong>
-    </a>
-  </section>
-
-  <section class="club-footer-callout" aria-labelledby="club-callout-title">
+  <section class="learning-note" aria-labelledby="maintained-title">
+    <p class="learning-kicker">About this site</p>
     <div>
-      <p class="club-eyebrow">Learn together</p>
-      <h2 id="club-callout-title">Curious about data?</h2>
+      <h2 id="maintained-title">Small, practical, and growing.</h2>
+      <p>This is a personal collection of materials for learning machine learning. New lectures, exercises, and project notes are added as they are developed.</p>
     </div>
-    <p>Start with the class materials, then turn a question into your own project.</p>
   </section>
 </main>
 
 <style>
   main.main { max-width:none; margin:0; padding:0; }
-  .club-home { --ink:#102438; --blue:#1769aa; --paper:#f8faf9; --muted:#5d6b78; --line:#dce3e6; color:var(--ink); background:var(--paper); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
-  .club-home * { box-sizing:border-box; }
-  .club-home a { color:inherit; }
-  .club-home a:focus-visible { outline:3px solid #d17b0f; outline-offset:4px; }
-  .club-intro,.club-links,.club-footer-callout { width:min(1040px,calc(100% - 3rem)); margin-inline:auto; }
-  .club-intro { padding:clamp(5rem,12vw,9rem) 0 clamp(4rem,9vw,7rem); }
-  .club-eyebrow { margin:0 0 1rem; color:var(--blue); font-size:.75rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
-  .club-intro h1 { margin:0; max-width:780px; font-size:clamp(3.4rem,9vw,7rem); line-height:.95; letter-spacing:-.06em; }
-  .club-summary { max-width:650px; margin:1.6rem 0 0; color:var(--muted); font-size:clamp(1.05rem,2vw,1.25rem); line-height:1.65; }
-  .club-actions { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:2rem; }
-  .club-button { display:inline-flex; min-height:48px; align-items:center; justify-content:center; padding:.75rem 1.1rem; border:1px solid var(--ink); font-weight:750; text-decoration:none; }
-  .club-button-primary,.club-button:hover { color:#fff!important; background:var(--ink); }
-  .club-links { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-  .club-links a { min-height:300px; display:flex; flex-direction:column; padding:2rem; text-decoration:none; border-right:1px solid var(--line); }
-  .club-links a:last-child { border-right:0; }
-  .club-links a:hover { background:#eef4f3; }
-  .club-links span { color:var(--blue); font-size:.75rem; font-weight:800; }
-  .club-links h2 { margin:auto 0 .7rem; font-size:2rem; letter-spacing:-.035em; }
-  .club-links p { min-height:4.5rem; margin:0; color:var(--muted); line-height:1.55; }
-  .club-links strong { margin-top:1.4rem; color:var(--blue); font-size:.9rem; }
-  .club-footer-callout { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:end; padding:clamp(4rem,9vw,7rem) 0; }
-  .club-footer-callout h2 { margin:0; font-size:clamp(2.2rem,5vw,4rem); letter-spacing:-.045em; }
-  .club-footer-callout > p { margin:0; color:var(--muted); line-height:1.65; }
-  @media (max-width:700px) {
-    .club-links { grid-template-columns:1fr; }
-    .club-links a { min-height:230px; border-right:0; border-bottom:1px solid var(--line); }
-    .club-links a:last-child { border-bottom:0; }
-    .club-footer-callout { grid-template-columns:1fr; gap:1rem; }
+  .learning-home { --accent:#7ff0c2; --pink:#f9a8d4; --ink:#eaf3ee; --muted:#a7bbb2; --panel:rgba(12,33,23,.72); --line:#28513b; color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+  .learning-home * { box-sizing:border-box; }
+  .learning-home a { color:inherit; }
+  .learning-home a:focus-visible { outline:3px solid var(--pink); outline-offset:5px; }
+  .learning-hero,.learning-path,.learning-note { width:min(1080px,calc(100% - 3rem)); margin-inline:auto; }
+  .learning-hero { min-height:70vh; display:flex; flex-direction:column; justify-content:center; padding:clamp(5rem,12vw,9rem) 0; }
+  .learning-kicker { margin:0 0 1.1rem; color:var(--accent); font-size:.76rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
+  .learning-hero h1 { max-width:900px; margin:0; font-size:clamp(3rem,8vw,6.8rem); line-height:.96; letter-spacing:-.06em; }
+  .learning-summary { max-width:700px; margin:1.7rem 0 0; color:var(--muted); font-size:clamp(1.05rem,2vw,1.3rem); line-height:1.65; }
+  .learning-start { width:fit-content; display:inline-flex; align-items:center; gap:.6rem; margin-top:2.2rem; padding:.85rem 1.1rem; border:1px solid var(--accent); color:var(--accent)!important; font-weight:750; text-decoration:none; transition:background .2s ease,color .2s ease; }
+  .learning-start:hover { background:var(--accent); color:#06130d!important; }
+  .learning-path { padding:clamp(4rem,8vw,7rem) 0; border-top:1px solid var(--line); }
+  .learning-section-heading { display:flex; justify-content:space-between; gap:2rem; align-items:end; margin-bottom:2.2rem; }
+  .learning-section-heading .learning-kicker { margin:0; }
+  .learning-section-heading h2,.learning-note h2 { margin:0; font-size:clamp(2rem,4vw,3.5rem); letter-spacing:-.045em; }
+  .learning-grid { display:grid; grid-template-columns:repeat(3,1fr); border:1px solid var(--line); }
+  .learning-card { min-height:360px; display:flex; flex-direction:column; justify-content:space-between; gap:2rem; padding:1.8rem; background:var(--panel); border-right:1px solid var(--line); text-decoration:none; transition:background .2s ease; }
+  .learning-card:last-child { border-right:0; }
+  .learning-card:hover { background:rgba(20,55,38,.92); }
+  .learning-number { color:var(--pink); font-size:.75rem; font-weight:800; }
+  .learning-card h3 { margin:0 0 .8rem; font-size:2rem; letter-spacing:-.035em; }
+  .learning-card p { margin:0; color:var(--muted); line-height:1.6; }
+  .learning-card strong { color:var(--accent); font-size:.9rem; }
+  .learning-note { display:grid; grid-template-columns:1fr 2fr; gap:3rem; padding:clamp(4rem,8vw,7rem) 0; border-top:1px solid var(--line); }
+  .learning-note .learning-kicker { margin:.4rem 0 0; }
+  .learning-note div p { max-width:660px; margin:1.2rem 0 0; color:var(--muted); line-height:1.7; }
+  @media (max-width:760px) {
+    .learning-hero { min-height:auto; }
+    .learning-section-heading { display:block; }
+    .learning-section-heading .learning-kicker { margin-bottom:1rem; }
+    .learning-grid { grid-template-columns:1fr; }
+    .learning-card { min-height:240px; border-right:0; border-bottom:1px solid var(--line); }
+    .learning-card:last-child { border-bottom:0; }
+    .learning-note { grid-template-columns:1fr; gap:1rem; }
   }
   @media (max-width:480px) {
-    .club-intro,.club-links,.club-footer-callout { width:min(100% - 2rem,1040px); }
-    .club-actions { flex-direction:column; }
-    .club-button { width:100%; }
+    .learning-hero,.learning-path,.learning-note { width:calc(100% - 2rem); }
+    .learning-hero h1 { font-size:clamp(2.7rem,15vw,4.4rem); }
+    .learning-start { width:100%; justify-content:center; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    .learning-start,.learning-card { transition:none; }
   }
 </style>
 {{- end }}

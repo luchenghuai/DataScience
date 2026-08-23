@@ -1,6 +1,6 @@
 baseURL: https://luchenghuai.github.io/DataScience/
 locale: en-us
-title: "Data Science Club (BIF)"
+title: "Data Science Learning Notes"
 theme: ["PaperMod"]
 
 params:
@@ -15,25 +15,25 @@ params:
   math: true
   profileMode:
     enabled: true
-    title: "Data Science Club (BIF)"
-    subtitle: "Learning data science through classes, projects, and collaboration"
+    title: "Data Science Learning Notes"
+    subtitle: "Lectures, assignments, and projects for learning machine learning"
     imageUrl: "/DataScience/bonsai.jpeg"
     imageWidth: 300
     imageHeight: 300
 
 menu:
   main:
-    - identifier: Class
-      name: Class
+    - identifier: Lectures
+      name: Lectures
       url: /class/
       weight: 10
-    - identifier: Project
-      name: Project
-      url: /project/
-      weight: 20
-    - identifier: Submissions
-      name: Student Submissions
+    - identifier: Assignments
+      name: Assignments
       url: /submissions/
+      weight: 20
+    - identifier: Projects
+      name: Projects
+      url: /project/
       weight: 30
 
 markup:
