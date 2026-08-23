@@ -1,9 +1,4 @@
 # 分镜剧本
-## 镜头衔接首帧规则（镜头2起强制执行）
-
-- 必须使用上一镜头成片的真实最后一帧作为本镜头首帧锚点；不得使用另行生成的最终阶段图或分镜图作为首帧。开头0.5秒严格保持该帧的构图、人物位置、姿势、表情、服装、光线、机位、景别和运动方向，随后再平滑开始下一动作；禁止开场重构图、姿势重置、镜头跳变或道具变化。
-- Use the literal final rendered frame of the immediately preceding shot as this shot's opening-frame anchor; do not use a separately generated final-stage or storyboard image as the first frame. Preserve the exact opening composition, character positions, poses, expressions, wardrobe, lighting, camera angle, framing, and screen direction for the first 0.5 seconds, then smoothly begin the next action with no reframe, pose reset, camera jump, or prop change.
-
 
 > 共 240 镜；每句对白独立成镜，字幕显示在画面下方。镜头 077 为已确认重复对白移除后的无对白反应镜。
 
