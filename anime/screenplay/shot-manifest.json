@@ -48,7 +48,7 @@
       "artwork_dimensions": "1280x720",
       "final_dimensions": "1280x960"
     },
-    "artwork_file": "artwork/shot_001.jpg",
+    "artwork_file": "jpg/shot_001.jpg",
     "speaker": "伊藤诚",
     "duration_seconds": 3,
     "focus": [
@@ -154,7 +154,7 @@
       "artwork_dimensions": "1280x720",
       "final_dimensions": "1280x960"
     },
-    "artwork_file": "artwork/shot_002.jpg",
+    "artwork_file": "jpg/shot_002.jpg",
     "speaker": "伊藤诚",
     "duration_seconds": 2,
     "focus": [
@@ -215,7 +215,7 @@
         "id": "002A",
         "type": "silent_bridge_keyframe",
         "file": "jpg/shot_002A.jpg",
-        "artwork_file": "artwork/shot_002A.jpg",
+        "artwork_file": "jpg/shot_002A.jpg",
         "after_shot": 2,
         "before_shot": 3,
         "recommended_duration_seconds": 2.0,
@@ -299,7 +299,7 @@
       "artwork_dimensions": "1280x720",
       "final_dimensions": "1280x960"
     },
-    "artwork_file": "artwork/shot_003.jpg",
+    "artwork_file": "jpg/shot_003.jpg",
     "speaker": "季伯达",
     "duration_seconds": 3,
     "focus": [
@@ -360,7 +360,7 @@
         "id": "003A",
         "type": "silent_bridge_keyframe",
         "file": "jpg/shot_003A.jpg",
-        "artwork_file": "artwork/shot_003A.jpg",
+        "artwork_file": "jpg/shot_003A.jpg",
         "after_shot": 3,
         "before_shot": 4,
         "recommended_duration_seconds": 2.5,
@@ -448,7 +448,7 @@
       "artwork_dimensions": "1280x720",
       "final_dimensions": "1280x960"
     },
-    "artwork_file": "artwork/shot_004.jpg",
+    "artwork_file": "jpg/shot_004.jpg",
     "speaker": "柳如烟",
     "duration_seconds": 4,
     "focus": [
@@ -509,7 +509,7 @@
         "id": "004A",
         "type": "silent_bridge_keyframe",
         "file": "jpg/shot_004A.jpg",
-        "artwork_file": "artwork/shot_004A.jpg",
+        "artwork_file": "jpg/shot_004A.jpg",
         "after_shot": 4,
         "before_shot": 5,
         "recommended_duration_seconds": 2.5,
@@ -599,7 +599,7 @@
       "artwork_dimensions": "1280x720",
       "final_dimensions": "1280x960"
     },
-    "artwork_file": "artwork/shot_005.jpg",
+    "artwork_file": "jpg/shot_005.jpg",
     "speaker": "季伯达",
     "duration_seconds": 4,
     "focus": [
@@ -758,7 +758,7 @@
       "style": "cinematic 2D Chinese anime storyboard",
       "text_in_artwork": false
     },
-    "artwork_file": "artwork/shot_006.jpg"
+    "artwork_file": "jpg/shot_006.jpg"
   },
   {
     "shot": 7,
