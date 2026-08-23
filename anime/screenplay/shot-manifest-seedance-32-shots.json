@@ -1,0 +1,2848 @@
+[
+  {
+    "shot": 1,
+    "timestamp": "00:00–00:03",
+    "focus": "group",
+    "speaker": null,
+    "dialogue": null,
+    "action_or_card": "聚会全景：众人喝酒并玩真心话大冒险。",
+    "file": "shot_001.jpg",
+    "shot_id": "001",
+    "duration_seconds": 3,
+    "purpose": "Establish the party geography and relaxed baseline before the conflict.",
+    "framing": "Wide ensemble establishing shot, eye level, preserving the full seating geography and coffee table.",
+    "visible_characters_and_blocking": "Visible: 柳如烟 and 伊藤诚 together on the left seating; 闺蜜甲/乙/丙 across the central sofa; 季伯达 at the right side facing them; background guests stay secondary. Everyone remains around the same low coffee table.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "Natural pre-question party energy: small conversations, relaxed breathing, one restrained toast; no one dominates yet.",
+    "camera_movement": "Very slow 3% push-in with subtle parallax across the coffee table.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Wide ensemble establishing shot, eye level, preserving the full seating geography and coffee table. Visible: 柳如烟 and 伊藤诚 together on the left seating; 闺蜜甲/乙/丙 across the central sofa; 季伯达 at the right side facing them; background guests stay secondary. Everyone remains around the same low coffee table. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: Natural pre-question party energy: small conversations, relaxed breathing, one restrained toast; no one dominates yet. Camera: Very slow 3% push-in with subtle parallax across the coffee table. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "Hold the full seating geography; guests breathe and shift naturally around the coffee table."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "A restrained toast and tiny glass movement create party life; bottles remain fixed."
+      },
+      {
+        "start_sec": 2,
+        "end_sec": 3,
+        "beat": "Conversation settles and attention begins to gather toward the game, ready for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Room tone only: subdued party murmur, glass ambience, no intelligible new dialogue.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low-medium",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 3,
+      "trim_to_seconds": 3,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_001.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_001.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 2,
+    "timestamp": "00:03–00:05",
+    "focus": "friends",
+    "speaker": "闺蜜甲",
+    "dialogue": "如烟输了！选真心话还是大冒险？",
+    "action_or_card": null,
+    "file": "shot_002.jpg",
+    "performance": "闺蜜甲身体前倾，兴奋发问并抬手示意；闺蜜乙侧身看她，闺蜜丙靠在沙发上放松地端着饮料。",
+    "shot_id": "002",
+    "duration_seconds": 2,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Medium three-shot of the three girlfriends across the sofa; 闺蜜甲 is the visual lead.",
+    "visible_characters_and_blocking": "Visible: 闺蜜甲 on sofa left, 闺蜜乙 center, 闺蜜丙 right. They remain seated behind the coffee table, shoulders angled toward 季伯达 off-camera/right; no seat swaps.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "闺蜜甲 leans forward, lifts one hand and asks with playful excitement; 闺蜜乙 turns to listen; 闺蜜丙 lounges with her drink.",
+    "camera_movement": "Gentle 2% push-in toward 闺蜜甲; no pan.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Medium three-shot of the three girlfriends across the sofa; 闺蜜甲 is the visual lead. Visible: 闺蜜甲 on sofa left, 闺蜜乙 center, 闺蜜丙 right. They remain seated behind the coffee table, shoulders angled toward 季伯达 off-camera/right; no seat swaps. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 闺蜜甲 leans forward, lifts one hand and asks with playful excitement; 闺蜜乙 turns to listen; 闺蜜丙 lounges with her drink. Camera: Gentle 2% push-in toward 闺蜜甲; no pan. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "闺蜜甲 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 闺蜜甲 leans forward, lifts one hand and asks with playful excitement; 闺蜜乙 turns to listen; 闺蜜丙 lounges with her drink."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "闺蜜甲 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 闺蜜甲; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 2,
+      "trim_to_seconds": 2,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_002.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_002.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 3,
+    "timestamp": "00:05–00:06",
+    "focus": "liu",
+    "speaker": "柳如烟",
+    "dialogue": "真心话。",
+    "action_or_card": null,
+    "file": "shot_003.jpg",
+    "shot_id": "003",
+    "duration_seconds": 1,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Tight medium close-up on 柳如烟 at frame left; 伊藤诚 remains partially visible beside/behind her.",
+    "visible_characters_and_blocking": "Visible: 柳如烟 seated at frame left with 伊藤诚 immediately to her right; one or more sofa friends may remain soft in the background exactly as in the source JPG. 柳如烟 does not stand or cross the room.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "柳如烟 answers promptly and evenly, a tiny nod and confident eye contact.",
+    "camera_movement": "Near-locked shot with a tiny 1% push-in.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Tight medium close-up on 柳如烟 at frame left; 伊藤诚 remains partially visible beside/behind her. Visible: 柳如烟 seated at frame left with 伊藤诚 immediately to her right; one or more sofa friends may remain soft in the background exactly as in the source JPG. 柳如烟 does not stand or cross the room. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 柳如烟 answers promptly and evenly, a tiny nod and confident eye contact. Camera: Near-locked shot with a tiny 1% push-in. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "柳如烟 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 柳如烟 answers promptly and evenly, a tiny nod and confident eye contact."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 柳如烟; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 1,
+      "trim_to_seconds": 1,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_003.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_003.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 4,
+    "timestamp": "00:06–00:09",
+    "focus": "friends",
+    "speaker": "闺蜜乙",
+    "dialogue": "那就说说，你今天穿的内裤是什么颜色？",
+    "action_or_card": null,
+    "file": "shot_004.jpg",
+    "performance": "闺蜜乙带着玩笑意味开口并轻点桌面；闺蜜甲转头倾听，闺蜜丙放松靠坐、观察柳如烟的反应。",
+    "shot_id": "004",
+    "duration_seconds": 3,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Medium three-shot of the girlfriends; center emphasis on 闺蜜乙.",
+    "visible_characters_and_blocking": "Visible: 闺蜜甲 on sofa left, 闺蜜乙 center, 闺蜜丙 right. They remain seated behind the coffee table, shoulders angled toward 季伯达 off-camera/right; no seat swaps.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "闺蜜乙 taps/indicates the table lightly and teases; 闺蜜甲 turns toward her; 闺蜜丙 watches 柳如烟.",
+    "camera_movement": "Slow 3% push toward 闺蜜乙; keep all three faces stable.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Medium three-shot of the girlfriends; center emphasis on 闺蜜乙. Visible: 闺蜜甲 on sofa left, 闺蜜乙 center, 闺蜜丙 right. They remain seated behind the coffee table, shoulders angled toward 季伯达 off-camera/right; no seat swaps. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 闺蜜乙 taps/indicates the table lightly and teases; 闺蜜甲 turns toward her; 闺蜜丙 watches 柳如烟. Camera: Slow 3% push toward 闺蜜乙; keep all three faces stable. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "闺蜜乙 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 闺蜜乙 taps/indicates the table lightly and teases; 闺蜜甲 turns toward her; 闺蜜丙 watches 柳如烟."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "闺蜜乙 continues the line with coherent restrained lip sync; the primary expression/gesture develops without changing seat or props."
+      },
+      {
+        "start_sec": 2,
+        "end_sec": 3,
+        "beat": "闺蜜乙 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 闺蜜乙; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low-medium",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 3,
+      "trim_to_seconds": 3,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_004.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_004.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 5,
+    "timestamp": "00:09–00:10",
+    "focus": "ito",
+    "speaker": "伊藤诚",
+    "dialogue": "粉红色。",
+    "action_or_card": null,
+    "file": "shot_005.jpg",
+    "shot_id": "005",
+    "duration_seconds": 1,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Tight two-shot favoring 伊藤诚 beside 柳如烟; keep 柳如烟 visible for reaction.",
+    "visible_characters_and_blocking": "Visible: 伊藤诚 seated immediately right of 柳如烟; 柳如烟 remains at frame left and a sofa friend may appear behind. Preserve their close seated spacing without adding contact.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "伊藤诚 answers too quickly with casual certainty; 柳如烟 registers immediate discomfort.",
+    "camera_movement": "Near-locked 1% push-in for comic timing.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Tight two-shot favoring 伊藤诚 beside 柳如烟; keep 柳如烟 visible for reaction. Visible: 伊藤诚 seated immediately right of 柳如烟; 柳如烟 remains at frame left and a sofa friend may appear behind. Preserve their close seated spacing without adding contact. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 伊藤诚 answers too quickly with casual certainty; 柳如烟 registers immediate discomfort. Camera: Near-locked 1% push-in for comic timing. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "伊藤诚 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 伊藤诚 answers too quickly with casual certainty; 柳如烟 registers immediate discomfort."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 伊藤诚; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 1,
+      "trim_to_seconds": 1,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_005.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_005.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 6,
+    "timestamp": "00:10–00:14",
+    "focus": "ito",
+    "speaker": "伊藤诚",
+    "dialogue": "如烟一直拿我当姐妹。她的内裤，我以前都帮她洗过。",
+    "action_or_card": null,
+    "file": "shot_006.jpg",
+    "shot_id": "006",
+    "duration_seconds": 4,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Tight two-shot favoring 伊藤诚 beside 柳如烟, with a friend softly present in the background.",
+    "visible_characters_and_blocking": "Visible: 伊藤诚 seated immediately right of 柳如烟; 柳如烟 remains at frame left and a sofa friend may appear behind. Preserve their close seated spacing without adding contact.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "伊藤诚 continues matter-of-factly, small explanatory hand gesture; 柳如烟 stiffens while the background friend watches.",
+    "camera_movement": "Slow 2% push-in, no reframing.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Tight two-shot favoring 伊藤诚 beside 柳如烟, with a friend softly present in the background. Visible: 伊藤诚 seated immediately right of 柳如烟; 柳如烟 remains at frame left and a sofa friend may appear behind. Preserve their close seated spacing without adding contact. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 伊藤诚 continues matter-of-factly, small explanatory hand gesture; 柳如烟 stiffens while the background friend watches. Camera: Slow 2% push-in, no reframing. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "伊藤诚 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 伊藤诚 continues matter-of-factly, small explanatory hand gesture; 柳如烟 stiffens while the background friend watches."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "伊藤诚 continues the line with coherent restrained lip sync; the primary expression/gesture develops without changing seat or props."
+      },
+      {
+        "start_sec": 2,
+        "end_sec": 3,
+        "beat": "伊藤诚 sustains the next phrase at natural pace; gesture resolves incrementally while listeners respond only with blinks, breath, and micro-expressions."
+      },
+      {
+        "start_sec": 3,
+        "end_sec": 4,
+        "beat": "伊藤诚 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 伊藤诚; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low-medium",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 4,
+      "trim_to_seconds": 4,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_006.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_006.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 7,
+    "timestamp": "00:14–00:16",
+    "focus": "liu",
+    "speaker": "柳如烟",
+    "dialogue": "你胡说什么呢？",
+    "action_or_card": null,
+    "file": "shot_007.jpg",
+    "shot_id": "007",
+    "duration_seconds": 2,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Tight medium close-up on 柳如烟, with 伊藤诚 partly visible beside her.",
+    "visible_characters_and_blocking": "Visible: 柳如烟 seated at frame left with 伊藤诚 immediately to her right; one or more sofa friends may remain soft in the background exactly as in the source JPG. 柳如烟 does not stand or cross the room.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "柳如烟 snaps her gaze toward 伊藤诚, brows tightening; brief embarrassed protest.",
+    "camera_movement": "Brief 2% push-in synchronized to the protest.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Tight medium close-up on 柳如烟, with 伊藤诚 partly visible beside her. Visible: 柳如烟 seated at frame left with 伊藤诚 immediately to her right; one or more sofa friends may remain soft in the background exactly as in the source JPG. 柳如烟 does not stand or cross the room. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 柳如烟 snaps her gaze toward 伊藤诚, brows tightening; brief embarrassed protest. Camera: Brief 2% push-in synchronized to the protest. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "柳如烟 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 柳如烟 snaps her gaze toward 伊藤诚, brows tightening; brief embarrassed protest."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "柳如烟 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 柳如烟; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 2,
+      "trim_to_seconds": 2,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_007.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_007.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 8,
+    "timestamp": "00:16–00:18",
+    "focus": "friends",
+    "speaker": "闺蜜甲",
+    "dialogue": "姐夫，你可别多想。他们从小一起长大。",
+    "action_or_card": null,
+    "file": "shot_008.jpg",
+    "performance": "闺蜜甲抬手安抚季伯达并认真解释；闺蜜乙安静看向她，闺蜜丙随意靠坐但留意谈话。",
+    "shot_id": "008",
+    "duration_seconds": 2,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Medium three-shot of the girlfriends; 闺蜜甲 leads from sofa left.",
+    "visible_characters_and_blocking": "Visible: 闺蜜甲 on sofa left, 闺蜜乙 center, 闺蜜丙 right. They remain seated behind the coffee table, shoulders angled toward 季伯达 off-camera/right; no seat swaps.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "闺蜜甲 raises a calming palm toward 季伯达 and explains earnestly; the other two listen.",
+    "camera_movement": "Gentle 2% push toward 闺蜜甲.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Medium three-shot of the girlfriends; 闺蜜甲 leads from sofa left. Visible: 闺蜜甲 on sofa left, 闺蜜乙 center, 闺蜜丙 right. They remain seated behind the coffee table, shoulders angled toward 季伯达 off-camera/right; no seat swaps. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 闺蜜甲 raises a calming palm toward 季伯达 and explains earnestly; the other two listen. Camera: Gentle 2% push toward 闺蜜甲. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "闺蜜甲 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 闺蜜甲 raises a calming palm toward 季伯达 and explains earnestly; the other two listen."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "闺蜜甲 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 闺蜜甲; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 2,
+      "trim_to_seconds": 2,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_008.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_008.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 9,
+    "timestamp": "00:18–00:20",
+    "focus": "friends",
+    "speaker": "闺蜜乙",
+    "dialogue": "就是，伊藤诚在我们眼里根本不算男人。",
+    "action_or_card": null,
+    "file": "shot_009.jpg",
+    "performance": "闺蜜乙接过话题，侧身朝季伯达解释；闺蜜甲收回手倾听，闺蜜丙轻抿饮料、神态放松。",
+    "shot_id": "009",
+    "duration_seconds": 2,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Medium three-shot of the girlfriends; 闺蜜乙 leads from sofa center.",
+    "visible_characters_and_blocking": "Visible: 闺蜜甲 on sofa left, 闺蜜乙 center, 闺蜜丙 right. They remain seated behind the coffee table, shoulders angled toward 季伯达 off-camera/right; no seat swaps.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "闺蜜乙 turns toward 季伯达 and adds reassurance; 闺蜜甲 settles back; 闺蜜丙 takes a restrained sip.",
+    "camera_movement": "Tiny lateral ease from left to center, ending on 闺蜜乙.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Medium three-shot of the girlfriends; 闺蜜乙 leads from sofa center. Visible: 闺蜜甲 on sofa left, 闺蜜乙 center, 闺蜜丙 right. They remain seated behind the coffee table, shoulders angled toward 季伯达 off-camera/right; no seat swaps. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 闺蜜乙 turns toward 季伯达 and adds reassurance; 闺蜜甲 settles back; 闺蜜丙 takes a restrained sip. Camera: Tiny lateral ease from left to center, ending on 闺蜜乙. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "闺蜜乙 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 闺蜜乙 turns toward 季伯达 and adds reassurance; 闺蜜甲 settles back; 闺蜜丙 takes a restrained sip."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "闺蜜乙 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 闺蜜乙; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 2,
+      "trim_to_seconds": 2,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_009.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_009.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 10,
+    "timestamp": "00:20–00:22",
+    "focus": "friends",
+    "speaker": "闺蜜丙",
+    "dialogue": "他们是纯友谊，关系好才这样。",
+    "action_or_card": null,
+    "file": "shot_010.jpg",
+    "performance": "闺蜜丙放下饮料并平静补充；闺蜜甲和闺蜜乙一起转向她倾听。",
+    "shot_id": "010",
+    "duration_seconds": 2,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Medium three-shot of the girlfriends; 闺蜜丙 leads from sofa right.",
+    "visible_characters_and_blocking": "Visible: 闺蜜甲 on sofa left, 闺蜜乙 center, 闺蜜丙 right. They remain seated behind the coffee table, shoulders angled toward 季伯达 off-camera/right; no seat swaps.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "闺蜜丙 lowers her drink and concludes calmly; the other two turn to her.",
+    "camera_movement": "Tiny ease right to favor 闺蜜丙.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Medium three-shot of the girlfriends; 闺蜜丙 leads from sofa right. Visible: 闺蜜甲 on sofa left, 闺蜜乙 center, 闺蜜丙 right. They remain seated behind the coffee table, shoulders angled toward 季伯达 off-camera/right; no seat swaps. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 闺蜜丙 lowers her drink and concludes calmly; the other two turn to her. Camera: Tiny ease right to favor 闺蜜丙. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "闺蜜丙 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 闺蜜丙 lowers her drink and concludes calmly; the other two turn to her."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "闺蜜丙 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 闺蜜丙; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 2,
+      "trim_to_seconds": 2,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_010.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_010.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 11,
+    "timestamp": "00:22–00:26",
+    "focus": "ji",
+    "speaker": "季伯达",
+    "dialogue": "小伊，不是我说你。一个大男人，洗什么内裤？",
+    "action_or_card": null,
+    "file": "shot_011.jpg",
+    "shot_id": "011",
+    "duration_seconds": 4,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Over-shoulder/medium close-up favoring 季伯达 at the right foreground, facing left toward 伊藤诚.",
+    "visible_characters_and_blocking": "Visible: 季伯达 occupies the right foreground in a white shirt, torso turned left toward 柳如烟/伊藤诚 and the opposite sofa; a seated friend may remain soft behind him. He remains seated and does not change sides.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "季伯达 begins controlled and faintly incredulous, looking toward 伊藤诚; one restrained open-palm gesture.",
+    "camera_movement": "Slow 3% push-in; stable eyeline.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Over-shoulder/medium close-up favoring 季伯达 at the right foreground, facing left toward 伊藤诚. Visible: 季伯达 occupies the right foreground in a white shirt, torso turned left toward 柳如烟/伊藤诚 and the opposite sofa; a seated friend may remain soft behind him. He remains seated and does not change sides. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 季伯达 begins controlled and faintly incredulous, looking toward 伊藤诚; one restrained open-palm gesture. Camera: Slow 3% push-in; stable eyeline. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "季伯达 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 季伯达 begins controlled and faintly incredulous, looking toward 伊藤诚; one restrained open-palm gesture."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "季伯达 continues the line with coherent restrained lip sync; the primary expression/gesture develops without changing seat or props."
+      },
+      {
+        "start_sec": 2,
+        "end_sec": 3,
+        "beat": "季伯达 sustains the next phrase at natural pace; gesture resolves incrementally while listeners respond only with blinks, breath, and micro-expressions."
+      },
+      {
+        "start_sec": 3,
+        "end_sec": 4,
+        "beat": "季伯达 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 季伯达; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low-medium",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 4,
+      "trim_to_seconds": 4,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_011.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_011.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 12,
+    "timestamp": "00:26–00:31",
+    "focus": "ji",
+    "speaker": "季伯达",
+    "dialogue": "我的内裤，都是我女闺蜜帮我洗的。你下次也让如烟替你洗。",
+    "action_or_card": null,
+    "file": "shot_012.jpg",
+    "shot_id": "012",
+    "duration_seconds": 5,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Matching medium close-up on 季伯达 from the same axis.",
+    "visible_characters_and_blocking": "Visible: 季伯达 occupies the right foreground in a white shirt, torso turned left toward 柳如烟/伊藤诚 and the opposite sofa; a seated friend may remain soft behind him. He remains seated and does not change sides.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "季伯达 delivers the mirror example with deliberate calm, then subtly points the logic back toward 柳如烟.",
+    "camera_movement": "Slow 3% push-in, matching shot 011 axis.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Matching medium close-up on 季伯达 from the same axis. Visible: 季伯达 occupies the right foreground in a white shirt, torso turned left toward 柳如烟/伊藤诚 and the opposite sofa; a seated friend may remain soft behind him. He remains seated and does not change sides. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 季伯达 delivers the mirror example with deliberate calm, then subtly points the logic back toward 柳如烟. Camera: Slow 3% push-in, matching shot 011 axis. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "季伯达 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 季伯达 delivers the mirror example with deliberate calm, then subtly points the logic back toward 柳如烟."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "季伯达 continues the line with coherent restrained lip sync; the primary expression/gesture develops without changing seat or props."
+      },
+      {
+        "start_sec": 2,
+        "end_sec": 3,
+        "beat": "季伯达 sustains the next phrase at natural pace; gesture resolves incrementally while listeners respond only with blinks, breath, and micro-expressions."
+      },
+      {
+        "start_sec": 3,
+        "end_sec": 4,
+        "beat": "季伯达 sustains the next phrase at natural pace; gesture resolves incrementally while listeners respond only with blinks, breath, and micro-expressions."
+      },
+      {
+        "start_sec": 4,
+        "end_sec": 5,
+        "beat": "季伯达 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 季伯达; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low-medium",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 5,
+      "trim_to_seconds": 5,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_012.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_012.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 13,
+    "timestamp": "00:31–00:36",
+    "focus": "liu",
+    "speaker": "柳如烟",
+    "dialogue": "季伯达，你恶不恶心？你怎么能让别的女人给你洗内裤？",
+    "action_or_card": null,
+    "file": "shot_013.jpg",
+    "shot_id": "013",
+    "duration_seconds": 5,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Tight medium close-up on 柳如烟, 伊藤诚 partly visible beside her.",
+    "visible_characters_and_blocking": "Visible: 柳如烟 seated at frame left with 伊藤诚 immediately to her right; one or more sofa friends may remain soft in the background exactly as in the source JPG. 柳如烟 does not stand or cross the room.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "柳如烟 recoils slightly, anger and disgust rising; she turns sharply toward 季伯达 and emphasizes the accusation.",
+    "camera_movement": "Controlled 3% push-in as anger rises.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Tight medium close-up on 柳如烟, 伊藤诚 partly visible beside her. Visible: 柳如烟 seated at frame left with 伊藤诚 immediately to her right; one or more sofa friends may remain soft in the background exactly as in the source JPG. 柳如烟 does not stand or cross the room. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 柳如烟 recoils slightly, anger and disgust rising; she turns sharply toward 季伯达 and emphasizes the accusation. Camera: Controlled 3% push-in as anger rises. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "柳如烟 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 柳如烟 recoils slightly, anger and disgust rising; she turns sharply toward 季伯达 and emphasizes the accusation."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "柳如烟 continues the line with coherent restrained lip sync; the primary expression/gesture develops without changing seat or props."
+      },
+      {
+        "start_sec": 2,
+        "end_sec": 3,
+        "beat": "柳如烟 sustains the next phrase at natural pace; gesture resolves incrementally while listeners respond only with blinks, breath, and micro-expressions."
+      },
+      {
+        "start_sec": 3,
+        "end_sec": 4,
+        "beat": "柳如烟 sustains the next phrase at natural pace; gesture resolves incrementally while listeners respond only with blinks, breath, and micro-expressions."
+      },
+      {
+        "start_sec": 4,
+        "end_sec": 5,
+        "beat": "柳如烟 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 柳如烟; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low-medium",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 5,
+      "trim_to_seconds": 5,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_013.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_013.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 14,
+    "timestamp": "00:36–00:38",
+    "focus": "friends",
+    "speaker": "闺蜜甲",
+    "dialogue": "这也太过分了吧？",
+    "action_or_card": null,
+    "file": "shot_014.jpg",
+    "performance": "闺蜜甲皱眉前倾、带着不满质问；闺蜜乙观察季伯达的反应，闺蜜丙靠坐并微微挑眉。",
+    "shot_id": "014",
+    "duration_seconds": 2,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Medium three-shot of the girlfriends, favoring 闺蜜甲 at left.",
+    "visible_characters_and_blocking": "Visible: 闺蜜甲 on sofa left, 闺蜜乙 center, 闺蜜丙 right. They remain seated behind the coffee table, shoulders angled toward 季伯达 off-camera/right; no seat swaps.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "闺蜜甲 leans forward with a frown and challenges him; 闺蜜乙 watches his reaction; 闺蜜丙 raises one brow.",
+    "camera_movement": "Gentle 2% push toward 闺蜜甲.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Medium three-shot of the girlfriends, favoring 闺蜜甲 at left. Visible: 闺蜜甲 on sofa left, 闺蜜乙 center, 闺蜜丙 right. They remain seated behind the coffee table, shoulders angled toward 季伯达 off-camera/right; no seat swaps. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 闺蜜甲 leans forward with a frown and challenges him; 闺蜜乙 watches his reaction; 闺蜜丙 raises one brow. Camera: Gentle 2% push toward 闺蜜甲. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "闺蜜甲 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 闺蜜甲 leans forward with a frown and challenges him; 闺蜜乙 watches his reaction; 闺蜜丙 raises one brow."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "闺蜜甲 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 闺蜜甲; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 2,
+      "trim_to_seconds": 2,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_014.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_014.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 15,
+    "timestamp": "00:38–00:41",
+    "focus": "friends",
+    "speaker": "闺蜜乙",
+    "dialogue": "你都有女朋友了，怎么一点边界感都没有？",
+    "action_or_card": null,
+    "file": "shot_015.jpg",
+    "performance": "闺蜜乙坐直身体、严肃强调“边界感”；闺蜜甲点头附和，闺蜜丙放松靠坐但神情认同。",
+    "shot_id": "015",
+    "duration_seconds": 3,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Medium three-shot of the girlfriends, favoring 闺蜜乙 at center.",
+    "visible_characters_and_blocking": "Visible: 闺蜜甲 on sofa left, 闺蜜乙 center, 闺蜜丙 right. They remain seated behind the coffee table, shoulders angled toward 季伯达 off-camera/right; no seat swaps.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "闺蜜乙 sits upright and stresses “边界感”; 闺蜜甲 nods once; 闺蜜丙 shows agreement.",
+    "camera_movement": "Slow 3% push toward 闺蜜乙.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Medium three-shot of the girlfriends, favoring 闺蜜乙 at center. Visible: 闺蜜甲 on sofa left, 闺蜜乙 center, 闺蜜丙 right. They remain seated behind the coffee table, shoulders angled toward 季伯达 off-camera/right; no seat swaps. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 闺蜜乙 sits upright and stresses “边界感”; 闺蜜甲 nods once; 闺蜜丙 shows agreement. Camera: Slow 3% push toward 闺蜜乙. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "闺蜜乙 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 闺蜜乙 sits upright and stresses “边界感”; 闺蜜甲 nods once; 闺蜜丙 shows agreement."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "闺蜜乙 continues the line with coherent restrained lip sync; the primary expression/gesture develops without changing seat or props."
+      },
+      {
+        "start_sec": 2,
+        "end_sec": 3,
+        "beat": "闺蜜乙 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 闺蜜乙; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low-medium",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 3,
+      "trim_to_seconds": 3,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_015.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_015.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 16,
+    "timestamp": "00:41–00:44",
+    "focus": "ji",
+    "speaker": "季伯达",
+    "dialogue": "怎么了？她是我女闺蜜啊。",
+    "action_or_card": null,
+    "file": "shot_016.jpg",
+    "shot_id": "016",
+    "duration_seconds": 3,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Matching medium close-up on 季伯达 at right foreground.",
+    "visible_characters_and_blocking": "Visible: 季伯达 occupies the right foreground in a white shirt, torso turned left toward 柳如烟/伊藤诚 and the opposite sofa; a seated friend may remain soft behind him. He remains seated and does not change sides.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "季伯达 gives a mild shrug and repeats their premise without losing composure.",
+    "camera_movement": "Near-locked shot, tiny 2% pull-back after the shrug.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Matching medium close-up on 季伯达 at right foreground. Visible: 季伯达 occupies the right foreground in a white shirt, torso turned left toward 柳如烟/伊藤诚 and the opposite sofa; a seated friend may remain soft behind him. He remains seated and does not change sides. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 季伯达 gives a mild shrug and repeats their premise without losing composure. Camera: Near-locked shot, tiny 2% pull-back after the shrug. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "季伯达 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 季伯达 gives a mild shrug and repeats their premise without losing composure."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "季伯达 continues the line with coherent restrained lip sync; the primary expression/gesture develops without changing seat or props."
+      },
+      {
+        "start_sec": 2,
+        "end_sec": 3,
+        "beat": "季伯达 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 季伯达; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low-medium",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 3,
+      "trim_to_seconds": 3,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_016.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_016.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 17,
+    "timestamp": "00:44–00:47",
+    "focus": "ito",
+    "speaker": "伊藤诚",
+    "dialogue": "女闺蜜也不行。男女之间得有分寸。",
+    "action_or_card": null,
+    "file": "shot_017.jpg",
+    "shot_id": "017",
+    "duration_seconds": 3,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Tight two-shot favoring 伊藤诚 beside 柳如烟.",
+    "visible_characters_and_blocking": "Visible: 伊藤诚 seated immediately right of 柳如烟; 柳如烟 remains at frame left and a sofa friend may appear behind. Preserve their close seated spacing without adding contact.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "伊藤诚 turns serious, gives a small head shake, and lectures about boundaries; 柳如烟 watches.",
+    "camera_movement": "Slow 2% push-in toward 伊藤诚.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Tight two-shot favoring 伊藤诚 beside 柳如烟. Visible: 伊藤诚 seated immediately right of 柳如烟; 柳如烟 remains at frame left and a sofa friend may appear behind. Preserve their close seated spacing without adding contact. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 伊藤诚 turns serious, gives a small head shake, and lectures about boundaries; 柳如烟 watches. Camera: Slow 2% push-in toward 伊藤诚. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "伊藤诚 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 伊藤诚 turns serious, gives a small head shake, and lectures about boundaries; 柳如烟 watches."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "伊藤诚 continues the line with coherent restrained lip sync; the primary expression/gesture develops without changing seat or props."
+      },
+      {
+        "start_sec": 2,
+        "end_sec": 3,
+        "beat": "伊藤诚 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 伊藤诚; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low-medium",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 3,
+      "trim_to_seconds": 3,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_017.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_017.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 18,
+    "timestamp": "00:47–00:53",
+    "focus": "ji",
+    "speaker": "季伯达",
+    "dialogue": "奇怪了。刚才你说自己替柳如烟洗过内裤，你们不是也说只是姐妹吗？",
+    "action_or_card": null,
+    "file": "shot_018.jpg",
+    "shot_id": "018",
+    "duration_seconds": 6,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Medium close-up on 季伯达, same right-side axis.",
+    "visible_characters_and_blocking": "Visible: 季伯达 occupies the right foreground in a white shirt, torso turned left toward 柳如烟/伊藤诚 and the opposite sofa; a seated friend may remain soft behind him. He remains seated and does not change sides.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "季伯达 calmly reconstructs the contradiction, gaze moving from 伊藤诚 to the group; gestures stay economical.",
+    "camera_movement": "Sustained 4% push-in over the full line.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Medium close-up on 季伯达, same right-side axis. Visible: 季伯达 occupies the right foreground in a white shirt, torso turned left toward 柳如烟/伊藤诚 and the opposite sofa; a seated friend may remain soft behind him. He remains seated and does not change sides. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 季伯达 calmly reconstructs the contradiction, gaze moving from 伊藤诚 to the group; gestures stay economical. Camera: Sustained 4% push-in over the full line. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "季伯达 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 季伯达 calmly reconstructs the contradiction, gaze moving from 伊藤诚 to the group; gestures stay economical."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "季伯达 continues the line with coherent restrained lip sync; the primary expression/gesture develops without changing seat or props."
+      },
+      {
+        "start_sec": 2,
+        "end_sec": 3,
+        "beat": "季伯达 sustains the next phrase at natural pace; gesture resolves incrementally while listeners respond only with blinks, breath, and micro-expressions."
+      },
+      {
+        "start_sec": 3,
+        "end_sec": 4,
+        "beat": "季伯达 sustains the next phrase at natural pace; gesture resolves incrementally while listeners respond only with blinks, breath, and micro-expressions."
+      },
+      {
+        "start_sec": 4,
+        "end_sec": 5,
+        "beat": "季伯达 sustains the next phrase at natural pace; gesture resolves incrementally while listeners respond only with blinks, breath, and micro-expressions."
+      },
+      {
+        "start_sec": 5,
+        "end_sec": 6,
+        "beat": "季伯达 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 季伯达; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low-medium",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 6,
+      "trim_to_seconds": 6,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_018.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_018.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 19,
+    "timestamp": "00:53–00:55",
+    "focus": "liu",
+    "speaker": "柳如烟",
+    "dialogue": "那不一样。",
+    "action_or_card": null,
+    "file": "shot_019.jpg",
+    "shot_id": "019",
+    "duration_seconds": 2,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Tight reaction close-up on 柳如烟.",
+    "visible_characters_and_blocking": "Visible: 柳如烟 seated at frame left with 伊藤诚 immediately to her right; one or more sofa friends may remain soft in the background exactly as in the source JPG. 柳如烟 does not stand or cross the room.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "柳如烟 answers defensively, lips tightening and eyes briefly averting.",
+    "camera_movement": "Near-locked shot with a 2% push-in.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Tight reaction close-up on 柳如烟. Visible: 柳如烟 seated at frame left with 伊藤诚 immediately to her right; one or more sofa friends may remain soft in the background exactly as in the source JPG. 柳如烟 does not stand or cross the room. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 柳如烟 answers defensively, lips tightening and eyes briefly averting. Camera: Near-locked shot with a 2% push-in. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "柳如烟 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 柳如烟 answers defensively, lips tightening and eyes briefly averting."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "柳如烟 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 柳如烟; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 2,
+      "trim_to_seconds": 2,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_019.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_019.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 20,
+    "timestamp": "00:55–00:57",
+    "focus": "ji",
+    "speaker": "季伯达",
+    "dialogue": "哪里不一样？",
+    "action_or_card": null,
+    "file": "shot_020.jpg",
+    "shot_id": "020",
+    "duration_seconds": 2,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Tight medium close-up on 季伯达.",
+    "visible_characters_and_blocking": "Visible: 季伯达 occupies the right foreground in a white shirt, torso turned left toward 柳如烟/伊藤诚 and the opposite sofa; a seated friend may remain soft behind him. He remains seated and does not change sides.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "季伯达 asks a clean follow-up, slight head tilt, then holds eye contact.",
+    "camera_movement": "Tiny 2% push-in, then hold.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Tight medium close-up on 季伯达. Visible: 季伯达 occupies the right foreground in a white shirt, torso turned left toward 柳如烟/伊藤诚 and the opposite sofa; a seated friend may remain soft behind him. He remains seated and does not change sides. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 季伯达 asks a clean follow-up, slight head tilt, then holds eye contact. Camera: Tiny 2% push-in, then hold. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "季伯达 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 季伯达 asks a clean follow-up, slight head tilt, then holds eye contact."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "季伯达 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 季伯达; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 2,
+      "trim_to_seconds": 2,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_020.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_020.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 21,
+    "timestamp": "00:57–01:02",
+    "focus": "liu",
+    "speaker": "柳如烟",
+    "dialogue": "我和伊藤诚只是纯友谊。我拿他当闺蜜，他也拿我当兄弟。",
+    "action_or_card": null,
+    "file": "shot_021.jpg",
+    "shot_id": "021",
+    "duration_seconds": 5,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Tight two-shot favoring 柳如烟 with 伊藤诚 beside her.",
+    "visible_characters_and_blocking": "Visible: 柳如烟 seated at frame left with 伊藤诚 immediately to her right; one or more sofa friends may remain soft in the background exactly as in the source JPG. 柳如烟 does not stand or cross the room.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "柳如烟 explains quickly and defensively, indicating herself then 伊藤诚 without touching him.",
+    "camera_movement": "Slow 3% push-in, no pan.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Tight two-shot favoring 柳如烟 with 伊藤诚 beside her. Visible: 柳如烟 seated at frame left with 伊藤诚 immediately to her right; one or more sofa friends may remain soft in the background exactly as in the source JPG. 柳如烟 does not stand or cross the room. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 柳如烟 explains quickly and defensively, indicating herself then 伊藤诚 without touching him. Camera: Slow 3% push-in, no pan. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "柳如烟 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 柳如烟 explains quickly and defensively, indicating herself then 伊藤诚 without touching him."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "柳如烟 continues the line with coherent restrained lip sync; the primary expression/gesture develops without changing seat or props."
+      },
+      {
+        "start_sec": 2,
+        "end_sec": 3,
+        "beat": "柳如烟 sustains the next phrase at natural pace; gesture resolves incrementally while listeners respond only with blinks, breath, and micro-expressions."
+      },
+      {
+        "start_sec": 3,
+        "end_sec": 4,
+        "beat": "柳如烟 sustains the next phrase at natural pace; gesture resolves incrementally while listeners respond only with blinks, breath, and micro-expressions."
+      },
+      {
+        "start_sec": 4,
+        "end_sec": 5,
+        "beat": "柳如烟 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 柳如烟; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low-medium",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 5,
+      "trim_to_seconds": 5,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_021.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_021.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 22,
+    "timestamp": "01:02–01:05",
+    "focus": "ito",
+    "speaker": "伊藤诚",
+    "dialogue": "对，我们之间根本没有男女之情。",
+    "action_or_card": null,
+    "file": "shot_022.jpg",
+    "shot_id": "022",
+    "duration_seconds": 3,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Tight two-shot favoring 伊藤诚 with 柳如烟 beside him.",
+    "visible_characters_and_blocking": "Visible: 伊藤诚 seated immediately right of 柳如烟; 柳如烟 remains at frame left and a sofa friend may appear behind. Preserve their close seated spacing without adding contact.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "伊藤诚 nods and supports her claim, measured but slightly tense.",
+    "camera_movement": "Slow 2% push toward 伊藤诚.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Tight two-shot favoring 伊藤诚 with 柳如烟 beside him. Visible: 伊藤诚 seated immediately right of 柳如烟; 柳如烟 remains at frame left and a sofa friend may appear behind. Preserve their close seated spacing without adding contact. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 伊藤诚 nods and supports her claim, measured but slightly tense. Camera: Slow 2% push toward 伊藤诚. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "伊藤诚 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 伊藤诚 nods and supports her claim, measured but slightly tense."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "伊藤诚 continues the line with coherent restrained lip sync; the primary expression/gesture develops without changing seat or props."
+      },
+      {
+        "start_sec": 2,
+        "end_sec": 3,
+        "beat": "伊藤诚 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 伊藤诚; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low-medium",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 3,
+      "trim_to_seconds": 3,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_022.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_022.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 23,
+    "timestamp": "01:05–01:08",
+    "focus": "friends",
+    "speaker": "闺蜜甲",
+    "dialogue": "他们从小就这样，你一个大男人别这么小气。",
+    "action_or_card": null,
+    "file": "shot_023.jpg",
+    "performance": "闺蜜甲摊手劝说季伯达，语气理所当然；闺蜜乙侧身倾听，闺蜜丙靠在沙发上静静观察。",
+    "shot_id": "023",
+    "duration_seconds": 3,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Medium three-shot of girlfriends, favoring 闺蜜甲.",
+    "visible_characters_and_blocking": "Visible: 闺蜜甲 on sofa left, 闺蜜乙 center, 闺蜜丙 right. They remain seated behind the coffee table, shoulders angled toward 季伯达 off-camera/right; no seat swaps.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "闺蜜甲 opens both hands as if the conclusion is obvious; 闺蜜乙 listens; 闺蜜丙 observes.",
+    "camera_movement": "Gentle 2% push toward 闺蜜甲.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Medium three-shot of girlfriends, favoring 闺蜜甲. Visible: 闺蜜甲 on sofa left, 闺蜜乙 center, 闺蜜丙 right. They remain seated behind the coffee table, shoulders angled toward 季伯达 off-camera/right; no seat swaps. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 闺蜜甲 opens both hands as if the conclusion is obvious; 闺蜜乙 listens; 闺蜜丙 observes. Camera: Gentle 2% push toward 闺蜜甲. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "闺蜜甲 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 闺蜜甲 opens both hands as if the conclusion is obvious; 闺蜜乙 listens; 闺蜜丙 observes."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "闺蜜甲 continues the line with coherent restrained lip sync; the primary expression/gesture develops without changing seat or props."
+      },
+      {
+        "start_sec": 2,
+        "end_sec": 3,
+        "beat": "闺蜜甲 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 闺蜜甲; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low-medium",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 3,
+      "trim_to_seconds": 3,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_023.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_023.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 24,
+    "timestamp": "01:08–01:11",
+    "focus": "friends",
+    "speaker": "闺蜜乙",
+    "dialogue": "如烟要是真和伊藤诚有什么，还会和你在一起吗？",
+    "action_or_card": null,
+    "file": "shot_024.jpg",
+    "performance": "闺蜜乙身体前倾并反问季伯达；闺蜜甲看向她表示支持，闺蜜丙放松端杯、视线在双方间移动。",
+    "shot_id": "024",
+    "duration_seconds": 3,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Medium three-shot of girlfriends, favoring 闺蜜乙.",
+    "visible_characters_and_blocking": "Visible: 闺蜜甲 on sofa left, 闺蜜乙 center, 闺蜜丙 right. They remain seated behind the coffee table, shoulders angled toward 季伯达 off-camera/right; no seat swaps.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "闺蜜乙 leans in and challenges 季伯达 rhetorically; the other two track her.",
+    "camera_movement": "Gentle 3% push toward 闺蜜乙.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Medium three-shot of girlfriends, favoring 闺蜜乙. Visible: 闺蜜甲 on sofa left, 闺蜜乙 center, 闺蜜丙 right. They remain seated behind the coffee table, shoulders angled toward 季伯达 off-camera/right; no seat swaps. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 闺蜜乙 leans in and challenges 季伯达 rhetorically; the other two track her. Camera: Gentle 3% push toward 闺蜜乙. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "闺蜜乙 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 闺蜜乙 leans in and challenges 季伯达 rhetorically; the other two track her."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "闺蜜乙 continues the line with coherent restrained lip sync; the primary expression/gesture develops without changing seat or props."
+      },
+      {
+        "start_sec": 2,
+        "end_sec": 3,
+        "beat": "闺蜜乙 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 闺蜜乙; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low-medium",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 3,
+      "trim_to_seconds": 3,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_024.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_024.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 25,
+    "timestamp": "01:11–01:14",
+    "focus": "friends",
+    "speaker": "闺蜜丙",
+    "dialogue": "情侣之间最重要的是信任。",
+    "action_or_card": null,
+    "file": "shot_025.jpg",
+    "performance": "闺蜜丙坐直后作总结式发言；闺蜜甲与闺蜜乙停止动作，转头认真听她说。",
+    "shot_id": "025",
+    "duration_seconds": 3,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Medium three-shot of girlfriends, favoring 闺蜜丙.",
+    "visible_characters_and_blocking": "Visible: 闺蜜甲 on sofa left, 闺蜜乙 center, 闺蜜丙 right. They remain seated behind the coffee table, shoulders angled toward 季伯达 off-camera/right; no seat swaps.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "闺蜜丙 sits straighter and delivers a summarizing maxim; the others go still to listen.",
+    "camera_movement": "Slow 2% push toward 闺蜜丙.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Medium three-shot of girlfriends, favoring 闺蜜丙. Visible: 闺蜜甲 on sofa left, 闺蜜乙 center, 闺蜜丙 right. They remain seated behind the coffee table, shoulders angled toward 季伯达 off-camera/right; no seat swaps. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 闺蜜丙 sits straighter and delivers a summarizing maxim; the others go still to listen. Camera: Slow 2% push toward 闺蜜丙. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "闺蜜丙 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 闺蜜丙 sits straighter and delivers a summarizing maxim; the others go still to listen."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "闺蜜丙 continues the line with coherent restrained lip sync; the primary expression/gesture develops without changing seat or props."
+      },
+      {
+        "start_sec": 2,
+        "end_sec": 3,
+        "beat": "闺蜜丙 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 闺蜜丙; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low-medium",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 3,
+      "trim_to_seconds": 3,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_025.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_025.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 26,
+    "timestamp": "01:14–01:20",
+    "focus": "ji",
+    "speaker": "季伯达",
+    "dialogue": "所以，伊藤诚可以紧挨着我的女朋友，可以知道她内裤的颜色，还可以替她洗——因为他们是纯友谊。",
+    "action_or_card": null,
+    "file": "shot_026.jpg",
+    "shot_id": "026",
+    "duration_seconds": 6,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Sustained medium close-up on 季伯达, right foreground, addressing the sofa group.",
+    "visible_characters_and_blocking": "Visible: 季伯达 occupies the right foreground in a white shirt, torso turned left toward 柳如烟/伊藤诚 and the opposite sofa; a seated friend may remain soft behind him. He remains seated and does not change sides.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "季伯达 enumerates each allowance with controlled hand beats and increasing precision, not shouting.",
+    "camera_movement": "Sustained 4% push-in, no cuts or axis change.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Sustained medium close-up on 季伯达, right foreground, addressing the sofa group. Visible: 季伯达 occupies the right foreground in a white shirt, torso turned left toward 柳如烟/伊藤诚 and the opposite sofa; a seated friend may remain soft behind him. He remains seated and does not change sides. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 季伯达 enumerates each allowance with controlled hand beats and increasing precision, not shouting. Camera: Sustained 4% push-in, no cuts or axis change. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "季伯达 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 季伯达 enumerates each allowance with controlled hand beats and increasing precision, not shouting."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "季伯达 continues the line with coherent restrained lip sync; the primary expression/gesture develops without changing seat or props."
+      },
+      {
+        "start_sec": 2,
+        "end_sec": 3,
+        "beat": "季伯达 sustains the next phrase at natural pace; gesture resolves incrementally while listeners respond only with blinks, breath, and micro-expressions."
+      },
+      {
+        "start_sec": 3,
+        "end_sec": 4,
+        "beat": "季伯达 sustains the next phrase at natural pace; gesture resolves incrementally while listeners respond only with blinks, breath, and micro-expressions."
+      },
+      {
+        "start_sec": 4,
+        "end_sec": 5,
+        "beat": "季伯达 sustains the next phrase at natural pace; gesture resolves incrementally while listeners respond only with blinks, breath, and micro-expressions."
+      },
+      {
+        "start_sec": 5,
+        "end_sec": 6,
+        "beat": "季伯达 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 季伯达; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low-medium",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 6,
+      "trim_to_seconds": 6,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_026.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_026.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 27,
+    "timestamp": "01:20–01:24",
+    "focus": "ji",
+    "speaker": "季伯达",
+    "dialogue": "但我的女闺蜜替我洗内裤，就是没有分寸？",
+    "action_or_card": null,
+    "file": "shot_027.jpg",
+    "shot_id": "027",
+    "duration_seconds": 4,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Matching medium close-up on 季伯达; hold the rhetorical challenge.",
+    "visible_characters_and_blocking": "Visible: 季伯达 occupies the right foreground in a white shirt, torso turned left toward 柳如烟/伊藤诚 and the opposite sofa; a seated friend may remain soft behind him. He remains seated and does not change sides.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "季伯达 lands the contrast, palm open in a restrained “then why?” gesture, holding the group’s gaze.",
+    "camera_movement": "Slow 3% push-in that stops on the final question.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Matching medium close-up on 季伯达; hold the rhetorical challenge. Visible: 季伯达 occupies the right foreground in a white shirt, torso turned left toward 柳如烟/伊藤诚 and the opposite sofa; a seated friend may remain soft behind him. He remains seated and does not change sides. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 季伯达 lands the contrast, palm open in a restrained “then why?” gesture, holding the group’s gaze. Camera: Slow 3% push-in that stops on the final question. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "季伯达 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 季伯达 lands the contrast, palm open in a restrained “then why?” gesture, holding the group’s gaze."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "季伯达 continues the line with coherent restrained lip sync; the primary expression/gesture develops without changing seat or props."
+      },
+      {
+        "start_sec": 2,
+        "end_sec": 3,
+        "beat": "季伯达 sustains the next phrase at natural pace; gesture resolves incrementally while listeners respond only with blinks, breath, and micro-expressions."
+      },
+      {
+        "start_sec": 3,
+        "end_sec": 4,
+        "beat": "季伯达 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 季伯达; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low-medium",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 4,
+      "trim_to_seconds": 4,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_027.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_027.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 28,
+    "timestamp": "01:24–01:27",
+    "focus": "liu",
+    "speaker": "柳如烟",
+    "dialogue": "季伯达！你故意的是不是？",
+    "action_or_card": null,
+    "file": "shot_028.jpg",
+    "shot_id": "028",
+    "duration_seconds": 3,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Tight medium close-up on 柳如烟; 伊藤诚 remains partly visible.",
+    "visible_characters_and_blocking": "Visible: 柳如烟 seated at frame left with 伊藤诚 immediately to her right; one or more sofa friends may remain soft in the background exactly as in the source JPG. 柳如烟 does not stand or cross the room.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "柳如烟 erupts, leans forward and glares toward 季伯达; anger replaces embarrassment.",
+    "camera_movement": "Sharper but still smooth 4% push-in.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Tight medium close-up on 柳如烟; 伊藤诚 remains partly visible. Visible: 柳如烟 seated at frame left with 伊藤诚 immediately to her right; one or more sofa friends may remain soft in the background exactly as in the source JPG. 柳如烟 does not stand or cross the room. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 柳如烟 erupts, leans forward and glares toward 季伯达; anger replaces embarrassment. Camera: Sharper but still smooth 4% push-in. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "柳如烟 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 柳如烟 erupts, leans forward and glares toward 季伯达; anger replaces embarrassment."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "柳如烟 continues the line with coherent restrained lip sync; the primary expression/gesture develops without changing seat or props."
+      },
+      {
+        "start_sec": 2,
+        "end_sec": 3,
+        "beat": "柳如烟 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 柳如烟; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low-medium",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 3,
+      "trim_to_seconds": 3,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_028.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_028.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 29,
+    "timestamp": "01:27–01:29",
+    "focus": "ji",
+    "speaker": "季伯达",
+    "dialogue": "怎么会？",
+    "action_or_card": null,
+    "file": "shot_029.jpg",
+    "shot_id": "029",
+    "duration_seconds": 2,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Tight medium close-up on 季伯达.",
+    "visible_characters_and_blocking": "Visible: 季伯达 occupies the right foreground in a white shirt, torso turned left toward 柳如烟/伊藤诚 and the opposite sofa; a seated friend may remain soft behind him. He remains seated and does not change sides.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "季伯达 answers softly with a tiny innocent head tilt, almost dryly amused.",
+    "camera_movement": "Near-locked shot; tiny 1% pull-back for dry irony.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Tight medium close-up on 季伯达. Visible: 季伯达 occupies the right foreground in a white shirt, torso turned left toward 柳如烟/伊藤诚 and the opposite sofa; a seated friend may remain soft behind him. He remains seated and does not change sides. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 季伯达 answers softly with a tiny innocent head tilt, almost dryly amused. Camera: Near-locked shot; tiny 1% pull-back for dry irony. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "季伯达 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 季伯达 answers softly with a tiny innocent head tilt, almost dryly amused."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "季伯达 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 季伯达; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 2,
+      "trim_to_seconds": 2,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_029.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_029.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 30,
+    "timestamp": "01:29–01:33",
+    "focus": "ji",
+    "speaker": "季伯达",
+    "dialogue": "我只是按照你们的规矩做了一遍。",
+    "action_or_card": null,
+    "file": "shot_030.jpg",
+    "shot_id": "030",
+    "duration_seconds": 4,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Matching medium close-up on 季伯达, calm and controlled.",
+    "visible_characters_and_blocking": "Visible: 季伯达 occupies the right foreground in a white shirt, torso turned left toward 柳如烟/伊藤诚 and the opposite sofa; a seated friend may remain soft behind him. He remains seated and does not change sides.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "季伯达 remains composed, one measured hand gesture marking “your rules,” then lets the point sit.",
+    "camera_movement": "Slow 3% push-in.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Matching medium close-up on 季伯达, calm and controlled. Visible: 季伯达 occupies the right foreground in a white shirt, torso turned left toward 柳如烟/伊藤诚 and the opposite sofa; a seated friend may remain soft behind him. He remains seated and does not change sides. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 季伯达 remains composed, one measured hand gesture marking “your rules,” then lets the point sit. Camera: Slow 3% push-in. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "季伯达 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 季伯达 remains composed, one measured hand gesture marking “your rules,” then lets the point sit."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "季伯达 continues the line with coherent restrained lip sync; the primary expression/gesture develops without changing seat or props."
+      },
+      {
+        "start_sec": 2,
+        "end_sec": 3,
+        "beat": "季伯达 sustains the next phrase at natural pace; gesture resolves incrementally while listeners respond only with blinks, breath, and micro-expressions."
+      },
+      {
+        "start_sec": 3,
+        "end_sec": 4,
+        "beat": "季伯达 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 季伯达; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low-medium",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 4,
+      "trim_to_seconds": 4,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_030.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_030.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 31,
+    "timestamp": "01:33–01:37",
+    "focus": "ji",
+    "speaker": "季伯达",
+    "dialogue": "怎么轮到你们，规矩就变了？",
+    "action_or_card": null,
+    "file": "shot_031.jpg",
+    "shot_id": "031",
+    "duration_seconds": 4,
+    "purpose": "Advance the dialogue beat while preserving the existing social geography and escalating the double-standard argument without adding story events.",
+    "framing": "Matching medium close-up on 季伯达; strongest direct challenge.",
+    "visible_characters_and_blocking": "Visible: 季伯达 occupies the right foreground in a white shirt, torso turned left toward 柳如烟/伊藤诚 and the opposite sofa; a seated friend may remain soft behind him. He remains seated and does not change sides.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "季伯达’s expression hardens slightly; he asks the final question directly and holds still afterward.",
+    "camera_movement": "Slow 4% push-in, ending in a firm hold.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Matching medium close-up on 季伯达; strongest direct challenge. Visible: 季伯达 occupies the right foreground in a white shirt, torso turned left toward 柳如烟/伊藤诚 and the opposite sofa; a seated friend may remain soft behind him. He remains seated and does not change sides. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: 季伯达’s expression hardens slightly; he asks the final question directly and holds still afterward. Camera: Slow 4% push-in, ending in a firm hold. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "季伯达 acquires the established eyeline, inhales subtly, and begins the exact Mandarin line; 季伯达’s expression hardens slightly; he asks the final question directly and holds still afterward."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "季伯达 continues the line with coherent restrained lip sync; the primary expression/gesture develops without changing seat or props."
+      },
+      {
+        "start_sec": 2,
+        "end_sec": 3,
+        "beat": "季伯达 sustains the next phrase at natural pace; gesture resolves incrementally while listeners respond only with blinks, breath, and micro-expressions."
+      },
+      {
+        "start_sec": 3,
+        "end_sec": 4,
+        "beat": "季伯达 completes the exact line and final shot-specific gesture; listeners register a restrained reaction, then hold for the cut."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Use clean Mandarin dialogue by 季伯达; preserve the exact line and natural phrasing. Keep KTV room tone low, avoid music masking consonants, and use post-recorded dialogue/lip sync rather than generated text.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low-medium",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 4,
+      "trim_to_seconds": 4,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_031.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_031.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  },
+  {
+    "shot": 32,
+    "timestamp": "01:37–01:40",
+    "focus": "group",
+    "speaker": null,
+    "dialogue": null,
+    "action_or_card": "有些人要求的不是分寸，而是特权。",
+    "file": "shot_032.jpg",
+    "shot_id": "032",
+    "duration_seconds": 3,
+    "purpose": "Close the argument on the group’s silence and deliver the final thematic card in post.",
+    "framing": "Wide ensemble bookend matching shot 001, all positions and table geography preserved.",
+    "visible_characters_and_blocking": "Visible: 柳如烟 and 伊藤诚 together on the left seating; 闺蜜甲/乙/丙 across the central sofa; 季伯达 at the right side facing them; background guests stay secondary. Everyone remains around the same low coffee table.",
+    "setting_and_lighting": "Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.",
+    "performance_expression_action": "The room falls awkwardly quiet; smiles fade, gazes shift, and no one offers an answer. End on unresolved group tension.",
+    "camera_movement": "Very slow 2% pull-back, echoing the opening while increasing emotional distance.",
+    "seedance_i2v_prompt_en": "Animate the supplied storyboard JPG as a restrained cinematic 2D anime dialogue shot. Wide ensemble bookend matching shot 001, all positions and table geography preserved. Visible: 柳如烟 and 伊藤诚 together on the left seating; 闺蜜甲/乙/丙 across the central sofa; 季伯达 at the right side facing them; background guests stay secondary. Everyone remains around the same low coffee table. Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with bottles and glasses. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location. Performance: The room falls awkwardly quiet; smiles fade, gazes shift, and no one offers an answer. End on unresolved group tension. Camera: Very slow 2% pull-back, echoing the opening while increasing emotional distance. Preserve the exact source composition, character designs, wardrobe, seating, props, and night lighting. Natural breathing, blinks, subtle hair and fabric response only; coherent facial animation and stable hands. No rendered words in the generated video.",
+    "negative_prompt_constraints": "No new characters, no identity/wardrobe changes, no seat swaps, no duplicated or missing limbs, no warped hands/faces, no lip-sync gibberish, no sudden standing, walking, touching, drinking spill, prop teleportation, background morphing, camera shake, zoom pumping, cuts, transitions, added text, captions, logos, watermarks, or UI.",
+    "motion_beats": [
+      {
+        "start_sec": 0,
+        "end_sec": 1,
+        "beat": "Match the opening tableau; the group absorbs the contradiction and smiles fade."
+      },
+      {
+        "start_sec": 1,
+        "end_sec": 2,
+        "beat": "柳如烟 and the friends exchange uneasy micro-glances while 季伯达 stays composed."
+      },
+      {
+        "start_sec": 2,
+        "end_sec": 3,
+        "beat": "Begin the very slow pull-back; gestures stop and the room’s social energy drains."
+      }
+    ],
+    "continuity_locks": [
+      "Use this shot’s JPG as the first-frame identity/composition reference.",
+      "Lock character faces, hair, wardrobe, body proportions, seating side, eyelines, table/bottle/glass positions, city-night background, and warm/cool lighting to the source JPG and adjacent shots.",
+      "Do not animate storyboard labels or subtitles: remove/crop/clean all labels and caption bands before image-to-video; composite exact Chinese dialogue or final card afterward in editing."
+    ],
+    "audio_dialogue_guidance": "Room tone only: subdued party murmur, glass ambience, no intelligible new dialogue.",
+    "generation_settings": {
+      "model": "Seedance image-to-video",
+      "motion_intensity": "low-medium",
+      "aspect_ratio": "16:9",
+      "fps": 24,
+      "resolution": "1080p",
+      "generate_duration_seconds": 3,
+      "trim_to_seconds": 3,
+      "first_frame": "matching source JPG cleaned of all text/subtitle overlays"
+    },
+    "staging_start_image": "jpg/shot_032.jpg",
+    "staging_start_image_markdown_link": "[Staging start image](jpg/shot_032.jpg)",
+    "character_reference_images": [
+      {
+        "character": "柳如烟",
+        "path": "../liuruyan.jpg"
+      },
+      {
+        "character": "伊藤诚",
+        "path": "../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg"
+      },
+      {
+        "character": "季伯达",
+        "path": "../jiboda.jpg"
+      },
+      {
+        "character": "闺蜜甲",
+        "path": "../version1/screenplay/character_portraits/guimi1_v1.jpg"
+      },
+      {
+        "character": "闺蜜乙",
+        "path": "../version1/screenplay/character_portraits/guimi2_v1.jpg"
+      },
+      {
+        "character": "闺蜜丙",
+        "path": "../version1/screenplay/character_portraits/guimi3_v1.jpg"
+      }
+    ],
+    "character_reference_sheet": "references/character-reference-sheet.jpg",
+    "setting_reference_images": [
+      {
+        "label": "KTV continuity sheet",
+        "path": "references/ktv-continuity-sheet.jpg"
+      }
+    ],
+    "reference_availability_note": "No standalone KTV empty-setting image is available in the inspected materials; use the KTV continuity sheet and this shot JPG. Do not substitute unrelated setting images."
+  }
+]
