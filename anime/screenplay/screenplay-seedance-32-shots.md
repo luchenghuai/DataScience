@@ -9,7 +9,16 @@
 - **空间锁定**：柳如烟与伊藤诚相邻坐在画面左侧；闺蜜甲/乙/丙依次位于对面沙发左/中/右；季伯达在茶几右侧、朝向众人。所有镜头保持同一茶几、沙发、窗景、酒瓶与杯具关系，不换座、不越轴。
 - **身份锁定**：镜头 002/004 固定为同一组三位闺蜜（甲/乙/丙，左右顺序不变）；镜头 003/005 严格锁定柳如烟与伊藤诚的脸、发型、服装和相邻座位，二人不得与闺蜜或彼此互换。
 - **可核对文本表**：[`references/ktv-continuity.md`](references/ktv-continuity.md)；视觉表仍以 [`references/ktv-continuity-sheet.jpg`](references/ktv-continuity-sheet.jpg) 为准。
-- **角色锁定**：以对应 JPG 和 `tmp/screenplay-shots-1-5/character-reference-sheet.jpg` 为身份参考；只使用参考图明确支持的发型、服装和肤色，不补造精确身份细节。背景客人只作次要轮廓，不新增有叙事功能的人物。
+
+## KTV 连续性表（嵌入式视觉参考）
+
+[![KTV continuity sheet](references/ktv-continuity-sheet.jpg)](references/ktv-continuity-sheet.jpg)
+
+- 镜头 001：恰好六人（四女、两男）。
+- 镜头 002/004：固定同一组三位闺蜜，左右顺序与服装不变。
+- 镜头 003/005：固定柳如烟与伊藤诚的身份、发型、服装和相邻座位。
+- 完整文字规则：[`references/ktv-continuity.md`](references/ktv-continuity.md)。
+- **角色锁定**：以对应 JPG 和 `references/character-reference-sheet.jpg` 为身份参考；只使用参考图明确支持的发型、服装和肤色，不补造精确身份细节。镜头 001–005 不得出现背景客人或额外人物。
 - **表演原则**：以眨眼、呼吸、轻微视线、嘴型和单一克制手势为主；冲突由停顿、目光和微表情升级，禁止夸张肢体喜剧。
 - **字幕原则（强制）**：故事板中的镜头标签、字幕条、姓名和对白必须在 I2V 前先裁切/修复移除；Seedance 输出不得生成文字。精确中文字幕及结尾卡应在生成后由剪辑软件合成。
 
@@ -32,6 +41,8 @@ No new characters; no identity, wardrobe, seating, prop or background changes; n
   [![Shot 001 staging preview](jpg/shot_001.jpg)](jpg/shot_001.jpg)
 - **角色参考：**[柳如烟](../liuruyan.jpg)；[伊藤诚](../version1/screenplay/character_portraits/yitengcheng_user_reference.jpg)；[季伯达](../jiboda.jpg)；[闺蜜甲](../version1/screenplay/character_portraits/guimi1_v1.jpg)；[闺蜜乙](../version1/screenplay/character_portraits/guimi2_v1.jpg)；[闺蜜丙](../version1/screenplay/character_portraits/guimi3_v1.jpg)；[角色总参考表](references/character-reference-sheet.jpg)
 - **场景/连续性参考：**[KTV continuity sheet](references/ktv-continuity-sheet.jpg)（当前素材中没有独立的 KTV 空景参考；此连续性表是可用场景依据，不以其他地点图片替代。）
+  [![Shot 001 KTV continuity reference](references/ktv-continuity-sheet.jpg)](references/ktv-continuity-sheet.jpg)
+- **镜头 001 连续性摘要：**恰好六人（柳如烟、闺蜜甲/乙/丙、季伯达、伊藤诚），四女两男；无背景客人、无重复或缺失人物；座位、服装、桌面道具与连续性表一致。
 - **画面/字幕：**聚会全景：众人喝酒并玩真心话大冒险。
 - **闺蜜甲：**如烟，你输了！
 - **目的/景别：**Establish the party geography and relaxed baseline before the conflict. Wide ensemble establishing shot, eye level, preserving the full seating geography and coffee table.
