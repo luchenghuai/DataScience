@@ -1,2059 +1,1232 @@
-# 《分寸》Wan 2.6 R2V 制作包（32 镜）
+# 《分寸》Wan 2.6 R2V 制作包（原 32 镜 → 21 个生成单元）
 
-本包采用“Wan 只生成无声画面；精确普通话对白由外部 TTS 生成并在后期混音/口型同步”的稳定工作流，避免模型朗读英文提示、擅自改词或添加对白。
+本包把相邻短镜合并为 4–6 秒为主的 Wan 2.6 生成单元，同时在需要改变说话者特写、机位或构图时保留明确硬切。每个提示词均映射原始镜号并给出相对时间节拍。
 
 ## 全局制作规则
 
-- 所有 Wan 请求设置 `enable_audio: false`；提示词明确禁止语音、旁白、翻译、音乐和环境声。
-- 每镜只保留最多 4 个媒体输入：首帧 + 构图参考 + KTV 连续性表 + 说话者身份参考。镜头 001 使用基准首帧 + KTV 连续性表 + 说话者 + 主要反应者。
-- `references/setting/ktv-continuity-sheet.jpg` 锁定六人座位、家具、镜头轴线、灯光与空桌状态；桌面不得出现酒、瓶、杯或饮料。
-- 镜头 002–032 的首帧必须使用上一镜实际成片的最后一帧；不要用预计帧代替。
-- 精确对白以 `dialogue-tts-manifest.json` 为后期配音权威清单。近景建议进行口型同步；远景可直接混音。
-- 对白完成后再添加克制的 KTV 环境声；画面内不生成字幕、标签或水印。
+- 对白单元：`enable_audio: true`，Wan 原生生成并同步画面内精确普通话；不得改词、复述、加词、串角色或添加画外音。
+- 非对白单元：`enable_audio: false`，完全静音，不得杜撰台词或口型。
+- 外部 TTS 仅在原生对白未通过逐字/角色/同步质检时作为替换式后备，不得与通过质检的原生音轨叠加。
+- 每个请求最多 4 个媒体输入，模型固定 `wan2.6-r2v`，分辨率固定 `720P`，时长不超过 6 秒。
+- 全程不得出现酒、瓶、饮料、杯子、饮用玻璃杯或任何饮品道具。
+- 开场必须恰好六人，座位与 KTV 连续性严格沿用参考图；单元 001 唯一对白为闺蜜甲：“如烟，你输了！”，绝不是“粉红色。”。
+- 每个单元末尾保留约 0.4 秒稳定画面，用作下一单元首帧。
 
-## Shot 001
+## Generation Unit 001
 
-- Speaker/dialogue: **闺蜜甲**：如烟，你输了！
-- Wan duration: `3s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [baseline staging frame containing the complete six-person composition and KTV set](references/staging/shot_001.jpg)
-  - `reference_image`: [KTV setting, six-person seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 闺蜜甲](references/characters/guimi-1.jpg)
-  - `reference_image`: [identity and wardrobe for principal reacting character 柳如烟](references/characters/liuruyan.jpg)
+- 原始镜号：001
+- 时间：`00:00–00:03`
+- 时长：`3s`
+- 对白：闺蜜甲：如烟，你输了！
+- 音频：`enable_audio: true`
+- 内部硬切前原始镜号：无
+- 媒体输入（4/4）：
+  - `first_frame`: `references/staging/shot_001.jpg` — baseline opening frame with the exact complete six-person KTV composition
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV set, exact six-person seating, furniture, camera axis, lighting, and empty-table continuity
+  - `reference_image`: `references/characters/guimi-1.jpg` — identity and wardrobe for opening speaker 闺蜜甲
+  - `reference_image`: `references/characters/liuruyan.jpg` — identity and wardrobe for principal reactor 柳如烟
 - Prompt:
 
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 001 (00:00–00:03)
+```text
+WAN 2.6 REFERENCE-TO-VIDEO — GENERATION UNIT 001 (00:00–00:03)
+
+ORIGINAL SHOT MAP:
+This generation unit maps original canonical shot IDs: 001. Preserve every mapped story beat in this order. Only the boundaries explicitly marked HARD CUT may cut; all boundaries marked CONTINUE remain one continuous camera take.
 
 REFERENCE MAP:
-The supplied first frame is baseline staging frame containing the complete six-person composition and KTV set. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the KTV setting, six-person seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 2 is the identity and wardrobe for speaking character 闺蜜甲. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for principal reacting character 柳如烟. Use it only for that role and preserve supported visual details.
+The supplied first frame is the baseline opening frame. Preserve all six named people, their exact seats, the KTV set, wardrobe, props, lighting, camera axis and screen direction before motion begins.
+Image 1 is the KTV set, exact six-person seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 2 is the identity and wardrobe for opening speaker 闺蜜甲. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 3 is the identity and wardrobe for principal reactor 柳如烟. Use it only for that role; the timed beat instructions control motion and cuts.
 
 AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
 
 OUTPUT:
-Create one continuous 3-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
+Create one 3-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
 
-COMPOSITION AND BLOCKING:
-Framing: Wide ensemble establishing shot, eye level, preserving the full seating geography and coffee table.
-Visible actors: exactly six named people only—柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. No background guests, extras, duplicates, or missing people.
-ON-SCREEN CAST (EXACT, NAMED): exactly six people—柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达.
-POSITION MAP (viewer screen-left to screen-right): screen-left seating—柳如烟 at far left and 伊藤诚 immediately to her right; central sofa—闺蜜甲 at left seat, 闺蜜乙 at center seat, 闺蜜丙 at right seat; screen-right seating—季伯达 at far right facing the group.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-screen-left seating—柳如烟 at far left and 伊藤诚 immediately to her right; central sofa—闺蜜甲 at left seat, 闺蜜乙 at center seat, 闺蜜丙 at right seat; screen-right seating—季伯达 at far right facing the group.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
+GLOBAL CONTINUITY:
+Modern high-rise KTV/lounge at night with warm amber practical light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table, cards, and small snack plates. The table and room contain no alcohol, bottles, drinks, beverages, cups, drinking glasses, or beverage props at any time. Keep every named actor in the established seat and on the established camera-axis side unless a timed beat explicitly changes framing. Never swap, merge, duplicate, omit, or replace identities. For any wide ensemble view, show exactly these six people and no others: 柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. Opening unit 001 must begin with all six already seated: screen-left 柳如烟 then 伊藤诚; central sofa 闺蜜甲, 闺蜜乙, 闺蜜丙; far screen-right 季伯达 facing the group.
 
-ACTING:
-During the wide party tableau, 闺蜜甲 turns toward 柳如烟, leans forward slightly, raises one hand to claim attention, and says “如烟，你输了！” with playful excitement; 柳如烟 shifts her gaze toward her while the others quiet down and watch.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
+TIMED BEATS:
+0.0s–3.0s — ORIGINAL SHOT 001 — OPEN ON THE SUPPLIED FIRST FRAME.
+Framing/staging: Wide ensemble establishing shot, eye level, preserving the full seating geography and coffee table. exactly six named people only—柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. No background guests, extras, duplicates, or missing people. Position continuity: screen-left seating—柳如烟 at far left and 伊藤诚 immediately to her right; central sofa—闺蜜甲 at left seat, 闺蜜乙 at center seat, 闺蜜丙 at right seat; screen-right seating—季伯达 at far right facing the group.
+Action/story beat: During the wide party tableau, 闺蜜甲 turns toward 柳如烟, leans forward slightly, raises one hand to claim attention, and delivers the assigned opening Mandarin line with playful excitement; 柳如烟 shifts her gaze toward her while the others quiet down and watch.
+Camera: Very slow 3% push-in with subtle parallax across the coffee table. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 0.3s–2.7s: only 闺蜜甲 says “如烟，你输了！” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-TIMELINE:
-0.0–0.4s: hold the established composition; 闺蜜甲 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.4–2.7s: 闺蜜甲 speaks the exact Mandarin line “如烟，你输了！” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: During the wide party tableau, 闺蜜甲 turns toward 柳如烟, leans forward slightly, raises one hand to claim attention, and says “如烟，你输了！” with playful excitement; 柳如烟 shifts her gaze toward her while the others quiet down and watch. 2.7–3.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
-
-CAMERA:
-Very slow 3% push-in with subtle parallax across the coffee table. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 闺蜜甲 speaks: “如烟，你输了！”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
+PERFORMANCE GUARDRAILS:
+Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
 ```
 
 - Negative prompt:
 
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
+```text
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
 ```
 
 - Request JSON: [`shot-requests/shot_001.json`](shot-requests/shot_001.json)
 
-## Shot 002
+## Generation Unit 002
 
-- Speaker/dialogue: **闺蜜甲**：选真心话还是大冒险？
-- Wan duration: `2s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 001](frames/shot_001_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_002.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 闺蜜甲](references/characters/guimi-1.jpg)
+- 原始镜号：002, 003, 004
+- 时间：`00:03–00:09`
+- 时长：`6s`
+- 对白：闺蜜甲：选真心话还是大冒险？；柳如烟：真心话。；闺蜜乙：那就说说，你今天穿的内裤是什么颜色？
+- 音频：`enable_audio: true`
+- 内部硬切前原始镜号：003, 004
+- 媒体输入（4/4）：
+  - `first_frame`: `frames/shot_001_last_frame.jpg` — literal accepted final rendered frame of generation unit 001
+  - `reference_image`: `references/staging/shot_002.jpg` — composition/blocking anchor for original shot 002
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV seating, furniture, camera axis, lighting, and empty-table continuity
+  - `reference_image`: `references/staging/shot_004.jpg` — composition/blocking anchor for original shot 004 and the later beat(s)
 - Prompt:
 
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 002 (00:03–00:05)
+```text
+WAN 2.6 REFERENCE-TO-VIDEO — GENERATION UNIT 002 (00:03–00:09)
+
+ORIGINAL SHOT MAP:
+This generation unit maps original canonical shot IDs: 002, 003, 004. Preserve every mapped story beat in this order. Only the boundaries explicitly marked HARD CUT may cut; all boundaries marked CONTINUE remain one continuous camera take.
 
 REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 001. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 闺蜜甲. Use it only for that role and preserve supported visual details.
+The supplied first frame is the literal accepted final rendered frame of generation unit 001. Preserve identities, poses, expressions, wardrobe, seats, props, lighting, camera axis and screen direction before the first timed beat.
+Image 1 is the composition/blocking anchor for original shot 002. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 3 is the composition/blocking anchor for original shot 004 and the later beat(s). Use it only for that role; the timed beat instructions control motion and cuts.
 
 AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
 
 OUTPUT:
-Create one continuous 2-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
+Create one 6-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
 
-COMPOSITION AND BLOCKING:
-Framing: Medium three-shot of the three girlfriends across the sofa; 闺蜜甲 is the visual lead.
-Visible actors: exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap.
-ON-SCREEN CAST (EXACT, NAMED): exactly three people—闺蜜甲, 闺蜜乙, 闺蜜丙.
-POSITION MAP (viewer screen-left to screen-right): 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
+GLOBAL CONTINUITY:
+Modern high-rise KTV/lounge at night with warm amber practical light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table, cards, and small snack plates. The table and room contain no alcohol, bottles, drinks, beverages, cups, drinking glasses, or beverage props at any time. Keep every named actor in the established seat and on the established camera-axis side unless a timed beat explicitly changes framing. Never swap, merge, duplicate, omit, or replace identities. For any wide ensemble view, show exactly these six people and no others: 柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. Opening unit 001 must begin with all six already seated: screen-left 柳如烟 then 伊藤诚; central sofa 闺蜜甲, 闺蜜乙, 闺蜜丙; far screen-right 季伯达 facing the group.
 
-ACTING:
-闺蜜甲 remains leaning forward after announcing the loss, keeps her attention on 柳如烟, and asks “选真心话还是大冒险？” with playful excitement; 闺蜜乙 turns to listen and 闺蜜丙 relaxes with empty hands.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
+TIMED BEATS:
+0.0s–2.0s — ORIGINAL SHOT 002 — OPEN ON THE SUPPLIED FIRST FRAME.
+Framing/staging: Medium three-shot of the three girlfriends across the sofa; 闺蜜甲 is the visual lead. exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap. Position continuity: 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
+Action/story beat: 闺蜜甲 remains leaning forward after announcing the loss, keeps her attention on 柳如烟, and asks the assigned truth-or-dare question with playful excitement; 闺蜜乙 turns to listen and 闺蜜丙 relaxes with empty hands.
+Camera: Gentle 2% push-in toward 闺蜜甲; no pan. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 0.2s–1.8s: only 闺蜜甲 says “选真心话还是大冒险？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-TIMELINE:
-0.0–0.2s: hold the established composition; 闺蜜甲 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.2–1.8s: 闺蜜甲 speaks the exact Mandarin line “选真心话还是大冒险？” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 闺蜜甲 remains leaning forward after announcing the loss, keeps her attention on 柳如烟, and asks “选真心话还是大冒险？” with playful excitement; 闺蜜乙 turns to listen and 闺蜜丙 relaxes with empty hands. 1.8–2.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
+2.0s–3.0s — ORIGINAL SHOT 003 — HARD CUT AT THIS EXACT BOUNDARY.
+Framing/staging: Tight medium close-up on 柳如烟 at frame left; 伊藤诚 remains partially visible beside/behind her. exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
+Action/story beat: 柳如烟 answers promptly and evenly, a tiny nod and confident eye contact.
+Camera: Near-locked shot with a tiny 1% push-in. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 2.1s–2.9s: only 柳如烟 says “真心话。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-CAMERA:
-Gentle 2% push-in toward 闺蜜甲; no pan. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+3.0s–6.0s — ORIGINAL SHOT 004 — HARD CUT AT THIS EXACT BOUNDARY.
+Framing/staging: Medium three-shot of the girlfriends; center emphasis on 闺蜜乙. exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap. Position continuity: 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
+Action/story beat: 闺蜜乙 taps/indicates the table lightly and teases; 闺蜜甲 turns toward her; 闺蜜丙 watches 柳如烟.
+Camera: Slow 3% push toward 闺蜜乙; keep all three faces stable. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 3.3s–5.7s: only 闺蜜乙 says “那就说说，你今天穿的内裤是什么颜色？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 闺蜜甲 speaks: “选真心话还是大冒险？”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
+PERFORMANCE GUARDRAILS:
+Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
 ```
 
 - Negative prompt:
 
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
+```text
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
 ```
 
 - Request JSON: [`shot-requests/shot_002.json`](shot-requests/shot_002.json)
 
-## Shot 003
+## Generation Unit 003
 
-- Speaker/dialogue: **柳如烟**：真心话。
-- Wan duration: `2s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 002](frames/shot_002_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_003.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 柳如烟](references/characters/liuruyan.jpg)
+- 原始镜号：005, 006
+- 时间：`00:09–00:14`
+- 时长：`5s`
+- 对白：伊藤诚：粉红色。；伊藤诚：如烟一直拿我当姐妹。她的内裤，我以前都帮她洗过。
+- 音频：`enable_audio: true`
+- 内部硬切前原始镜号：无
+- 媒体输入（4/4）：
+  - `first_frame`: `frames/shot_002_last_frame.jpg` — literal accepted final rendered frame of generation unit 002
+  - `reference_image`: `references/staging/shot_005.jpg` — composition/blocking anchor for original shot 005
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV seating, furniture, camera axis, lighting, and empty-table continuity
+  - `reference_image`: `references/characters/yitengcheng.jpg` — identity and wardrobe for speaking character 伊藤诚
 - Prompt:
 
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 003 (00:05–00:06)
+```text
+WAN 2.6 REFERENCE-TO-VIDEO — GENERATION UNIT 003 (00:09–00:14)
+
+ORIGINAL SHOT MAP:
+This generation unit maps original canonical shot IDs: 005, 006. Preserve every mapped story beat in this order. Only the boundaries explicitly marked HARD CUT may cut; all boundaries marked CONTINUE remain one continuous camera take.
 
 REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 002. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 柳如烟. Use it only for that role and preserve supported visual details.
+The supplied first frame is the literal accepted final rendered frame of generation unit 002. Preserve identities, poses, expressions, wardrobe, seats, props, lighting, camera axis and screen direction before the first timed beat.
+Image 1 is the composition/blocking anchor for original shot 005. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 3 is the identity and wardrobe for speaking character 伊藤诚. Use it only for that role; the timed beat instructions control motion and cuts.
 
 AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
 
 OUTPUT:
-Create one continuous 2-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
+Create one 5-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
 
-COMPOSITION AND BLOCKING:
-Framing: Tight medium close-up on 柳如烟 at frame left; 伊藤诚 remains partially visible beside/behind her.
-Visible actors: exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person.
-ON-SCREEN CAST (EXACT, NAMED): exactly two people—柳如烟 and 伊藤诚.
-POSITION MAP (viewer screen-left to screen-right): 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
+GLOBAL CONTINUITY:
+Modern high-rise KTV/lounge at night with warm amber practical light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table, cards, and small snack plates. The table and room contain no alcohol, bottles, drinks, beverages, cups, drinking glasses, or beverage props at any time. Keep every named actor in the established seat and on the established camera-axis side unless a timed beat explicitly changes framing. Never swap, merge, duplicate, omit, or replace identities. For any wide ensemble view, show exactly these six people and no others: 柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. Opening unit 001 must begin with all six already seated: screen-left 柳如烟 then 伊藤诚; central sofa 闺蜜甲, 闺蜜乙, 闺蜜丙; far screen-right 季伯达 facing the group.
 
-ACTING:
-柳如烟 answers promptly and evenly, a tiny nod and confident eye contact.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
+TIMED BEATS:
+0.0s–1.0s — ORIGINAL SHOT 005 — OPEN ON THE SUPPLIED FIRST FRAME.
+Framing/staging: Tight two-shot favoring 伊藤诚 beside 柳如烟; keep 柳如烟 visible for reaction. exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
+Action/story beat: 伊藤诚 answers too quickly with casual certainty; 柳如烟 registers immediate discomfort.
+Camera: Near-locked 1% push-in for comic timing. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 0.1s–0.9s: only 伊藤诚 says “粉红色。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-TIMELINE:
-0.0–0.1s: hold the established composition; 柳如烟 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.1–0.9s: 柳如烟 speaks the exact Mandarin line “真心话。” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 柳如烟 answers promptly and evenly, a tiny nod and confident eye contact. 0.9–1.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
+1.0s–5.0s — ORIGINAL SHOT 006 — CONTINUE IN THE SAME SHOT; NO CUT.
+Framing/staging: Tight two-shot favoring 伊藤诚 beside 柳如烟, with 闺蜜甲 softly present in deep background. exactly three named people only—柳如烟, 伊藤诚, and 闺蜜甲. No other friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right; 闺蜜甲 remains in her established central-sofa seat in deep background.
+Action/story beat: 伊藤诚 continues matter-of-factly with a small explanatory hand gesture; 柳如烟 stiffens while 闺蜜甲 watches from deep background.
+Camera: Slow 2% push-in, no reframing. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 1.4s–4.6s: only 伊藤诚 says “如烟一直拿我当姐妹。她的内裤，我以前都帮她洗过。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-CAMERA:
-Near-locked shot with a tiny 1% push-in. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 柳如烟 speaks: “真心话。”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
+PERFORMANCE GUARDRAILS:
+Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
 ```
 
 - Negative prompt:
 
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
+```text
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
 ```
 
 - Request JSON: [`shot-requests/shot_003.json`](shot-requests/shot_003.json)
 
-## Shot 004
+## Generation Unit 004
 
-- Speaker/dialogue: **闺蜜乙**：那就说说，你今天穿的内裤是什么颜色？
-- Wan duration: `3s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 003](frames/shot_003_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_004.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 闺蜜乙](references/characters/guimi-2.jpg)
+- 原始镜号：007, 008
+- 时间：`00:14–00:18`
+- 时长：`4s`
+- 对白：柳如烟：你胡说什么呢？；闺蜜甲：姐夫，你可别多想。他们从小一起长大。
+- 音频：`enable_audio: true`
+- 内部硬切前原始镜号：008
+- 媒体输入（4/4）：
+  - `first_frame`: `frames/shot_003_last_frame.jpg` — literal accepted final rendered frame of generation unit 003
+  - `reference_image`: `references/staging/shot_007.jpg` — composition/blocking anchor for original shot 007
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV seating, furniture, camera axis, lighting, and empty-table continuity
+  - `reference_image`: `references/staging/shot_008.jpg` — composition/blocking anchor for original shot 008 and the later beat(s)
 - Prompt:
 
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 004 (00:06–00:09)
+```text
+WAN 2.6 REFERENCE-TO-VIDEO — GENERATION UNIT 004 (00:14–00:18)
+
+ORIGINAL SHOT MAP:
+This generation unit maps original canonical shot IDs: 007, 008. Preserve every mapped story beat in this order. Only the boundaries explicitly marked HARD CUT may cut; all boundaries marked CONTINUE remain one continuous camera take.
 
 REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 003. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 闺蜜乙. Use it only for that role and preserve supported visual details.
+The supplied first frame is the literal accepted final rendered frame of generation unit 003. Preserve identities, poses, expressions, wardrobe, seats, props, lighting, camera axis and screen direction before the first timed beat.
+Image 1 is the composition/blocking anchor for original shot 007. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 3 is the composition/blocking anchor for original shot 008 and the later beat(s). Use it only for that role; the timed beat instructions control motion and cuts.
 
 AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
 
 OUTPUT:
-Create one continuous 3-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
+Create one 4-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
 
-COMPOSITION AND BLOCKING:
-Framing: Medium three-shot of the girlfriends; center emphasis on 闺蜜乙.
-Visible actors: exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap.
-ON-SCREEN CAST (EXACT, NAMED): exactly three people—闺蜜甲, 闺蜜乙, 闺蜜丙.
-POSITION MAP (viewer screen-left to screen-right): 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
+GLOBAL CONTINUITY:
+Modern high-rise KTV/lounge at night with warm amber practical light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table, cards, and small snack plates. The table and room contain no alcohol, bottles, drinks, beverages, cups, drinking glasses, or beverage props at any time. Keep every named actor in the established seat and on the established camera-axis side unless a timed beat explicitly changes framing. Never swap, merge, duplicate, omit, or replace identities. For any wide ensemble view, show exactly these six people and no others: 柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. Opening unit 001 must begin with all six already seated: screen-left 柳如烟 then 伊藤诚; central sofa 闺蜜甲, 闺蜜乙, 闺蜜丙; far screen-right 季伯达 facing the group.
 
-ACTING:
-闺蜜乙 taps/indicates the table lightly and teases; 闺蜜甲 turns toward her; 闺蜜丙 watches 柳如烟.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
+TIMED BEATS:
+0.0s–2.0s — ORIGINAL SHOT 007 — OPEN ON THE SUPPLIED FIRST FRAME.
+Framing/staging: Tight medium close-up on 柳如烟, with 伊藤诚 partly visible beside her. exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
+Action/story beat: 柳如烟 snaps her gaze toward 伊藤诚, brows tightening; brief embarrassed protest.
+Camera: Brief 2% push-in synchronized to the protest. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 0.2s–1.8s: only 柳如烟 says “你胡说什么呢？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-TIMELINE:
-0.0–0.4s: hold the established composition; 闺蜜乙 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.4–2.7s: 闺蜜乙 speaks the exact Mandarin line “那就说说，你今天穿的内裤是什么颜色？” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 闺蜜乙 taps/indicates the table lightly and teases; 闺蜜甲 turns toward her; 闺蜜丙 watches 柳如烟. 2.7–3.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
+2.0s–4.0s — ORIGINAL SHOT 008 — HARD CUT AT THIS EXACT BOUNDARY.
+Framing/staging: Medium three-shot of the girlfriends; 闺蜜甲 leads from sofa left. exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap. Position continuity: 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
+Action/story beat: 闺蜜甲 raises a calming palm toward 季伯达 and explains earnestly; the other two listen.
+Camera: Gentle 2% push toward 闺蜜甲. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 2.2s–3.8s: only 闺蜜甲 says “姐夫，你可别多想。他们从小一起长大。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-CAMERA:
-Slow 3% push toward 闺蜜乙; keep all three faces stable. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 闺蜜乙 speaks: “那就说说，你今天穿的内裤是什么颜色？”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
+PERFORMANCE GUARDRAILS:
+Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
 ```
 
 - Negative prompt:
 
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
+```text
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
 ```
 
 - Request JSON: [`shot-requests/shot_004.json`](shot-requests/shot_004.json)
 
-## Shot 005
+## Generation Unit 005
 
-- Speaker/dialogue: **伊藤诚**：粉红色。
-- Wan duration: `2s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 004](frames/shot_004_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_005.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 伊藤诚](references/characters/yitengcheng.jpg)
+- 原始镜号：009, 010
+- 时间：`00:18–00:22`
+- 时长：`4s`
+- 对白：闺蜜乙：就是，伊藤诚在我们眼里根本不算男人。；闺蜜丙：他们是纯友谊，关系好才这样。
+- 音频：`enable_audio: true`
+- 内部硬切前原始镜号：无
+- 媒体输入（4/4）：
+  - `first_frame`: `frames/shot_004_last_frame.jpg` — literal accepted final rendered frame of generation unit 004
+  - `reference_image`: `references/staging/shot_009.jpg` — composition/blocking anchor for original shot 009
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV seating, furniture, camera axis, lighting, and empty-table continuity
+  - `reference_image`: `references/staging/shot_010.jpg` — composition/blocking anchor for original shot 010 and the later beat(s)
 - Prompt:
 
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 005 (00:09–00:10)
+```text
+WAN 2.6 REFERENCE-TO-VIDEO — GENERATION UNIT 005 (00:18–00:22)
+
+ORIGINAL SHOT MAP:
+This generation unit maps original canonical shot IDs: 009, 010. Preserve every mapped story beat in this order. Only the boundaries explicitly marked HARD CUT may cut; all boundaries marked CONTINUE remain one continuous camera take.
 
 REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 004. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 伊藤诚. Use it only for that role and preserve supported visual details.
+The supplied first frame is the literal accepted final rendered frame of generation unit 004. Preserve identities, poses, expressions, wardrobe, seats, props, lighting, camera axis and screen direction before the first timed beat.
+Image 1 is the composition/blocking anchor for original shot 009. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 3 is the composition/blocking anchor for original shot 010 and the later beat(s). Use it only for that role; the timed beat instructions control motion and cuts.
 
 AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
 
 OUTPUT:
-Create one continuous 2-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
+Create one 4-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
 
-COMPOSITION AND BLOCKING:
-Framing: Tight two-shot favoring 伊藤诚 beside 柳如烟; keep 柳如烟 visible for reaction.
-Visible actors: exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person.
-ON-SCREEN CAST (EXACT, NAMED): exactly two people—柳如烟 and 伊藤诚.
-POSITION MAP (viewer screen-left to screen-right): 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
+GLOBAL CONTINUITY:
+Modern high-rise KTV/lounge at night with warm amber practical light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table, cards, and small snack plates. The table and room contain no alcohol, bottles, drinks, beverages, cups, drinking glasses, or beverage props at any time. Keep every named actor in the established seat and on the established camera-axis side unless a timed beat explicitly changes framing. Never swap, merge, duplicate, omit, or replace identities. For any wide ensemble view, show exactly these six people and no others: 柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. Opening unit 001 must begin with all six already seated: screen-left 柳如烟 then 伊藤诚; central sofa 闺蜜甲, 闺蜜乙, 闺蜜丙; far screen-right 季伯达 facing the group.
 
-ACTING:
-伊藤诚 answers too quickly with casual certainty; 柳如烟 registers immediate discomfort.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
+TIMED BEATS:
+0.0s–2.0s — ORIGINAL SHOT 009 — OPEN ON THE SUPPLIED FIRST FRAME.
+Framing/staging: Medium three-shot of the girlfriends; 闺蜜乙 leads from sofa center. exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap. Position continuity: 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
+Action/story beat: 闺蜜乙 turns toward 季伯达 and adds reassurance; 闺蜜甲 settles back; 闺蜜丙 gives a restrained nod.
+Camera: Tiny lateral ease from left to center, ending on 闺蜜乙. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 0.2s–1.8s: only 闺蜜乙 says “就是，伊藤诚在我们眼里根本不算男人。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-TIMELINE:
-0.0–0.1s: hold the established composition; 伊藤诚 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.1–0.9s: 伊藤诚 speaks the exact Mandarin line “粉红色。” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 伊藤诚 answers too quickly with casual certainty; 柳如烟 registers immediate discomfort. 0.9–1.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
+2.0s–4.0s — ORIGINAL SHOT 010 — CONTINUE IN THE SAME SHOT; NO CUT.
+Framing/staging: Medium three-shot of the girlfriends; 闺蜜丙 leads from sofa right. exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap. Position continuity: 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
+Action/story beat: 闺蜜丙 lowers her hand and concludes calmly; the other two turn to her.
+Camera: Tiny ease right to favor 闺蜜丙. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 2.2s–3.8s: only 闺蜜丙 says “他们是纯友谊，关系好才这样。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-CAMERA:
-Near-locked 1% push-in for comic timing. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 伊藤诚 speaks: “粉红色。”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
+PERFORMANCE GUARDRAILS:
+Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
 ```
 
 - Negative prompt:
 
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
+```text
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
 ```
 
 - Request JSON: [`shot-requests/shot_005.json`](shot-requests/shot_005.json)
 
-## Shot 006
+## Generation Unit 006
 
-- Speaker/dialogue: **伊藤诚**：如烟一直拿我当姐妹。她的内裤，我以前都帮她洗过。
-- Wan duration: `4s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 005](frames/shot_005_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_006.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 伊藤诚](references/characters/yitengcheng.jpg)
+- 原始镜号：011
+- 时间：`00:22–00:26`
+- 时长：`4s`
+- 对白：季伯达：小伊，不是我说你。一个大男人，洗什么内裤？
+- 音频：`enable_audio: true`
+- 内部硬切前原始镜号：无
+- 媒体输入（4/4）：
+  - `first_frame`: `frames/shot_005_last_frame.jpg` — literal accepted final rendered frame of generation unit 005
+  - `reference_image`: `references/staging/shot_011.jpg` — composition/blocking anchor for original shot 011
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV seating, furniture, camera axis, lighting, and empty-table continuity
+  - `reference_image`: `references/characters/jiboda.jpg` — identity and wardrobe for speaking character 季伯达
 - Prompt:
 
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 006 (00:10–00:14)
+```text
+WAN 2.6 REFERENCE-TO-VIDEO — GENERATION UNIT 006 (00:22–00:26)
+
+ORIGINAL SHOT MAP:
+This generation unit maps original canonical shot IDs: 011. Preserve every mapped story beat in this order. Only the boundaries explicitly marked HARD CUT may cut; all boundaries marked CONTINUE remain one continuous camera take.
 
 REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 005. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 伊藤诚. Use it only for that role and preserve supported visual details.
+The supplied first frame is the literal accepted final rendered frame of generation unit 005. Preserve identities, poses, expressions, wardrobe, seats, props, lighting, camera axis and screen direction before the first timed beat.
+Image 1 is the composition/blocking anchor for original shot 011. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role; the timed beat instructions control motion and cuts.
 
 AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
 
 OUTPUT:
-Create one continuous 4-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
+Create one 4-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
 
-COMPOSITION AND BLOCKING:
-Framing: Tight two-shot favoring 伊藤诚 beside 柳如烟, with a friend softly present in the background.
-Visible actors: exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person.
-ON-SCREEN CAST (EXACT, NAMED): exactly two people—柳如烟 and 伊藤诚.
-POSITION MAP (viewer screen-left to screen-right): 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
+GLOBAL CONTINUITY:
+Modern high-rise KTV/lounge at night with warm amber practical light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table, cards, and small snack plates. The table and room contain no alcohol, bottles, drinks, beverages, cups, drinking glasses, or beverage props at any time. Keep every named actor in the established seat and on the established camera-axis side unless a timed beat explicitly changes framing. Never swap, merge, duplicate, omit, or replace identities. For any wide ensemble view, show exactly these six people and no others: 柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. Opening unit 001 must begin with all six already seated: screen-left 柳如烟 then 伊藤诚; central sofa 闺蜜甲, 闺蜜乙, 闺蜜丙; far screen-right 季伯达 facing the group.
 
-ACTING:
-伊藤诚 continues matter-of-factly, small explanatory hand gesture; 柳如烟 stiffens while the background friend watches.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
+TIMED BEATS:
+0.0s–4.0s — ORIGINAL SHOT 011 — OPEN ON THE SUPPLIED FIRST FRAME.
+Framing/staging: Over-shoulder/medium close-up favoring 季伯达 at the right foreground, facing left toward 伊藤诚. exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
+Action/story beat: 季伯达 begins controlled and faintly incredulous, looking toward 伊藤诚; one restrained open-palm gesture.
+Camera: Slow 3% push-in; stable eyeline. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 0.4s–3.6s: only 季伯达 says “小伊，不是我说你。一个大男人，洗什么内裤？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-TIMELINE:
-0.0–0.5s: hold the established composition; 伊藤诚 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.5–3.6s: 伊藤诚 speaks the exact Mandarin line “如烟一直拿我当姐妹。她的内裤，我以前都帮她洗过。” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 伊藤诚 continues matter-of-factly, small explanatory hand gesture; 柳如烟 stiffens while the background friend watches. 3.6–4.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
-
-CAMERA:
-Slow 2% push-in, no reframing. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 伊藤诚 speaks: “如烟一直拿我当姐妹。她的内裤，我以前都帮她洗过。”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
+PERFORMANCE GUARDRAILS:
+Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
 ```
 
 - Negative prompt:
 
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
+```text
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
 ```
 
 - Request JSON: [`shot-requests/shot_006.json`](shot-requests/shot_006.json)
 
-## Shot 007
+## Generation Unit 007
 
-- Speaker/dialogue: **柳如烟**：你胡说什么呢？
-- Wan duration: `2s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 006](frames/shot_006_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_007.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 柳如烟](references/characters/liuruyan.jpg)
+- 原始镜号：012
+- 时间：`00:26–00:31`
+- 时长：`5s`
+- 对白：季伯达：我的内裤，都是我女闺蜜帮我洗的。你下次也让如烟替你洗。
+- 音频：`enable_audio: true`
+- 内部硬切前原始镜号：无
+- 媒体输入（4/4）：
+  - `first_frame`: `frames/shot_006_last_frame.jpg` — literal accepted final rendered frame of generation unit 006
+  - `reference_image`: `references/staging/shot_012.jpg` — composition/blocking anchor for original shot 012
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV seating, furniture, camera axis, lighting, and empty-table continuity
+  - `reference_image`: `references/characters/jiboda.jpg` — identity and wardrobe for speaking character 季伯达
 - Prompt:
 
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 007 (00:14–00:16)
+```text
+WAN 2.6 REFERENCE-TO-VIDEO — GENERATION UNIT 007 (00:26–00:31)
+
+ORIGINAL SHOT MAP:
+This generation unit maps original canonical shot IDs: 012. Preserve every mapped story beat in this order. Only the boundaries explicitly marked HARD CUT may cut; all boundaries marked CONTINUE remain one continuous camera take.
 
 REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 006. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 柳如烟. Use it only for that role and preserve supported visual details.
+The supplied first frame is the literal accepted final rendered frame of generation unit 006. Preserve identities, poses, expressions, wardrobe, seats, props, lighting, camera axis and screen direction before the first timed beat.
+Image 1 is the composition/blocking anchor for original shot 012. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role; the timed beat instructions control motion and cuts.
 
 AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
 
 OUTPUT:
-Create one continuous 2-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
+Create one 5-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
 
-COMPOSITION AND BLOCKING:
-Framing: Tight medium close-up on 柳如烟, with 伊藤诚 partly visible beside her.
-Visible actors: exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person.
-ON-SCREEN CAST (EXACT, NAMED): exactly two people—柳如烟 and 伊藤诚.
-POSITION MAP (viewer screen-left to screen-right): 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
+GLOBAL CONTINUITY:
+Modern high-rise KTV/lounge at night with warm amber practical light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table, cards, and small snack plates. The table and room contain no alcohol, bottles, drinks, beverages, cups, drinking glasses, or beverage props at any time. Keep every named actor in the established seat and on the established camera-axis side unless a timed beat explicitly changes framing. Never swap, merge, duplicate, omit, or replace identities. For any wide ensemble view, show exactly these six people and no others: 柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. Opening unit 001 must begin with all six already seated: screen-left 柳如烟 then 伊藤诚; central sofa 闺蜜甲, 闺蜜乙, 闺蜜丙; far screen-right 季伯达 facing the group.
 
-ACTING:
-柳如烟 snaps her gaze toward 伊藤诚, brows tightening; brief embarrassed protest.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
+TIMED BEATS:
+0.0s–5.0s — ORIGINAL SHOT 012 — OPEN ON THE SUPPLIED FIRST FRAME.
+Framing/staging: Matching medium close-up on 季伯达 from the same axis. exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
+Action/story beat: 季伯达 delivers the mirror example with deliberate calm, then subtly points the logic back toward 柳如烟.
+Camera: Slow 3% push-in, matching shot 011 axis. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 0.4s–4.6s: only 季伯达 says “我的内裤，都是我女闺蜜帮我洗的。你下次也让如烟替你洗。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-TIMELINE:
-0.0–0.2s: hold the established composition; 柳如烟 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.2–1.8s: 柳如烟 speaks the exact Mandarin line “你胡说什么呢？” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 柳如烟 snaps her gaze toward 伊藤诚, brows tightening; brief embarrassed protest. 1.8–2.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
-
-CAMERA:
-Brief 2% push-in synchronized to the protest. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 柳如烟 speaks: “你胡说什么呢？”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
+PERFORMANCE GUARDRAILS:
+Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
 ```
 
 - Negative prompt:
 
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
+```text
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
 ```
 
 - Request JSON: [`shot-requests/shot_007.json`](shot-requests/shot_007.json)
 
-## Shot 008
+## Generation Unit 008
 
-- Speaker/dialogue: **闺蜜甲**：姐夫，你可别多想。他们从小一起长大。
-- Wan duration: `2s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 007](frames/shot_007_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_008.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 闺蜜甲](references/characters/guimi-1.jpg)
+- 原始镜号：013
+- 时间：`00:31–00:36`
+- 时长：`5s`
+- 对白：柳如烟：季伯达，你恶不恶心？你怎么能让别的女人给你洗内裤？
+- 音频：`enable_audio: true`
+- 内部硬切前原始镜号：无
+- 媒体输入（4/4）：
+  - `first_frame`: `frames/shot_007_last_frame.jpg` — literal accepted final rendered frame of generation unit 007
+  - `reference_image`: `references/staging/shot_013.jpg` — composition/blocking anchor for original shot 013
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV seating, furniture, camera axis, lighting, and empty-table continuity
+  - `reference_image`: `references/characters/liuruyan.jpg` — identity and wardrobe for speaking character 柳如烟
 - Prompt:
 
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 008 (00:16–00:18)
+```text
+WAN 2.6 REFERENCE-TO-VIDEO — GENERATION UNIT 008 (00:31–00:36)
+
+ORIGINAL SHOT MAP:
+This generation unit maps original canonical shot IDs: 013. Preserve every mapped story beat in this order. Only the boundaries explicitly marked HARD CUT may cut; all boundaries marked CONTINUE remain one continuous camera take.
 
 REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 007. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 闺蜜甲. Use it only for that role and preserve supported visual details.
+The supplied first frame is the literal accepted final rendered frame of generation unit 007. Preserve identities, poses, expressions, wardrobe, seats, props, lighting, camera axis and screen direction before the first timed beat.
+Image 1 is the composition/blocking anchor for original shot 013. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 3 is the identity and wardrobe for speaking character 柳如烟. Use it only for that role; the timed beat instructions control motion and cuts.
 
 AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
 
 OUTPUT:
-Create one continuous 2-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
+Create one 5-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
 
-COMPOSITION AND BLOCKING:
-Framing: Medium three-shot of the girlfriends; 闺蜜甲 leads from sofa left.
-Visible actors: exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap.
-ON-SCREEN CAST (EXACT, NAMED): exactly three people—闺蜜甲, 闺蜜乙, 闺蜜丙.
-POSITION MAP (viewer screen-left to screen-right): 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
+GLOBAL CONTINUITY:
+Modern high-rise KTV/lounge at night with warm amber practical light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table, cards, and small snack plates. The table and room contain no alcohol, bottles, drinks, beverages, cups, drinking glasses, or beverage props at any time. Keep every named actor in the established seat and on the established camera-axis side unless a timed beat explicitly changes framing. Never swap, merge, duplicate, omit, or replace identities. For any wide ensemble view, show exactly these six people and no others: 柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. Opening unit 001 must begin with all six already seated: screen-left 柳如烟 then 伊藤诚; central sofa 闺蜜甲, 闺蜜乙, 闺蜜丙; far screen-right 季伯达 facing the group.
 
-ACTING:
-闺蜜甲 raises a calming palm toward 季伯达 and explains earnestly; the other two listen.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
+TIMED BEATS:
+0.0s–5.0s — ORIGINAL SHOT 013 — OPEN ON THE SUPPLIED FIRST FRAME.
+Framing/staging: Tight medium close-up on 柳如烟, 伊藤诚 partly visible beside her. exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
+Action/story beat: 柳如烟 recoils slightly, anger and disgust rising; she turns sharply toward 季伯达 and emphasizes the accusation.
+Camera: Controlled 3% push-in as anger rises. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 0.4s–4.6s: only 柳如烟 says “季伯达，你恶不恶心？你怎么能让别的女人给你洗内裤？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-TIMELINE:
-0.0–0.2s: hold the established composition; 闺蜜甲 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.2–1.8s: 闺蜜甲 speaks the exact Mandarin line “姐夫，你可别多想。他们从小一起长大。” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 闺蜜甲 raises a calming palm toward 季伯达 and explains earnestly; the other two listen. 1.8–2.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
-
-CAMERA:
-Gentle 2% push toward 闺蜜甲. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 闺蜜甲 speaks: “姐夫，你可别多想。他们从小一起长大。”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
+PERFORMANCE GUARDRAILS:
+Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
 ```
 
 - Negative prompt:
 
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
+```text
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
 ```
 
 - Request JSON: [`shot-requests/shot_008.json`](shot-requests/shot_008.json)
 
-## Shot 009
+## Generation Unit 009
 
-- Speaker/dialogue: **闺蜜乙**：就是，伊藤诚在我们眼里根本不算男人。
-- Wan duration: `2s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 008](frames/shot_008_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_009.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 闺蜜乙](references/characters/guimi-2.jpg)
+- 原始镜号：014, 015
+- 时间：`00:36–00:41`
+- 时长：`5s`
+- 对白：闺蜜甲：这也太过分了吧？；闺蜜乙：你都有女朋友了，怎么一点边界感都没有？
+- 音频：`enable_audio: true`
+- 内部硬切前原始镜号：无
+- 媒体输入（4/4）：
+  - `first_frame`: `frames/shot_008_last_frame.jpg` — literal accepted final rendered frame of generation unit 008
+  - `reference_image`: `references/staging/shot_014.jpg` — composition/blocking anchor for original shot 014
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV seating, furniture, camera axis, lighting, and empty-table continuity
+  - `reference_image`: `references/staging/shot_015.jpg` — composition/blocking anchor for original shot 015 and the later beat(s)
 - Prompt:
 
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 009 (00:18–00:20)
+```text
+WAN 2.6 REFERENCE-TO-VIDEO — GENERATION UNIT 009 (00:36–00:41)
+
+ORIGINAL SHOT MAP:
+This generation unit maps original canonical shot IDs: 014, 015. Preserve every mapped story beat in this order. Only the boundaries explicitly marked HARD CUT may cut; all boundaries marked CONTINUE remain one continuous camera take.
 
 REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 008. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 闺蜜乙. Use it only for that role and preserve supported visual details.
+The supplied first frame is the literal accepted final rendered frame of generation unit 008. Preserve identities, poses, expressions, wardrobe, seats, props, lighting, camera axis and screen direction before the first timed beat.
+Image 1 is the composition/blocking anchor for original shot 014. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 3 is the composition/blocking anchor for original shot 015 and the later beat(s). Use it only for that role; the timed beat instructions control motion and cuts.
 
 AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
 
 OUTPUT:
-Create one continuous 2-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
+Create one 5-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
 
-COMPOSITION AND BLOCKING:
-Framing: Medium three-shot of the girlfriends; 闺蜜乙 leads from sofa center.
-Visible actors: exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap.
-ON-SCREEN CAST (EXACT, NAMED): exactly three people—闺蜜甲, 闺蜜乙, 闺蜜丙.
-POSITION MAP (viewer screen-left to screen-right): 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
+GLOBAL CONTINUITY:
+Modern high-rise KTV/lounge at night with warm amber practical light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table, cards, and small snack plates. The table and room contain no alcohol, bottles, drinks, beverages, cups, drinking glasses, or beverage props at any time. Keep every named actor in the established seat and on the established camera-axis side unless a timed beat explicitly changes framing. Never swap, merge, duplicate, omit, or replace identities. For any wide ensemble view, show exactly these six people and no others: 柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. Opening unit 001 must begin with all six already seated: screen-left 柳如烟 then 伊藤诚; central sofa 闺蜜甲, 闺蜜乙, 闺蜜丙; far screen-right 季伯达 facing the group.
 
-ACTING:
-闺蜜乙 turns toward 季伯达 and adds reassurance; 闺蜜甲 settles back; 闺蜜丙 gives a restrained nod.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
+TIMED BEATS:
+0.0s–2.0s — ORIGINAL SHOT 014 — OPEN ON THE SUPPLIED FIRST FRAME.
+Framing/staging: Medium three-shot of the girlfriends, favoring 闺蜜甲 at left. exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap. Position continuity: 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
+Action/story beat: 闺蜜甲 leans forward with a frown and challenges him; 闺蜜乙 watches his reaction; 闺蜜丙 raises one brow.
+Camera: Gentle 2% push toward 闺蜜甲. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 0.2s–1.8s: only 闺蜜甲 says “这也太过分了吧？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-TIMELINE:
-0.0–0.2s: hold the established composition; 闺蜜乙 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.2–1.8s: 闺蜜乙 speaks the exact Mandarin line “就是，伊藤诚在我们眼里根本不算男人。” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 闺蜜乙 turns toward 季伯达 and adds reassurance; 闺蜜甲 settles back; 闺蜜丙 gives a restrained nod. 1.8–2.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
+2.0s–5.0s — ORIGINAL SHOT 015 — CONTINUE IN THE SAME SHOT; NO CUT.
+Framing/staging: Medium three-shot of the girlfriends, favoring 闺蜜乙 at center. exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap. Position continuity: 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
+Action/story beat: 闺蜜乙 sits upright and stresses “边界感”; 闺蜜甲 nods once; 闺蜜丙 shows agreement.
+Camera: Slow 3% push toward 闺蜜乙. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 2.3s–4.7s: only 闺蜜乙 says “你都有女朋友了，怎么一点边界感都没有？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-CAMERA:
-Tiny lateral ease from left to center, ending on 闺蜜乙. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 闺蜜乙 speaks: “就是，伊藤诚在我们眼里根本不算男人。”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
+PERFORMANCE GUARDRAILS:
+Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
 ```
 
 - Negative prompt:
 
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
+```text
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
 ```
 
 - Request JSON: [`shot-requests/shot_009.json`](shot-requests/shot_009.json)
 
-## Shot 010
+## Generation Unit 010
 
-- Speaker/dialogue: **闺蜜丙**：他们是纯友谊，关系好才这样。
-- Wan duration: `2s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 009](frames/shot_009_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_010.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 闺蜜丙](references/characters/guimi-3.jpg)
+- 原始镜号：016, 017
+- 时间：`00:41–00:47`
+- 时长：`6s`
+- 对白：季伯达：怎么了？她是我女闺蜜啊。；伊藤诚：女闺蜜也不行。男女之间得有分寸。
+- 音频：`enable_audio: true`
+- 内部硬切前原始镜号：017
+- 媒体输入（4/4）：
+  - `first_frame`: `frames/shot_009_last_frame.jpg` — literal accepted final rendered frame of generation unit 009
+  - `reference_image`: `references/staging/shot_016.jpg` — composition/blocking anchor for original shot 016
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV seating, furniture, camera axis, lighting, and empty-table continuity
+  - `reference_image`: `references/staging/shot_017.jpg` — composition/blocking anchor for original shot 017 and the later beat(s)
 - Prompt:
 
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 010 (00:20–00:22)
+```text
+WAN 2.6 REFERENCE-TO-VIDEO — GENERATION UNIT 010 (00:41–00:47)
+
+ORIGINAL SHOT MAP:
+This generation unit maps original canonical shot IDs: 016, 017. Preserve every mapped story beat in this order. Only the boundaries explicitly marked HARD CUT may cut; all boundaries marked CONTINUE remain one continuous camera take.
 
 REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 009. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 闺蜜丙. Use it only for that role and preserve supported visual details.
+The supplied first frame is the literal accepted final rendered frame of generation unit 009. Preserve identities, poses, expressions, wardrobe, seats, props, lighting, camera axis and screen direction before the first timed beat.
+Image 1 is the composition/blocking anchor for original shot 016. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 3 is the composition/blocking anchor for original shot 017 and the later beat(s). Use it only for that role; the timed beat instructions control motion and cuts.
 
 AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
 
 OUTPUT:
-Create one continuous 2-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
+Create one 6-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
 
-COMPOSITION AND BLOCKING:
-Framing: Medium three-shot of the girlfriends; 闺蜜丙 leads from sofa right.
-Visible actors: exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap.
-ON-SCREEN CAST (EXACT, NAMED): exactly three people—闺蜜甲, 闺蜜乙, 闺蜜丙.
-POSITION MAP (viewer screen-left to screen-right): 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
+GLOBAL CONTINUITY:
+Modern high-rise KTV/lounge at night with warm amber practical light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table, cards, and small snack plates. The table and room contain no alcohol, bottles, drinks, beverages, cups, drinking glasses, or beverage props at any time. Keep every named actor in the established seat and on the established camera-axis side unless a timed beat explicitly changes framing. Never swap, merge, duplicate, omit, or replace identities. For any wide ensemble view, show exactly these six people and no others: 柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. Opening unit 001 must begin with all six already seated: screen-left 柳如烟 then 伊藤诚; central sofa 闺蜜甲, 闺蜜乙, 闺蜜丙; far screen-right 季伯达 facing the group.
 
-ACTING:
-闺蜜丙 lowers her hand and concludes calmly; the other two turn to her.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
+TIMED BEATS:
+0.0s–3.0s — ORIGINAL SHOT 016 — OPEN ON THE SUPPLIED FIRST FRAME.
+Framing/staging: Matching medium close-up on 季伯达 at right foreground. exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
+Action/story beat: 季伯达 gives a mild shrug and repeats their premise without losing composure.
+Camera: Near-locked shot, tiny 2% pull-back after the shrug. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 0.3s–2.7s: only 季伯达 says “怎么了？她是我女闺蜜啊。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-TIMELINE:
-0.0–0.2s: hold the established composition; 闺蜜丙 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.2–1.8s: 闺蜜丙 speaks the exact Mandarin line “他们是纯友谊，关系好才这样。” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 闺蜜丙 lowers her hand and concludes calmly; the other two turn to her. 1.8–2.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
+3.0s–6.0s — ORIGINAL SHOT 017 — HARD CUT AT THIS EXACT BOUNDARY.
+Framing/staging: Tight two-shot favoring 伊藤诚 beside 柳如烟. exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
+Action/story beat: 伊藤诚 turns serious, gives a small head shake, and lectures about boundaries; 柳如烟 watches.
+Camera: Slow 2% push-in toward 伊藤诚. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 3.3s–5.7s: only 伊藤诚 says “女闺蜜也不行。男女之间得有分寸。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-CAMERA:
-Tiny ease right to favor 闺蜜丙. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 闺蜜丙 speaks: “他们是纯友谊，关系好才这样。”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
+PERFORMANCE GUARDRAILS:
+Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
 ```
 
 - Negative prompt:
 
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
+```text
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
 ```
 
 - Request JSON: [`shot-requests/shot_010.json`](shot-requests/shot_010.json)
 
-## Shot 011
+## Generation Unit 011
 
-- Speaker/dialogue: **季伯达**：小伊，不是我说你。一个大男人，洗什么内裤？
-- Wan duration: `4s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 010](frames/shot_010_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_011.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 季伯达](references/characters/jiboda.jpg)
+- 原始镜号：018
+- 时间：`00:47–00:53`
+- 时长：`6s`
+- 对白：季伯达：奇怪了。刚才你说自己替柳如烟洗过内裤，你们不是也说只是姐妹吗？
+- 音频：`enable_audio: true`
+- 内部硬切前原始镜号：无
+- 媒体输入（4/4）：
+  - `first_frame`: `frames/shot_010_last_frame.jpg` — literal accepted final rendered frame of generation unit 010
+  - `reference_image`: `references/staging/shot_018.jpg` — composition/blocking anchor for original shot 018
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV seating, furniture, camera axis, lighting, and empty-table continuity
+  - `reference_image`: `references/characters/jiboda.jpg` — identity and wardrobe for speaking character 季伯达
 - Prompt:
 
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 011 (00:22–00:26)
+```text
+WAN 2.6 REFERENCE-TO-VIDEO — GENERATION UNIT 011 (00:47–00:53)
+
+ORIGINAL SHOT MAP:
+This generation unit maps original canonical shot IDs: 018. Preserve every mapped story beat in this order. Only the boundaries explicitly marked HARD CUT may cut; all boundaries marked CONTINUE remain one continuous camera take.
 
 REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 010. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role and preserve supported visual details.
+The supplied first frame is the literal accepted final rendered frame of generation unit 010. Preserve identities, poses, expressions, wardrobe, seats, props, lighting, camera axis and screen direction before the first timed beat.
+Image 1 is the composition/blocking anchor for original shot 018. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role; the timed beat instructions control motion and cuts.
 
 AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
 
 OUTPUT:
-Create one continuous 4-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
+Create one 6-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
 
-COMPOSITION AND BLOCKING:
-Framing: Over-shoulder/medium close-up favoring 季伯达 at the right foreground, facing left toward 伊藤诚.
-Visible actors: exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person.
-ON-SCREEN CAST (EXACT, NAMED): exactly three people—柳如烟, 伊藤诚, 季伯达.
-POSITION MAP (viewer screen-left to screen-right): 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
+GLOBAL CONTINUITY:
+Modern high-rise KTV/lounge at night with warm amber practical light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table, cards, and small snack plates. The table and room contain no alcohol, bottles, drinks, beverages, cups, drinking glasses, or beverage props at any time. Keep every named actor in the established seat and on the established camera-axis side unless a timed beat explicitly changes framing. Never swap, merge, duplicate, omit, or replace identities. For any wide ensemble view, show exactly these six people and no others: 柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. Opening unit 001 must begin with all six already seated: screen-left 柳如烟 then 伊藤诚; central sofa 闺蜜甲, 闺蜜乙, 闺蜜丙; far screen-right 季伯达 facing the group.
 
-ACTING:
-季伯达 begins controlled and faintly incredulous, looking toward 伊藤诚; one restrained open-palm gesture.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
+TIMED BEATS:
+0.0s–6.0s — ORIGINAL SHOT 018 — OPEN ON THE SUPPLIED FIRST FRAME.
+Framing/staging: Medium close-up on 季伯达, same right-side axis. exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
+Action/story beat: 季伯达 calmly reconstructs the contradiction, gaze moving from 伊藤诚 to the group; gestures stay economical.
+Camera: Sustained 4% push-in over the full line. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 0.4s–5.6s: only 季伯达 says “奇怪了。刚才你说自己替柳如烟洗过内裤，你们不是也说只是姐妹吗？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-TIMELINE:
-0.0–0.5s: hold the established composition; 季伯达 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.5–3.6s: 季伯达 speaks the exact Mandarin line “小伊，不是我说你。一个大男人，洗什么内裤？” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 季伯达 begins controlled and faintly incredulous, looking toward 伊藤诚; one restrained open-palm gesture. 3.6–4.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
-
-CAMERA:
-Slow 3% push-in; stable eyeline. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 季伯达 speaks: “小伊，不是我说你。一个大男人，洗什么内裤？”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
+PERFORMANCE GUARDRAILS:
+Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
 ```
 
 - Negative prompt:
 
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
+```text
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
 ```
 
 - Request JSON: [`shot-requests/shot_011.json`](shot-requests/shot_011.json)
 
-## Shot 012
+## Generation Unit 012
 
-- Speaker/dialogue: **季伯达**：我的内裤，都是我女闺蜜帮我洗的。你下次也让如烟替你洗。
-- Wan duration: `5s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 011](frames/shot_011_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_012.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 季伯达](references/characters/jiboda.jpg)
+- 原始镜号：019, 020
+- 时间：`00:53–00:57`
+- 时长：`4s`
+- 对白：柳如烟：那不一样。；季伯达：哪里不一样？
+- 音频：`enable_audio: true`
+- 内部硬切前原始镜号：020
+- 媒体输入（4/4）：
+  - `first_frame`: `frames/shot_011_last_frame.jpg` — literal accepted final rendered frame of generation unit 011
+  - `reference_image`: `references/staging/shot_019.jpg` — composition/blocking anchor for original shot 019
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV seating, furniture, camera axis, lighting, and empty-table continuity
+  - `reference_image`: `references/staging/shot_020.jpg` — composition/blocking anchor for original shot 020 and the later beat(s)
 - Prompt:
 
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 012 (00:26–00:31)
+```text
+WAN 2.6 REFERENCE-TO-VIDEO — GENERATION UNIT 012 (00:53–00:57)
+
+ORIGINAL SHOT MAP:
+This generation unit maps original canonical shot IDs: 019, 020. Preserve every mapped story beat in this order. Only the boundaries explicitly marked HARD CUT may cut; all boundaries marked CONTINUE remain one continuous camera take.
 
 REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 011. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role and preserve supported visual details.
+The supplied first frame is the literal accepted final rendered frame of generation unit 011. Preserve identities, poses, expressions, wardrobe, seats, props, lighting, camera axis and screen direction before the first timed beat.
+Image 1 is the composition/blocking anchor for original shot 019. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 3 is the composition/blocking anchor for original shot 020 and the later beat(s). Use it only for that role; the timed beat instructions control motion and cuts.
 
 AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
 
 OUTPUT:
-Create one continuous 5-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
+Create one 4-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
 
-COMPOSITION AND BLOCKING:
-Framing: Matching medium close-up on 季伯达 from the same axis.
-Visible actors: exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person.
-ON-SCREEN CAST (EXACT, NAMED): exactly three people—柳如烟, 伊藤诚, 季伯达.
-POSITION MAP (viewer screen-left to screen-right): 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
+GLOBAL CONTINUITY:
+Modern high-rise KTV/lounge at night with warm amber practical light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table, cards, and small snack plates. The table and room contain no alcohol, bottles, drinks, beverages, cups, drinking glasses, or beverage props at any time. Keep every named actor in the established seat and on the established camera-axis side unless a timed beat explicitly changes framing. Never swap, merge, duplicate, omit, or replace identities. For any wide ensemble view, show exactly these six people and no others: 柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. Opening unit 001 must begin with all six already seated: screen-left 柳如烟 then 伊藤诚; central sofa 闺蜜甲, 闺蜜乙, 闺蜜丙; far screen-right 季伯达 facing the group.
 
-ACTING:
-季伯达 delivers the mirror example with deliberate calm, then subtly points the logic back toward 柳如烟.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
+TIMED BEATS:
+0.0s–2.0s — ORIGINAL SHOT 019 — OPEN ON THE SUPPLIED FIRST FRAME.
+Framing/staging: Tight reaction close-up on 柳如烟. exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
+Action/story beat: 柳如烟 answers defensively, lips tightening and eyes briefly averting.
+Camera: Near-locked shot with a 2% push-in. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 0.2s–1.8s: only 柳如烟 says “那不一样。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-TIMELINE:
-0.0–0.5s: hold the established composition; 季伯达 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.5–4.6s: 季伯达 speaks the exact Mandarin line “我的内裤，都是我女闺蜜帮我洗的。你下次也让如烟替你洗。” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 季伯达 delivers the mirror example with deliberate calm, then subtly points the logic back toward 柳如烟. 4.6–5.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
+2.0s–4.0s — ORIGINAL SHOT 020 — HARD CUT AT THIS EXACT BOUNDARY.
+Framing/staging: Tight medium close-up on 季伯达. exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
+Action/story beat: 季伯达 asks a clean follow-up, slight head tilt, then holds eye contact.
+Camera: Tiny 2% push-in, then hold. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 2.2s–3.8s: only 季伯达 says “哪里不一样？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-CAMERA:
-Slow 3% push-in, matching shot 011 axis. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 季伯达 speaks: “我的内裤，都是我女闺蜜帮我洗的。你下次也让如烟替你洗。”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
+PERFORMANCE GUARDRAILS:
+Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
 ```
 
 - Negative prompt:
 
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
+```text
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
 ```
 
 - Request JSON: [`shot-requests/shot_012.json`](shot-requests/shot_012.json)
 
-## Shot 013
+## Generation Unit 013
 
-- Speaker/dialogue: **柳如烟**：季伯达，你恶不恶心？你怎么能让别的女人给你洗内裤？
-- Wan duration: `5s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 012](frames/shot_012_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_013.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 柳如烟](references/characters/liuruyan.jpg)
+- 原始镜号：021
+- 时间：`00:57–01:02`
+- 时长：`5s`
+- 对白：柳如烟：我和伊藤诚只是纯友谊。我拿他当闺蜜，他也拿我当兄弟。
+- 音频：`enable_audio: true`
+- 内部硬切前原始镜号：无
+- 媒体输入（4/4）：
+  - `first_frame`: `frames/shot_012_last_frame.jpg` — literal accepted final rendered frame of generation unit 012
+  - `reference_image`: `references/staging/shot_021.jpg` — composition/blocking anchor for original shot 021
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV seating, furniture, camera axis, lighting, and empty-table continuity
+  - `reference_image`: `references/characters/liuruyan.jpg` — identity and wardrobe for speaking character 柳如烟
 - Prompt:
 
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 013 (00:31–00:36)
+```text
+WAN 2.6 REFERENCE-TO-VIDEO — GENERATION UNIT 013 (00:57–01:02)
+
+ORIGINAL SHOT MAP:
+This generation unit maps original canonical shot IDs: 021. Preserve every mapped story beat in this order. Only the boundaries explicitly marked HARD CUT may cut; all boundaries marked CONTINUE remain one continuous camera take.
 
 REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 012. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 柳如烟. Use it only for that role and preserve supported visual details.
+The supplied first frame is the literal accepted final rendered frame of generation unit 012. Preserve identities, poses, expressions, wardrobe, seats, props, lighting, camera axis and screen direction before the first timed beat.
+Image 1 is the composition/blocking anchor for original shot 021. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 3 is the identity and wardrobe for speaking character 柳如烟. Use it only for that role; the timed beat instructions control motion and cuts.
 
 AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
 
 OUTPUT:
-Create one continuous 5-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
+Create one 5-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
 
-COMPOSITION AND BLOCKING:
-Framing: Tight medium close-up on 柳如烟, 伊藤诚 partly visible beside her.
-Visible actors: exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person.
-ON-SCREEN CAST (EXACT, NAMED): exactly two people—柳如烟 and 伊藤诚.
-POSITION MAP (viewer screen-left to screen-right): 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
+GLOBAL CONTINUITY:
+Modern high-rise KTV/lounge at night with warm amber practical light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table, cards, and small snack plates. The table and room contain no alcohol, bottles, drinks, beverages, cups, drinking glasses, or beverage props at any time. Keep every named actor in the established seat and on the established camera-axis side unless a timed beat explicitly changes framing. Never swap, merge, duplicate, omit, or replace identities. For any wide ensemble view, show exactly these six people and no others: 柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. Opening unit 001 must begin with all six already seated: screen-left 柳如烟 then 伊藤诚; central sofa 闺蜜甲, 闺蜜乙, 闺蜜丙; far screen-right 季伯达 facing the group.
 
-ACTING:
-柳如烟 recoils slightly, anger and disgust rising; she turns sharply toward 季伯达 and emphasizes the accusation.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
+TIMED BEATS:
+0.0s–5.0s — ORIGINAL SHOT 021 — OPEN ON THE SUPPLIED FIRST FRAME.
+Framing/staging: Tight two-shot favoring 柳如烟 with 伊藤诚 beside her. exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
+Action/story beat: 柳如烟 explains quickly and defensively, indicating herself then 伊藤诚 without touching him.
+Camera: Slow 3% push-in, no pan. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 0.4s–4.6s: only 柳如烟 says “我和伊藤诚只是纯友谊。我拿他当闺蜜，他也拿我当兄弟。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-TIMELINE:
-0.0–0.5s: hold the established composition; 柳如烟 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.5–4.6s: 柳如烟 speaks the exact Mandarin line “季伯达，你恶不恶心？你怎么能让别的女人给你洗内裤？” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 柳如烟 recoils slightly, anger and disgust rising; she turns sharply toward 季伯达 and emphasizes the accusation. 4.6–5.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
-
-CAMERA:
-Controlled 3% push-in as anger rises. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 柳如烟 speaks: “季伯达，你恶不恶心？你怎么能让别的女人给你洗内裤？”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
+PERFORMANCE GUARDRAILS:
+Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
 ```
 
 - Negative prompt:
 
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
+```text
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
 ```
 
 - Request JSON: [`shot-requests/shot_013.json`](shot-requests/shot_013.json)
 
-## Shot 014
+## Generation Unit 014
 
-- Speaker/dialogue: **闺蜜甲**：这也太过分了吧？
-- Wan duration: `2s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 013](frames/shot_013_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_014.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 闺蜜甲](references/characters/guimi-1.jpg)
+- 原始镜号：022, 023
+- 时间：`01:02–01:08`
+- 时长：`6s`
+- 对白：伊藤诚：对，我们之间根本没有男女之情。；闺蜜甲：他们从小就这样，你一个大男人别这么小气。
+- 音频：`enable_audio: true`
+- 内部硬切前原始镜号：023
+- 媒体输入（4/4）：
+  - `first_frame`: `frames/shot_013_last_frame.jpg` — literal accepted final rendered frame of generation unit 013
+  - `reference_image`: `references/staging/shot_022.jpg` — composition/blocking anchor for original shot 022
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV seating, furniture, camera axis, lighting, and empty-table continuity
+  - `reference_image`: `references/staging/shot_023.jpg` — composition/blocking anchor for original shot 023 and the later beat(s)
 - Prompt:
 
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 014 (00:36–00:38)
+```text
+WAN 2.6 REFERENCE-TO-VIDEO — GENERATION UNIT 014 (01:02–01:08)
+
+ORIGINAL SHOT MAP:
+This generation unit maps original canonical shot IDs: 022, 023. Preserve every mapped story beat in this order. Only the boundaries explicitly marked HARD CUT may cut; all boundaries marked CONTINUE remain one continuous camera take.
 
 REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 013. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 闺蜜甲. Use it only for that role and preserve supported visual details.
+The supplied first frame is the literal accepted final rendered frame of generation unit 013. Preserve identities, poses, expressions, wardrobe, seats, props, lighting, camera axis and screen direction before the first timed beat.
+Image 1 is the composition/blocking anchor for original shot 022. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 3 is the composition/blocking anchor for original shot 023 and the later beat(s). Use it only for that role; the timed beat instructions control motion and cuts.
 
 AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
 
 OUTPUT:
-Create one continuous 2-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
+Create one 6-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
 
-COMPOSITION AND BLOCKING:
-Framing: Medium three-shot of the girlfriends, favoring 闺蜜甲 at left.
-Visible actors: exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap.
-ON-SCREEN CAST (EXACT, NAMED): exactly three people—闺蜜甲, 闺蜜乙, 闺蜜丙.
-POSITION MAP (viewer screen-left to screen-right): 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
+GLOBAL CONTINUITY:
+Modern high-rise KTV/lounge at night with warm amber practical light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table, cards, and small snack plates. The table and room contain no alcohol, bottles, drinks, beverages, cups, drinking glasses, or beverage props at any time. Keep every named actor in the established seat and on the established camera-axis side unless a timed beat explicitly changes framing. Never swap, merge, duplicate, omit, or replace identities. For any wide ensemble view, show exactly these six people and no others: 柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. Opening unit 001 must begin with all six already seated: screen-left 柳如烟 then 伊藤诚; central sofa 闺蜜甲, 闺蜜乙, 闺蜜丙; far screen-right 季伯达 facing the group.
 
-ACTING:
-闺蜜甲 leans forward with a frown and challenges him; 闺蜜乙 watches his reaction; 闺蜜丙 raises one brow.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
+TIMED BEATS:
+0.0s–3.0s — ORIGINAL SHOT 022 — OPEN ON THE SUPPLIED FIRST FRAME.
+Framing/staging: Tight two-shot favoring 伊藤诚 with 柳如烟 beside him. exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
+Action/story beat: 伊藤诚 nods and supports her claim, measured but slightly tense.
+Camera: Slow 2% push toward 伊藤诚. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 0.3s–2.7s: only 伊藤诚 says “对，我们之间根本没有男女之情。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-TIMELINE:
-0.0–0.2s: hold the established composition; 闺蜜甲 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.2–1.8s: 闺蜜甲 speaks the exact Mandarin line “这也太过分了吧？” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 闺蜜甲 leans forward with a frown and challenges him; 闺蜜乙 watches his reaction; 闺蜜丙 raises one brow. 1.8–2.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
+3.0s–6.0s — ORIGINAL SHOT 023 — HARD CUT AT THIS EXACT BOUNDARY.
+Framing/staging: Medium three-shot of girlfriends, favoring 闺蜜甲. exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap. Position continuity: 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
+Action/story beat: 闺蜜甲 opens both hands as if the conclusion is obvious; 闺蜜乙 listens; 闺蜜丙 observes.
+Camera: Gentle 2% push toward 闺蜜甲. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 3.3s–5.7s: only 闺蜜甲 says “他们从小就这样，你一个大男人别这么小气。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-CAMERA:
-Gentle 2% push toward 闺蜜甲. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 闺蜜甲 speaks: “这也太过分了吧？”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
+PERFORMANCE GUARDRAILS:
+Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
 ```
 
 - Negative prompt:
 
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
+```text
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
 ```
 
 - Request JSON: [`shot-requests/shot_014.json`](shot-requests/shot_014.json)
 
-## Shot 015
+## Generation Unit 015
 
-- Speaker/dialogue: **闺蜜乙**：你都有女朋友了，怎么一点边界感都没有？
-- Wan duration: `3s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 014](frames/shot_014_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_015.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 闺蜜乙](references/characters/guimi-2.jpg)
+- 原始镜号：024, 025
+- 时间：`01:08–01:14`
+- 时长：`6s`
+- 对白：闺蜜乙：如烟要是真和伊藤诚有什么，还会和你在一起吗？；闺蜜丙：情侣之间最重要的是信任。
+- 音频：`enable_audio: true`
+- 内部硬切前原始镜号：无
+- 媒体输入（4/4）：
+  - `first_frame`: `frames/shot_014_last_frame.jpg` — literal accepted final rendered frame of generation unit 014
+  - `reference_image`: `references/staging/shot_024.jpg` — composition/blocking anchor for original shot 024
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV seating, furniture, camera axis, lighting, and empty-table continuity
+  - `reference_image`: `references/staging/shot_025.jpg` — composition/blocking anchor for original shot 025 and the later beat(s)
 - Prompt:
 
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 015 (00:38–00:41)
+```text
+WAN 2.6 REFERENCE-TO-VIDEO — GENERATION UNIT 015 (01:08–01:14)
+
+ORIGINAL SHOT MAP:
+This generation unit maps original canonical shot IDs: 024, 025. Preserve every mapped story beat in this order. Only the boundaries explicitly marked HARD CUT may cut; all boundaries marked CONTINUE remain one continuous camera take.
 
 REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 014. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 闺蜜乙. Use it only for that role and preserve supported visual details.
+The supplied first frame is the literal accepted final rendered frame of generation unit 014. Preserve identities, poses, expressions, wardrobe, seats, props, lighting, camera axis and screen direction before the first timed beat.
+Image 1 is the composition/blocking anchor for original shot 024. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 3 is the composition/blocking anchor for original shot 025 and the later beat(s). Use it only for that role; the timed beat instructions control motion and cuts.
 
 AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
 
 OUTPUT:
-Create one continuous 3-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
+Create one 6-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
 
-COMPOSITION AND BLOCKING:
-Framing: Medium three-shot of the girlfriends, favoring 闺蜜乙 at center.
-Visible actors: exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap.
-ON-SCREEN CAST (EXACT, NAMED): exactly three people—闺蜜甲, 闺蜜乙, 闺蜜丙.
-POSITION MAP (viewer screen-left to screen-right): 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
+GLOBAL CONTINUITY:
+Modern high-rise KTV/lounge at night with warm amber practical light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table, cards, and small snack plates. The table and room contain no alcohol, bottles, drinks, beverages, cups, drinking glasses, or beverage props at any time. Keep every named actor in the established seat and on the established camera-axis side unless a timed beat explicitly changes framing. Never swap, merge, duplicate, omit, or replace identities. For any wide ensemble view, show exactly these six people and no others: 柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. Opening unit 001 must begin with all six already seated: screen-left 柳如烟 then 伊藤诚; central sofa 闺蜜甲, 闺蜜乙, 闺蜜丙; far screen-right 季伯达 facing the group.
 
-ACTING:
-闺蜜乙 sits upright and stresses “边界感”; 闺蜜甲 nods once; 闺蜜丙 shows agreement.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
+TIMED BEATS:
+0.0s–3.0s — ORIGINAL SHOT 024 — OPEN ON THE SUPPLIED FIRST FRAME.
+Framing/staging: Medium three-shot of girlfriends, favoring 闺蜜乙. exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap. Position continuity: 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
+Action/story beat: 闺蜜乙 leans in and challenges 季伯达 rhetorically; the other two track her.
+Camera: Gentle 3% push toward 闺蜜乙. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 0.3s–2.7s: only 闺蜜乙 says “如烟要是真和伊藤诚有什么，还会和你在一起吗？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-TIMELINE:
-0.0–0.4s: hold the established composition; 闺蜜乙 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.4–2.7s: 闺蜜乙 speaks the exact Mandarin line “你都有女朋友了，怎么一点边界感都没有？” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 闺蜜乙 sits upright and stresses “边界感”; 闺蜜甲 nods once; 闺蜜丙 shows agreement. 2.7–3.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
+3.0s–6.0s — ORIGINAL SHOT 025 — CONTINUE IN THE SAME SHOT; NO CUT.
+Framing/staging: Medium three-shot of girlfriends, favoring 闺蜜丙. exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap. Position continuity: 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
+Action/story beat: 闺蜜丙 sits straighter and delivers a summarizing maxim; the others go still to listen.
+Camera: Slow 2% push toward 闺蜜丙. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 3.3s–5.7s: only 闺蜜丙 says “情侣之间最重要的是信任。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-CAMERA:
-Slow 3% push toward 闺蜜乙. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 闺蜜乙 speaks: “你都有女朋友了，怎么一点边界感都没有？”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
+PERFORMANCE GUARDRAILS:
+Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
 ```
 
 - Negative prompt:
 
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
+```text
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
 ```
 
 - Request JSON: [`shot-requests/shot_015.json`](shot-requests/shot_015.json)
 
-## Shot 016
+## Generation Unit 016
 
-- Speaker/dialogue: **季伯达**：怎么了？她是我女闺蜜啊。
-- Wan duration: `3s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 015](frames/shot_015_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_016.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 季伯达](references/characters/jiboda.jpg)
+- 原始镜号：026
+- 时间：`01:14–01:20`
+- 时长：`6s`
+- 对白：季伯达：所以，伊藤诚可以紧挨着我的女朋友，可以知道她内裤的颜色，还可以替她洗——因为他们是纯友谊。
+- 音频：`enable_audio: true`
+- 内部硬切前原始镜号：无
+- 媒体输入（4/4）：
+  - `first_frame`: `frames/shot_015_last_frame.jpg` — literal accepted final rendered frame of generation unit 015
+  - `reference_image`: `references/staging/shot_026.jpg` — composition/blocking anchor for original shot 026
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV seating, furniture, camera axis, lighting, and empty-table continuity
+  - `reference_image`: `references/characters/jiboda.jpg` — identity and wardrobe for speaking character 季伯达
 - Prompt:
 
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 016 (00:41–00:44)
+```text
+WAN 2.6 REFERENCE-TO-VIDEO — GENERATION UNIT 016 (01:14–01:20)
+
+ORIGINAL SHOT MAP:
+This generation unit maps original canonical shot IDs: 026. Preserve every mapped story beat in this order. Only the boundaries explicitly marked HARD CUT may cut; all boundaries marked CONTINUE remain one continuous camera take.
 
 REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 015. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role and preserve supported visual details.
+The supplied first frame is the literal accepted final rendered frame of generation unit 015. Preserve identities, poses, expressions, wardrobe, seats, props, lighting, camera axis and screen direction before the first timed beat.
+Image 1 is the composition/blocking anchor for original shot 026. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role; the timed beat instructions control motion and cuts.
 
 AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
 
 OUTPUT:
-Create one continuous 3-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
+Create one 6-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
 
-COMPOSITION AND BLOCKING:
-Framing: Matching medium close-up on 季伯达 at right foreground.
-Visible actors: exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person.
-ON-SCREEN CAST (EXACT, NAMED): exactly three people—柳如烟, 伊藤诚, 季伯达.
-POSITION MAP (viewer screen-left to screen-right): 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
+GLOBAL CONTINUITY:
+Modern high-rise KTV/lounge at night with warm amber practical light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table, cards, and small snack plates. The table and room contain no alcohol, bottles, drinks, beverages, cups, drinking glasses, or beverage props at any time. Keep every named actor in the established seat and on the established camera-axis side unless a timed beat explicitly changes framing. Never swap, merge, duplicate, omit, or replace identities. For any wide ensemble view, show exactly these six people and no others: 柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. Opening unit 001 must begin with all six already seated: screen-left 柳如烟 then 伊藤诚; central sofa 闺蜜甲, 闺蜜乙, 闺蜜丙; far screen-right 季伯达 facing the group.
 
-ACTING:
-季伯达 gives a mild shrug and repeats their premise without losing composure.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
+TIMED BEATS:
+0.0s–6.0s — ORIGINAL SHOT 026 — OPEN ON THE SUPPLIED FIRST FRAME.
+Framing/staging: Sustained medium close-up on 季伯达, right foreground, addressing the sofa group. exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
+Action/story beat: 季伯达 enumerates each allowance with controlled hand beats and increasing precision, not shouting.
+Camera: Sustained 4% push-in, no cuts or axis change. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 0.4s–5.6s: only 季伯达 says “所以，伊藤诚可以紧挨着我的女朋友，可以知道她内裤的颜色，还可以替她洗——因为他们是纯友谊。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-TIMELINE:
-0.0–0.4s: hold the established composition; 季伯达 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.4–2.7s: 季伯达 speaks the exact Mandarin line “怎么了？她是我女闺蜜啊。” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 季伯达 gives a mild shrug and repeats their premise without losing composure. 2.7–3.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
-
-CAMERA:
-Near-locked shot, tiny 2% pull-back after the shrug. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 季伯达 speaks: “怎么了？她是我女闺蜜啊。”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
+PERFORMANCE GUARDRAILS:
+Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
 ```
 
 - Negative prompt:
 
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
+```text
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
 ```
 
 - Request JSON: [`shot-requests/shot_016.json`](shot-requests/shot_016.json)
 
-## Shot 017
+## Generation Unit 017
 
-- Speaker/dialogue: **伊藤诚**：女闺蜜也不行。男女之间得有分寸。
-- Wan duration: `3s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 016](frames/shot_016_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_017.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 伊藤诚](references/characters/yitengcheng.jpg)
+- 原始镜号：027
+- 时间：`01:20–01:24`
+- 时长：`4s`
+- 对白：季伯达：但我的女闺蜜替我洗内裤，就是没有分寸？
+- 音频：`enable_audio: true`
+- 内部硬切前原始镜号：无
+- 媒体输入（4/4）：
+  - `first_frame`: `frames/shot_016_last_frame.jpg` — literal accepted final rendered frame of generation unit 016
+  - `reference_image`: `references/staging/shot_027.jpg` — composition/blocking anchor for original shot 027
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV seating, furniture, camera axis, lighting, and empty-table continuity
+  - `reference_image`: `references/characters/jiboda.jpg` — identity and wardrobe for speaking character 季伯达
 - Prompt:
 
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 017 (00:44–00:47)
+```text
+WAN 2.6 REFERENCE-TO-VIDEO — GENERATION UNIT 017 (01:20–01:24)
+
+ORIGINAL SHOT MAP:
+This generation unit maps original canonical shot IDs: 027. Preserve every mapped story beat in this order. Only the boundaries explicitly marked HARD CUT may cut; all boundaries marked CONTINUE remain one continuous camera take.
 
 REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 016. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 伊藤诚. Use it only for that role and preserve supported visual details.
+The supplied first frame is the literal accepted final rendered frame of generation unit 016. Preserve identities, poses, expressions, wardrobe, seats, props, lighting, camera axis and screen direction before the first timed beat.
+Image 1 is the composition/blocking anchor for original shot 027. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role; the timed beat instructions control motion and cuts.
 
 AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
 
 OUTPUT:
-Create one continuous 3-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
+Create one 4-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
 
-COMPOSITION AND BLOCKING:
-Framing: Tight two-shot favoring 伊藤诚 beside 柳如烟.
-Visible actors: exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person.
-ON-SCREEN CAST (EXACT, NAMED): exactly two people—柳如烟 and 伊藤诚.
-POSITION MAP (viewer screen-left to screen-right): 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
+GLOBAL CONTINUITY:
+Modern high-rise KTV/lounge at night with warm amber practical light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table, cards, and small snack plates. The table and room contain no alcohol, bottles, drinks, beverages, cups, drinking glasses, or beverage props at any time. Keep every named actor in the established seat and on the established camera-axis side unless a timed beat explicitly changes framing. Never swap, merge, duplicate, omit, or replace identities. For any wide ensemble view, show exactly these six people and no others: 柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. Opening unit 001 must begin with all six already seated: screen-left 柳如烟 then 伊藤诚; central sofa 闺蜜甲, 闺蜜乙, 闺蜜丙; far screen-right 季伯达 facing the group.
 
-ACTING:
-伊藤诚 turns serious, gives a small head shake, and lectures about boundaries; 柳如烟 watches.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
+TIMED BEATS:
+0.0s–4.0s — ORIGINAL SHOT 027 — OPEN ON THE SUPPLIED FIRST FRAME.
+Framing/staging: Matching medium close-up on 季伯达; hold the rhetorical challenge. exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
+Action/story beat: 季伯达 lands the contrast, palm open in a restrained “then why?” gesture, holding the group’s gaze.
+Camera: Slow 3% push-in that stops on the final question. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 0.4s–3.6s: only 季伯达 says “但我的女闺蜜替我洗内裤，就是没有分寸？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-TIMELINE:
-0.0–0.4s: hold the established composition; 伊藤诚 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.4–2.7s: 伊藤诚 speaks the exact Mandarin line “女闺蜜也不行。男女之间得有分寸。” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 伊藤诚 turns serious, gives a small head shake, and lectures about boundaries; 柳如烟 watches. 2.7–3.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
-
-CAMERA:
-Slow 2% push-in toward 伊藤诚. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 伊藤诚 speaks: “女闺蜜也不行。男女之间得有分寸。”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
+PERFORMANCE GUARDRAILS:
+Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
 ```
 
 - Negative prompt:
 
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
+```text
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
 ```
 
 - Request JSON: [`shot-requests/shot_017.json`](shot-requests/shot_017.json)
 
-## Shot 018
+## Generation Unit 018
 
-- Speaker/dialogue: **季伯达**：奇怪了。刚才你说自己替柳如烟洗过内裤，你们不是也说只是姐妹吗？
-- Wan duration: `6s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 017](frames/shot_017_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_018.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 季伯达](references/characters/jiboda.jpg)
+- 原始镜号：028, 029
+- 时间：`01:24–01:29`
+- 时长：`5s`
+- 对白：柳如烟：季伯达！你故意的是不是？；季伯达：怎么会？
+- 音频：`enable_audio: true`
+- 内部硬切前原始镜号：029
+- 媒体输入（4/4）：
+  - `first_frame`: `frames/shot_017_last_frame.jpg` — literal accepted final rendered frame of generation unit 017
+  - `reference_image`: `references/staging/shot_028.jpg` — composition/blocking anchor for original shot 028
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV seating, furniture, camera axis, lighting, and empty-table continuity
+  - `reference_image`: `references/staging/shot_029.jpg` — composition/blocking anchor for original shot 029 and the later beat(s)
 - Prompt:
 
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 018 (00:47–00:53)
+```text
+WAN 2.6 REFERENCE-TO-VIDEO — GENERATION UNIT 018 (01:24–01:29)
+
+ORIGINAL SHOT MAP:
+This generation unit maps original canonical shot IDs: 028, 029. Preserve every mapped story beat in this order. Only the boundaries explicitly marked HARD CUT may cut; all boundaries marked CONTINUE remain one continuous camera take.
 
 REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 017. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role and preserve supported visual details.
+The supplied first frame is the literal accepted final rendered frame of generation unit 017. Preserve identities, poses, expressions, wardrobe, seats, props, lighting, camera axis and screen direction before the first timed beat.
+Image 1 is the composition/blocking anchor for original shot 028. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 3 is the composition/blocking anchor for original shot 029 and the later beat(s). Use it only for that role; the timed beat instructions control motion and cuts.
 
 AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
 
 OUTPUT:
-Create one continuous 6-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
+Create one 5-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
 
-COMPOSITION AND BLOCKING:
-Framing: Medium close-up on 季伯达, same right-side axis.
-Visible actors: exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person.
-ON-SCREEN CAST (EXACT, NAMED): exactly three people—柳如烟, 伊藤诚, 季伯达.
-POSITION MAP (viewer screen-left to screen-right): 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
+GLOBAL CONTINUITY:
+Modern high-rise KTV/lounge at night with warm amber practical light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table, cards, and small snack plates. The table and room contain no alcohol, bottles, drinks, beverages, cups, drinking glasses, or beverage props at any time. Keep every named actor in the established seat and on the established camera-axis side unless a timed beat explicitly changes framing. Never swap, merge, duplicate, omit, or replace identities. For any wide ensemble view, show exactly these six people and no others: 柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. Opening unit 001 must begin with all six already seated: screen-left 柳如烟 then 伊藤诚; central sofa 闺蜜甲, 闺蜜乙, 闺蜜丙; far screen-right 季伯达 facing the group.
 
-ACTING:
-季伯达 calmly reconstructs the contradiction, gaze moving from 伊藤诚 to the group; gestures stay economical.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
+TIMED BEATS:
+0.0s–3.0s — ORIGINAL SHOT 028 — OPEN ON THE SUPPLIED FIRST FRAME.
+Framing/staging: Tight medium close-up on 柳如烟; 伊藤诚 remains partly visible. exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
+Action/story beat: 柳如烟 erupts, leans forward and glares toward 季伯达; anger replaces embarrassment.
+Camera: Sharper but still smooth 4% push-in. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 0.3s–2.7s: only 柳如烟 says “季伯达！你故意的是不是？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-TIMELINE:
-0.0–0.5s: hold the established composition; 季伯达 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.5–5.6s: 季伯达 speaks the exact Mandarin line “奇怪了。刚才你说自己替柳如烟洗过内裤，你们不是也说只是姐妹吗？” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 季伯达 calmly reconstructs the contradiction, gaze moving from 伊藤诚 to the group; gestures stay economical. 5.6–6.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
+3.0s–5.0s — ORIGINAL SHOT 029 — HARD CUT AT THIS EXACT BOUNDARY.
+Framing/staging: Tight medium close-up on 季伯达. exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
+Action/story beat: 季伯达 answers softly with a tiny innocent head tilt, almost dryly amused.
+Camera: Near-locked shot; tiny 1% pull-back for dry irony. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 3.2s–4.8s: only 季伯达 says “怎么会？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-CAMERA:
-Sustained 4% push-in over the full line. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 季伯达 speaks: “奇怪了。刚才你说自己替柳如烟洗过内裤，你们不是也说只是姐妹吗？”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
+PERFORMANCE GUARDRAILS:
+Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
 ```
 
 - Negative prompt:
 
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
+```text
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
 ```
 
 - Request JSON: [`shot-requests/shot_018.json`](shot-requests/shot_018.json)
 
-## Shot 019
+## Generation Unit 019
 
-- Speaker/dialogue: **柳如烟**：那不一样。
-- Wan duration: `2s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 018](frames/shot_018_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_019.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 柳如烟](references/characters/liuruyan.jpg)
+- 原始镜号：030
+- 时间：`01:29–01:33`
+- 时长：`4s`
+- 对白：季伯达：我只是按照你们的规矩做了一遍。
+- 音频：`enable_audio: true`
+- 内部硬切前原始镜号：无
+- 媒体输入（4/4）：
+  - `first_frame`: `frames/shot_018_last_frame.jpg` — literal accepted final rendered frame of generation unit 018
+  - `reference_image`: `references/staging/shot_030.jpg` — composition/blocking anchor for original shot 030
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV seating, furniture, camera axis, lighting, and empty-table continuity
+  - `reference_image`: `references/characters/jiboda.jpg` — identity and wardrobe for speaking character 季伯达
 - Prompt:
 
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 019 (00:53–00:55)
+```text
+WAN 2.6 REFERENCE-TO-VIDEO — GENERATION UNIT 019 (01:29–01:33)
+
+ORIGINAL SHOT MAP:
+This generation unit maps original canonical shot IDs: 030. Preserve every mapped story beat in this order. Only the boundaries explicitly marked HARD CUT may cut; all boundaries marked CONTINUE remain one continuous camera take.
 
 REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 018. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 柳如烟. Use it only for that role and preserve supported visual details.
+The supplied first frame is the literal accepted final rendered frame of generation unit 018. Preserve identities, poses, expressions, wardrobe, seats, props, lighting, camera axis and screen direction before the first timed beat.
+Image 1 is the composition/blocking anchor for original shot 030. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role; the timed beat instructions control motion and cuts.
 
 AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
 
 OUTPUT:
-Create one continuous 2-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
+Create one 4-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
 
-COMPOSITION AND BLOCKING:
-Framing: Tight reaction close-up on 柳如烟.
-Visible actors: exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person.
-ON-SCREEN CAST (EXACT, NAMED): exactly two people—柳如烟 and 伊藤诚.
-POSITION MAP (viewer screen-left to screen-right): 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
+GLOBAL CONTINUITY:
+Modern high-rise KTV/lounge at night with warm amber practical light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table, cards, and small snack plates. The table and room contain no alcohol, bottles, drinks, beverages, cups, drinking glasses, or beverage props at any time. Keep every named actor in the established seat and on the established camera-axis side unless a timed beat explicitly changes framing. Never swap, merge, duplicate, omit, or replace identities. For any wide ensemble view, show exactly these six people and no others: 柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. Opening unit 001 must begin with all six already seated: screen-left 柳如烟 then 伊藤诚; central sofa 闺蜜甲, 闺蜜乙, 闺蜜丙; far screen-right 季伯达 facing the group.
 
-ACTING:
-柳如烟 answers defensively, lips tightening and eyes briefly averting.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
+TIMED BEATS:
+0.0s–4.0s — ORIGINAL SHOT 030 — OPEN ON THE SUPPLIED FIRST FRAME.
+Framing/staging: Matching medium close-up on 季伯达, calm and controlled. exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
+Action/story beat: 季伯达 remains composed, one measured hand gesture marking “your rules,” then lets the point sit.
+Camera: Slow 3% push-in. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 0.4s–3.6s: only 季伯达 says “我只是按照你们的规矩做了一遍。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-TIMELINE:
-0.0–0.2s: hold the established composition; 柳如烟 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.2–1.8s: 柳如烟 speaks the exact Mandarin line “那不一样。” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 柳如烟 answers defensively, lips tightening and eyes briefly averting. 1.8–2.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
-
-CAMERA:
-Near-locked shot with a 2% push-in. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 柳如烟 speaks: “那不一样。”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
+PERFORMANCE GUARDRAILS:
+Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
 ```
 
 - Negative prompt:
 
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
+```text
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
 ```
 
 - Request JSON: [`shot-requests/shot_019.json`](shot-requests/shot_019.json)
 
-## Shot 020
+## Generation Unit 020
 
-- Speaker/dialogue: **季伯达**：哪里不一样？
-- Wan duration: `2s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 019](frames/shot_019_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_020.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 季伯达](references/characters/jiboda.jpg)
+- 原始镜号：031
+- 时间：`01:33–01:37`
+- 时长：`4s`
+- 对白：季伯达：怎么轮到你们，规矩就变了？
+- 音频：`enable_audio: true`
+- 内部硬切前原始镜号：无
+- 媒体输入（4/4）：
+  - `first_frame`: `frames/shot_019_last_frame.jpg` — literal accepted final rendered frame of generation unit 019
+  - `reference_image`: `references/staging/shot_031.jpg` — composition/blocking anchor for original shot 031
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV seating, furniture, camera axis, lighting, and empty-table continuity
+  - `reference_image`: `references/characters/jiboda.jpg` — identity and wardrobe for speaking character 季伯达
 - Prompt:
 
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 020 (00:55–00:57)
+```text
+WAN 2.6 REFERENCE-TO-VIDEO — GENERATION UNIT 020 (01:33–01:37)
+
+ORIGINAL SHOT MAP:
+This generation unit maps original canonical shot IDs: 031. Preserve every mapped story beat in this order. Only the boundaries explicitly marked HARD CUT may cut; all boundaries marked CONTINUE remain one continuous camera take.
 
 REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 019. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role and preserve supported visual details.
+The supplied first frame is the literal accepted final rendered frame of generation unit 019. Preserve identities, poses, expressions, wardrobe, seats, props, lighting, camera axis and screen direction before the first timed beat.
+Image 1 is the composition/blocking anchor for original shot 031. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role; the timed beat instructions control motion and cuts.
 
 AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
 
 OUTPUT:
-Create one continuous 2-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
+Create one 4-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
 
-COMPOSITION AND BLOCKING:
-Framing: Tight medium close-up on 季伯达.
-Visible actors: exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person.
-ON-SCREEN CAST (EXACT, NAMED): exactly three people—柳如烟, 伊藤诚, 季伯达.
-POSITION MAP (viewer screen-left to screen-right): 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
+GLOBAL CONTINUITY:
+Modern high-rise KTV/lounge at night with warm amber practical light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table, cards, and small snack plates. The table and room contain no alcohol, bottles, drinks, beverages, cups, drinking glasses, or beverage props at any time. Keep every named actor in the established seat and on the established camera-axis side unless a timed beat explicitly changes framing. Never swap, merge, duplicate, omit, or replace identities. For any wide ensemble view, show exactly these six people and no others: 柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. Opening unit 001 must begin with all six already seated: screen-left 柳如烟 then 伊藤诚; central sofa 闺蜜甲, 闺蜜乙, 闺蜜丙; far screen-right 季伯达 facing the group.
 
-ACTING:
-季伯达 asks a clean follow-up, slight head tilt, then holds eye contact.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
+TIMED BEATS:
+0.0s–4.0s — ORIGINAL SHOT 031 — OPEN ON THE SUPPLIED FIRST FRAME.
+Framing/staging: Matching medium close-up on 季伯达; strongest direct challenge. exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
+Action/story beat: 季伯达’s expression hardens slightly; he asks the final question directly and holds still afterward.
+Camera: Slow 4% push-in, ending in a firm hold. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+Native synchronized Mandarin audio 0.4s–3.6s: only 季伯达 says “怎么轮到你们，规矩就变了？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
 
-TIMELINE:
-0.0–0.2s: hold the established composition; 季伯达 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.2–1.8s: 季伯达 speaks the exact Mandarin line “哪里不一样？” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 季伯达 asks a clean follow-up, slight head tilt, then holds eye contact. 1.8–2.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
-
-CAMERA:
-Tiny 2% push-in, then hold. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 季伯达 speaks: “哪里不一样？”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
+PERFORMANCE GUARDRAILS:
+Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
 ```
 
 - Negative prompt:
 
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
+```text
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
 ```
 
 - Request JSON: [`shot-requests/shot_020.json`](shot-requests/shot_020.json)
 
-## Shot 021
+## Generation Unit 021
 
-- Speaker/dialogue: **柳如烟**：我和伊藤诚只是纯友谊。我拿他当闺蜜，他也拿我当兄弟。
-- Wan duration: `5s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 020](frames/shot_020_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_021.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 柳如烟](references/characters/liuruyan.jpg)
+- 原始镜号：032
+- 时间：`01:37–01:40`
+- 时长：`3s`
+- 对白：无对白（后期片尾字卡）
+- 音频：`enable_audio: false`
+- 内部硬切前原始镜号：无
+- 媒体输入（3/4）：
+  - `first_frame`: `frames/shot_020_last_frame.jpg` — literal accepted final rendered frame of generation unit 020
+  - `reference_image`: `references/staging/shot_032.jpg` — composition/blocking anchor for original shot 032
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV seating, furniture, camera axis, lighting, and empty-table continuity
 - Prompt:
 
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 021 (00:57–01:02)
+```text
+WAN 2.6 REFERENCE-TO-VIDEO — GENERATION UNIT 021 (01:37–01:40)
+
+ORIGINAL SHOT MAP:
+This generation unit maps original canonical shot IDs: 032. Preserve every mapped story beat in this order. Only the boundaries explicitly marked HARD CUT may cut; all boundaries marked CONTINUE remain one continuous camera take.
 
 REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 020. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 柳如烟. Use it only for that role and preserve supported visual details.
+The supplied first frame is the literal accepted final rendered frame of generation unit 020. Preserve identities, poses, expressions, wardrobe, seats, props, lighting, camera axis and screen direction before the first timed beat.
+Image 1 is the composition/blocking anchor for original shot 032. Use it only for that role; the timed beat instructions control motion and cuts.
+Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
 
 AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
+This is a non-dialogue unit. Generate a completely silent video with no speech, narration, music, ambience, vocalization, or lip sync. No character mouths words. No invented speech is permitted. The end card is post-production only.
 
 OUTPUT:
-Create one continuous 5-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
+Create one 3-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
 
-COMPOSITION AND BLOCKING:
-Framing: Tight two-shot favoring 柳如烟 with 伊藤诚 beside her.
-Visible actors: exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person.
-ON-SCREEN CAST (EXACT, NAMED): exactly two people—柳如烟 and 伊藤诚.
-POSITION MAP (viewer screen-left to screen-right): 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
+GLOBAL CONTINUITY:
+Modern high-rise KTV/lounge at night with warm amber practical light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table, cards, and small snack plates. The table and room contain no alcohol, bottles, drinks, beverages, cups, drinking glasses, or beverage props at any time. Keep every named actor in the established seat and on the established camera-axis side unless a timed beat explicitly changes framing. Never swap, merge, duplicate, omit, or replace identities. For any wide ensemble view, show exactly these six people and no others: 柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. Opening unit 001 must begin with all six already seated: screen-left 柳如烟 then 伊藤诚; central sofa 闺蜜甲, 闺蜜乙, 闺蜜丙; far screen-right 季伯达 facing the group.
 
-ACTING:
-柳如烟 explains quickly and defensively, indicating herself then 伊藤诚 without touching him.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
+TIMED BEATS:
+0.0s–3.0s — ORIGINAL SHOT 032 — OPEN ON THE SUPPLIED FIRST FRAME.
+Framing/staging: Wide ensemble bookend matching shot 001, all positions and table geography preserved. exactly six named people only—柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. No background guests, extras, duplicates, or missing people. Position continuity: screen-left seating—柳如烟 at far left and 伊藤诚 immediately to her right; central sofa—闺蜜甲 at left seat, 闺蜜乙 at center seat, 闺蜜丙 at right seat; screen-right seating—季伯达 at far right facing the group.
+Action/story beat: The room falls awkwardly quiet; smiles fade, gazes shift, and no one offers an answer. End on unresolved group tension.
+Camera: Very slow 2% pull-back, echoing the opening while increasing emotional distance. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
+No one speaks or mouths words. Hold the unresolved silence, then add the exact end-card text “有些人要求的不是分寸，而是特权。” only in post-production, never inside the generated frames.
 
-TIMELINE:
-0.0–0.5s: hold the established composition; 柳如烟 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.5–4.6s: 柳如烟 speaks the exact Mandarin line “我和伊藤诚只是纯友谊。我拿他当闺蜜，他也拿我当兄弟。” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 柳如烟 explains quickly and defensively, indicating herself then 伊藤诚 without touching him. 4.6–5.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
-
-CAMERA:
-Slow 3% push-in, no pan. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 柳如烟 speaks: “我和伊藤诚只是纯友谊。我拿他当闺蜜，他也拿我当兄弟。”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
+PERFORMANCE GUARDRAILS:
+Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
 ```
 
 - Negative prompt:
 
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
+```text
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
 ```
 
 - Request JSON: [`shot-requests/shot_021.json`](shot-requests/shot_021.json)
-
-## Shot 022
-
-- Speaker/dialogue: **伊藤诚**：对，我们之间根本没有男女之情。
-- Wan duration: `3s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 021](frames/shot_021_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_022.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 伊藤诚](references/characters/yitengcheng.jpg)
-- Prompt:
-
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 022 (01:02–01:05)
-
-REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 021. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 伊藤诚. Use it only for that role and preserve supported visual details.
-
-AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
-
-OUTPUT:
-Create one continuous 3-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
-
-COMPOSITION AND BLOCKING:
-Framing: Tight two-shot favoring 伊藤诚 with 柳如烟 beside him.
-Visible actors: exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person.
-ON-SCREEN CAST (EXACT, NAMED): exactly two people—柳如烟 and 伊藤诚.
-POSITION MAP (viewer screen-left to screen-right): 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
-
-ACTING:
-伊藤诚 nods and supports her claim, measured but slightly tense.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
-
-TIMELINE:
-0.0–0.4s: hold the established composition; 伊藤诚 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.4–2.7s: 伊藤诚 speaks the exact Mandarin line “对，我们之间根本没有男女之情。” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 伊藤诚 nods and supports her claim, measured but slightly tense. 2.7–3.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
-
-CAMERA:
-Slow 2% push toward 伊藤诚. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 伊藤诚 speaks: “对，我们之间根本没有男女之情。”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
-```
-
-- Negative prompt:
-
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
-```
-
-- Request JSON: [`shot-requests/shot_022.json`](shot-requests/shot_022.json)
-
-## Shot 023
-
-- Speaker/dialogue: **闺蜜甲**：他们从小就这样，你一个大男人别这么小气。
-- Wan duration: `3s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 022](frames/shot_022_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_023.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 闺蜜甲](references/characters/guimi-1.jpg)
-- Prompt:
-
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 023 (01:05–01:08)
-
-REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 022. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 闺蜜甲. Use it only for that role and preserve supported visual details.
-
-AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
-
-OUTPUT:
-Create one continuous 3-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
-
-COMPOSITION AND BLOCKING:
-Framing: Medium three-shot of girlfriends, favoring 闺蜜甲.
-Visible actors: exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap.
-ON-SCREEN CAST (EXACT, NAMED): exactly three people—闺蜜甲, 闺蜜乙, 闺蜜丙.
-POSITION MAP (viewer screen-left to screen-right): 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
-
-ACTING:
-闺蜜甲 opens both hands as if the conclusion is obvious; 闺蜜乙 listens; 闺蜜丙 observes.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
-
-TIMELINE:
-0.0–0.4s: hold the established composition; 闺蜜甲 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.4–2.7s: 闺蜜甲 speaks the exact Mandarin line “他们从小就这样，你一个大男人别这么小气。” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 闺蜜甲 opens both hands as if the conclusion is obvious; 闺蜜乙 listens; 闺蜜丙 observes. 2.7–3.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
-
-CAMERA:
-Gentle 2% push toward 闺蜜甲. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 闺蜜甲 speaks: “他们从小就这样，你一个大男人别这么小气。”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
-```
-
-- Negative prompt:
-
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
-```
-
-- Request JSON: [`shot-requests/shot_023.json`](shot-requests/shot_023.json)
-
-## Shot 024
-
-- Speaker/dialogue: **闺蜜乙**：如烟要是真和伊藤诚有什么，还会和你在一起吗？
-- Wan duration: `3s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 023](frames/shot_023_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_024.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 闺蜜乙](references/characters/guimi-2.jpg)
-- Prompt:
-
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 024 (01:08–01:11)
-
-REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 023. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 闺蜜乙. Use it only for that role and preserve supported visual details.
-
-AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
-
-OUTPUT:
-Create one continuous 3-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
-
-COMPOSITION AND BLOCKING:
-Framing: Medium three-shot of girlfriends, favoring 闺蜜乙.
-Visible actors: exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap.
-ON-SCREEN CAST (EXACT, NAMED): exactly three people—闺蜜甲, 闺蜜乙, 闺蜜丙.
-POSITION MAP (viewer screen-left to screen-right): 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
-
-ACTING:
-闺蜜乙 leans in and challenges 季伯达 rhetorically; the other two track her.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
-
-TIMELINE:
-0.0–0.4s: hold the established composition; 闺蜜乙 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.4–2.7s: 闺蜜乙 speaks the exact Mandarin line “如烟要是真和伊藤诚有什么，还会和你在一起吗？” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 闺蜜乙 leans in and challenges 季伯达 rhetorically; the other two track her. 2.7–3.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
-
-CAMERA:
-Gentle 3% push toward 闺蜜乙. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 闺蜜乙 speaks: “如烟要是真和伊藤诚有什么，还会和你在一起吗？”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
-```
-
-- Negative prompt:
-
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
-```
-
-- Request JSON: [`shot-requests/shot_024.json`](shot-requests/shot_024.json)
-
-## Shot 025
-
-- Speaker/dialogue: **闺蜜丙**：情侣之间最重要的是信任。
-- Wan duration: `3s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 024](frames/shot_024_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_025.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 闺蜜丙](references/characters/guimi-3.jpg)
-- Prompt:
-
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 025 (01:11–01:14)
-
-REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 024. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 闺蜜丙. Use it only for that role and preserve supported visual details.
-
-AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
-
-OUTPUT:
-Create one continuous 3-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
-
-COMPOSITION AND BLOCKING:
-Framing: Medium three-shot of girlfriends, favoring 闺蜜丙.
-Visible actors: exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap.
-ON-SCREEN CAST (EXACT, NAMED): exactly three people—闺蜜甲, 闺蜜乙, 闺蜜丙.
-POSITION MAP (viewer screen-left to screen-right): 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
-
-ACTING:
-闺蜜丙 sits straighter and delivers a summarizing maxim; the others go still to listen.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
-
-TIMELINE:
-0.0–0.4s: hold the established composition; 闺蜜丙 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.4–2.7s: 闺蜜丙 speaks the exact Mandarin line “情侣之间最重要的是信任。” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 闺蜜丙 sits straighter and delivers a summarizing maxim; the others go still to listen. 2.7–3.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
-
-CAMERA:
-Slow 2% push toward 闺蜜丙. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 闺蜜丙 speaks: “情侣之间最重要的是信任。”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
-```
-
-- Negative prompt:
-
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
-```
-
-- Request JSON: [`shot-requests/shot_025.json`](shot-requests/shot_025.json)
-
-## Shot 026
-
-- Speaker/dialogue: **季伯达**：所以，伊藤诚可以紧挨着我的女朋友，可以知道她内裤的颜色，还可以替她洗——因为他们是纯友谊。
-- Wan duration: `6s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 025](frames/shot_025_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_026.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 季伯达](references/characters/jiboda.jpg)
-- Prompt:
-
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 026 (01:14–01:20)
-
-REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 025. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role and preserve supported visual details.
-
-AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
-
-OUTPUT:
-Create one continuous 6-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
-
-COMPOSITION AND BLOCKING:
-Framing: Sustained medium close-up on 季伯达, right foreground, addressing the sofa group.
-Visible actors: exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person.
-ON-SCREEN CAST (EXACT, NAMED): exactly three people—柳如烟, 伊藤诚, 季伯达.
-POSITION MAP (viewer screen-left to screen-right): 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
-
-ACTING:
-季伯达 enumerates each allowance with controlled hand beats and increasing precision, not shouting.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
-
-TIMELINE:
-0.0–0.5s: hold the established composition; 季伯达 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.5–5.6s: 季伯达 speaks the exact Mandarin line “所以，伊藤诚可以紧挨着我的女朋友，可以知道她内裤的颜色，还可以替她洗——因为他们是纯友谊。” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 季伯达 enumerates each allowance with controlled hand beats and increasing precision, not shouting. 5.6–6.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
-
-CAMERA:
-Sustained 4% push-in, no cuts or axis change. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 季伯达 speaks: “所以，伊藤诚可以紧挨着我的女朋友，可以知道她内裤的颜色，还可以替她洗——因为他们是纯友谊。”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
-```
-
-- Negative prompt:
-
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
-```
-
-- Request JSON: [`shot-requests/shot_026.json`](shot-requests/shot_026.json)
-
-## Shot 027
-
-- Speaker/dialogue: **季伯达**：但我的女闺蜜替我洗内裤，就是没有分寸？
-- Wan duration: `4s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 026](frames/shot_026_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_027.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 季伯达](references/characters/jiboda.jpg)
-- Prompt:
-
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 027 (01:20–01:24)
-
-REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 026. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role and preserve supported visual details.
-
-AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
-
-OUTPUT:
-Create one continuous 4-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
-
-COMPOSITION AND BLOCKING:
-Framing: Matching medium close-up on 季伯达; hold the rhetorical challenge.
-Visible actors: exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person.
-ON-SCREEN CAST (EXACT, NAMED): exactly three people—柳如烟, 伊藤诚, 季伯达.
-POSITION MAP (viewer screen-left to screen-right): 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
-
-ACTING:
-季伯达 lands the contrast, palm open in a restrained “then why?” gesture, holding the group’s gaze.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
-
-TIMELINE:
-0.0–0.5s: hold the established composition; 季伯达 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.5–3.6s: 季伯达 speaks the exact Mandarin line “但我的女闺蜜替我洗内裤，就是没有分寸？” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 季伯达 lands the contrast, palm open in a restrained “then why?” gesture, holding the group’s gaze. 3.6–4.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
-
-CAMERA:
-Slow 3% push-in that stops on the final question. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 季伯达 speaks: “但我的女闺蜜替我洗内裤，就是没有分寸？”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
-```
-
-- Negative prompt:
-
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
-```
-
-- Request JSON: [`shot-requests/shot_027.json`](shot-requests/shot_027.json)
-
-## Shot 028
-
-- Speaker/dialogue: **柳如烟**：季伯达！你故意的是不是？
-- Wan duration: `3s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 027](frames/shot_027_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_028.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 柳如烟](references/characters/liuruyan.jpg)
-- Prompt:
-
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 028 (01:24–01:27)
-
-REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 027. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 柳如烟. Use it only for that role and preserve supported visual details.
-
-AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
-
-OUTPUT:
-Create one continuous 3-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
-
-COMPOSITION AND BLOCKING:
-Framing: Tight medium close-up on 柳如烟; 伊藤诚 remains partly visible.
-Visible actors: exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person.
-ON-SCREEN CAST (EXACT, NAMED): exactly two people—柳如烟 and 伊藤诚.
-POSITION MAP (viewer screen-left to screen-right): 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
-
-ACTING:
-柳如烟 erupts, leans forward and glares toward 季伯达; anger replaces embarrassment.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
-
-TIMELINE:
-0.0–0.4s: hold the established composition; 柳如烟 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.4–2.7s: 柳如烟 speaks the exact Mandarin line “季伯达！你故意的是不是？” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 柳如烟 erupts, leans forward and glares toward 季伯达; anger replaces embarrassment. 2.7–3.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
-
-CAMERA:
-Sharper but still smooth 4% push-in. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 柳如烟 speaks: “季伯达！你故意的是不是？”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
-```
-
-- Negative prompt:
-
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
-```
-
-- Request JSON: [`shot-requests/shot_028.json`](shot-requests/shot_028.json)
-
-## Shot 029
-
-- Speaker/dialogue: **季伯达**：怎么会？
-- Wan duration: `2s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 028](frames/shot_028_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_029.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 季伯达](references/characters/jiboda.jpg)
-- Prompt:
-
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 029 (01:27–01:29)
-
-REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 028. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role and preserve supported visual details.
-
-AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
-
-OUTPUT:
-Create one continuous 2-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
-
-COMPOSITION AND BLOCKING:
-Framing: Tight medium close-up on 季伯达.
-Visible actors: exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person.
-ON-SCREEN CAST (EXACT, NAMED): exactly three people—柳如烟, 伊藤诚, 季伯达.
-POSITION MAP (viewer screen-left to screen-right): 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
-
-ACTING:
-季伯达 answers softly with a tiny innocent head tilt, almost dryly amused.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
-
-TIMELINE:
-0.0–0.2s: hold the established composition; 季伯达 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.2–1.8s: 季伯达 speaks the exact Mandarin line “怎么会？” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 季伯达 answers softly with a tiny innocent head tilt, almost dryly amused. 1.8–2.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
-
-CAMERA:
-Near-locked shot; tiny 1% pull-back for dry irony. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 季伯达 speaks: “怎么会？”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
-```
-
-- Negative prompt:
-
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
-```
-
-- Request JSON: [`shot-requests/shot_029.json`](shot-requests/shot_029.json)
-
-## Shot 030
-
-- Speaker/dialogue: **季伯达**：我只是按照你们的规矩做了一遍。
-- Wan duration: `4s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 029](frames/shot_029_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_030.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 季伯达](references/characters/jiboda.jpg)
-- Prompt:
-
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 030 (01:29–01:33)
-
-REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 029. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role and preserve supported visual details.
-
-AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
-
-OUTPUT:
-Create one continuous 4-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
-
-COMPOSITION AND BLOCKING:
-Framing: Matching medium close-up on 季伯达, calm and controlled.
-Visible actors: exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person.
-ON-SCREEN CAST (EXACT, NAMED): exactly three people—柳如烟, 伊藤诚, 季伯达.
-POSITION MAP (viewer screen-left to screen-right): 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
-
-ACTING:
-季伯达 remains composed, one measured hand gesture marking “your rules,” then lets the point sit.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
-
-TIMELINE:
-0.0–0.5s: hold the established composition; 季伯达 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.5–3.6s: 季伯达 speaks the exact Mandarin line “我只是按照你们的规矩做了一遍。” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 季伯达 remains composed, one measured hand gesture marking “your rules,” then lets the point sit. 3.6–4.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
-
-CAMERA:
-Slow 3% push-in. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 季伯达 speaks: “我只是按照你们的规矩做了一遍。”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
-```
-
-- Negative prompt:
-
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
-```
-
-- Request JSON: [`shot-requests/shot_030.json`](shot-requests/shot_030.json)
-
-## Shot 031
-
-- Speaker/dialogue: **季伯达**：怎么轮到你们，规矩就变了？
-- Wan duration: `4s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 030](frames/shot_030_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_031.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for speaking character 季伯达](references/characters/jiboda.jpg)
-- Prompt:
-
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 031 (01:33–01:37)
-
-REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 030. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role and preserve supported visual details.
-
-AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
-
-OUTPUT:
-Create one continuous 4-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
-
-COMPOSITION AND BLOCKING:
-Framing: Matching medium close-up on 季伯达; strongest direct challenge.
-Visible actors: exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person.
-ON-SCREEN CAST (EXACT, NAMED): exactly three people—柳如烟, 伊藤诚, 季伯达.
-POSITION MAP (viewer screen-left to screen-right): 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
-
-ACTING:
-季伯达’s expression hardens slightly; he asks the final question directly and holds still afterward.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
-
-TIMELINE:
-0.0–0.5s: hold the established composition; 季伯达 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.5–3.6s: 季伯达 speaks the exact Mandarin line “怎么轮到你们，规矩就变了？” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 季伯达’s expression hardens slightly; he asks the final question directly and holds still afterward. 3.6–4.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.
-
-CAMERA:
-Slow 4% push-in, ending in a firm hold. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-Only 季伯达 speaks: “怎么轮到你们，规矩就变了？”
-Use the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
-```
-
-- Negative prompt:
-
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
-```
-
-- Request JSON: [`shot-requests/shot_031.json`](shot-requests/shot_031.json)
-
-## Shot 032
-
-- Dialogue: none; post-production end card: 有些人要求的不是分寸，而是特权。
-- Wan duration: `3s`
-- Audio: disabled; external Mandarin TTS/post-production lip sync
-- Media inputs (maximum 4):
-  - `first_frame`: [literal final rendered frame of Shot 031](frames/shot_031_last_frame.jpg)
-  - `reference_image`: [shot-specific composition, blocking and camera guide](references/staging/shot_032.jpg)
-  - `reference_image`: [KTV setting, seating, furniture, lighting and empty-table continuity](references/setting/ktv-continuity-sheet.jpg)
-  - `reference_image`: [identity and wardrobe for principal character 柳如烟](references/characters/liuruyan.jpg)
-- Prompt:
-
-```
-WAN 2.6 REFERENCE-TO-VIDEO — SHOT 032 (01:37–01:40)
-
-REFERENCE MAP:
-The supplied first frame is literal final rendered frame of Shot 031. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.
-Image 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.
-Image 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.
-Image 3 is the identity and wardrobe for principal character 柳如烟. Use it only for that role and preserve supported visual details.
-
-AUDIO POLICY:
-Generate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.
-
-OUTPUT:
-Create one continuous 3-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.
-
-COMPOSITION AND BLOCKING:
-Framing: Wide ensemble bookend matching shot 001, all positions and table geography preserved.
-Visible actors: exactly six named people only—柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. No background guests, extras, duplicates, or missing people.
-ON-SCREEN CAST (EXACT, NAMED): exactly six people—柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达.
-POSITION MAP (viewer screen-left to screen-right): screen-left seating—柳如烟 at far left and 伊藤诚 immediately to her right; central sofa—闺蜜甲 at left seat, 闺蜜乙 at center seat, 闺蜜丙 at right seat; screen-right seating—季伯达 at far right facing the group.
-START-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):
-screen-left seating—柳如烟 at far left and 伊藤诚 immediately to her right; central sofa—闺蜜甲 at left seat, 闺蜜乙 at center seat, 闺蜜丙 at right seat; screen-right seating—季伯达 at far right facing the group.
-These named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.
-Set and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.
-Keep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.
-
-ACTING:
-The room falls awkwardly quiet; smiles fade, gazes shift, and no one offers an answer. End on unresolved group tension.
-Non-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.
-
-TIMELINE:
-0.0–0.4s: hold the established composition and eyelines with natural breathing. 0.4–2.7s: perform the shot-specific silent action: The room falls awkwardly quiet; smiles fade, gazes shift, and no one offers an answer. End on unresolved group tension. 2.7–3.0s: resolve the action and hold a stable final pose for the cut. No character speaks and no lip sync is generated.
-
-CAMERA:
-Very slow 2% pull-back, echoing the opening while increasing emotional distance. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-
-POST-PRODUCTION DIALOGUE GUIDE:
-No one speaks. The narrative/end-card intent is “有些人要求的不是分寸，而是特权。”, but do not render this or any other text in the generated video; add the exact end card only in post-production. Generate no audio, visible text, or subtitles; add ambience only in post-production.
-
-CONTINUITY:
-Continuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.
-```
-
-- Negative prompt:
-
-```
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI
-```
-
-- Request JSON: [`shot-requests/shot_032.json`](shot-requests/shot_032.json)

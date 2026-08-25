@@ -1,354 +1,602 @@
-[
-  {
-    "shot_id": "001",
-    "speaker": "闺蜜甲",
-    "text": "如烟，你输了！",
-    "language": "zh-CN",
-    "video_duration_seconds": 3,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "002",
-    "speaker": "闺蜜甲",
-    "text": "选真心话还是大冒险？",
-    "language": "zh-CN",
-    "video_duration_seconds": 2,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "003",
-    "speaker": "柳如烟",
-    "text": "真心话。",
-    "language": "zh-CN",
-    "video_duration_seconds": 2,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "004",
-    "speaker": "闺蜜乙",
-    "text": "那就说说，你今天穿的内裤是什么颜色？",
-    "language": "zh-CN",
-    "video_duration_seconds": 3,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "005",
-    "speaker": "伊藤诚",
-    "text": "粉红色。",
-    "language": "zh-CN",
-    "video_duration_seconds": 2,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "006",
-    "speaker": "伊藤诚",
-    "text": "如烟一直拿我当姐妹。她的内裤，我以前都帮她洗过。",
-    "language": "zh-CN",
-    "video_duration_seconds": 4,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "007",
-    "speaker": "柳如烟",
-    "text": "你胡说什么呢？",
-    "language": "zh-CN",
-    "video_duration_seconds": 2,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "008",
-    "speaker": "闺蜜甲",
-    "text": "姐夫，你可别多想。他们从小一起长大。",
-    "language": "zh-CN",
-    "video_duration_seconds": 2,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "009",
-    "speaker": "闺蜜乙",
-    "text": "就是，伊藤诚在我们眼里根本不算男人。",
-    "language": "zh-CN",
-    "video_duration_seconds": 2,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "010",
-    "speaker": "闺蜜丙",
-    "text": "他们是纯友谊，关系好才这样。",
-    "language": "zh-CN",
-    "video_duration_seconds": 2,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "011",
-    "speaker": "季伯达",
-    "text": "小伊，不是我说你。一个大男人，洗什么内裤？",
-    "language": "zh-CN",
-    "video_duration_seconds": 4,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "012",
-    "speaker": "季伯达",
-    "text": "我的内裤，都是我女闺蜜帮我洗的。你下次也让如烟替你洗。",
-    "language": "zh-CN",
-    "video_duration_seconds": 5,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "013",
-    "speaker": "柳如烟",
-    "text": "季伯达，你恶不恶心？你怎么能让别的女人给你洗内裤？",
-    "language": "zh-CN",
-    "video_duration_seconds": 5,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "014",
-    "speaker": "闺蜜甲",
-    "text": "这也太过分了吧？",
-    "language": "zh-CN",
-    "video_duration_seconds": 2,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "015",
-    "speaker": "闺蜜乙",
-    "text": "你都有女朋友了，怎么一点边界感都没有？",
-    "language": "zh-CN",
-    "video_duration_seconds": 3,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "016",
-    "speaker": "季伯达",
-    "text": "怎么了？她是我女闺蜜啊。",
-    "language": "zh-CN",
-    "video_duration_seconds": 3,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "017",
-    "speaker": "伊藤诚",
-    "text": "女闺蜜也不行。男女之间得有分寸。",
-    "language": "zh-CN",
-    "video_duration_seconds": 3,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "018",
-    "speaker": "季伯达",
-    "text": "奇怪了。刚才你说自己替柳如烟洗过内裤，你们不是也说只是姐妹吗？",
-    "language": "zh-CN",
-    "video_duration_seconds": 6,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "019",
-    "speaker": "柳如烟",
-    "text": "那不一样。",
-    "language": "zh-CN",
-    "video_duration_seconds": 2,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "020",
-    "speaker": "季伯达",
-    "text": "哪里不一样？",
-    "language": "zh-CN",
-    "video_duration_seconds": 2,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "021",
-    "speaker": "柳如烟",
-    "text": "我和伊藤诚只是纯友谊。我拿他当闺蜜，他也拿我当兄弟。",
-    "language": "zh-CN",
-    "video_duration_seconds": 5,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "022",
-    "speaker": "伊藤诚",
-    "text": "对，我们之间根本没有男女之情。",
-    "language": "zh-CN",
-    "video_duration_seconds": 3,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "023",
-    "speaker": "闺蜜甲",
-    "text": "他们从小就这样，你一个大男人别这么小气。",
-    "language": "zh-CN",
-    "video_duration_seconds": 3,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "024",
-    "speaker": "闺蜜乙",
-    "text": "如烟要是真和伊藤诚有什么，还会和你在一起吗？",
-    "language": "zh-CN",
-    "video_duration_seconds": 3,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "025",
-    "speaker": "闺蜜丙",
-    "text": "情侣之间最重要的是信任。",
-    "language": "zh-CN",
-    "video_duration_seconds": 3,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "026",
-    "speaker": "季伯达",
-    "text": "所以，伊藤诚可以紧挨着我的女朋友，可以知道她内裤的颜色，还可以替她洗——因为他们是纯友谊。",
-    "language": "zh-CN",
-    "video_duration_seconds": 6,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "027",
-    "speaker": "季伯达",
-    "text": "但我的女闺蜜替我洗内裤，就是没有分寸？",
-    "language": "zh-CN",
-    "video_duration_seconds": 4,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "028",
-    "speaker": "柳如烟",
-    "text": "季伯达！你故意的是不是？",
-    "language": "zh-CN",
-    "video_duration_seconds": 3,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "029",
-    "speaker": "季伯达",
-    "text": "怎么会？",
-    "language": "zh-CN",
-    "video_duration_seconds": 2,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "030",
-    "speaker": "季伯达",
-    "text": "我只是按照你们的规矩做了一遍。",
-    "language": "zh-CN",
-    "video_duration_seconds": 4,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "031",
-    "speaker": "季伯达",
-    "text": "怎么轮到你们，规矩就变了？",
-    "language": "zh-CN",
-    "video_duration_seconds": 4,
-    "audio_generation": "external_tts",
-    "lip_sync": "post_production_recommended",
-    "mix_notes": "Add restrained KTV ambience after dialogue; keep generated Wan video silent.",
-    "type": "dialogue"
-  },
-  {
-    "shot_id": "032",
-    "speaker": null,
-    "text": "有些人要求的不是分寸，而是特权。",
-    "language": "zh-CN",
-    "video_duration_seconds": 3,
-    "audio_generation": "none",
-    "lip_sync": "not_applicable",
-    "mix_notes": "Render this exact text as a post-production end card; generated Wan video remains silent.",
-    "type": "end_card"
-  }
-]
+{
+  "policy": "Wan 2.6 native synchronized Mandarin audio is primary for every dialogue unit. External TTS is fallback-only after failed exact-wording/speaker/sync QC. Non-dialogue units remain silent.",
+  "generation_unit_count": 21,
+  "dialogue_unit_count": 20,
+  "units": [
+    {
+      "shot_id": "001",
+      "original_shot_ids": [
+        "001"
+      ],
+      "video_duration_seconds": 3,
+      "type": "dialogue",
+      "native_wan_audio_required": true,
+      "enable_audio": true,
+      "dialogue_beats": [
+        {
+          "original_shot_id": "001",
+          "speaker": "闺蜜甲",
+          "text": "如烟，你输了！",
+          "language": "zh-CN",
+          "start_seconds": 0.3,
+          "end_seconds": 2.7,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        }
+      ],
+      "fallback_trigger": "Use only when native Wan audio fails exact-wording, speaker, or synchronization QC; replace failed native dialogue, never layer over successful native audio."
+    },
+    {
+      "shot_id": "002",
+      "original_shot_ids": [
+        "002",
+        "003",
+        "004"
+      ],
+      "video_duration_seconds": 6,
+      "type": "dialogue",
+      "native_wan_audio_required": true,
+      "enable_audio": true,
+      "dialogue_beats": [
+        {
+          "original_shot_id": "002",
+          "speaker": "闺蜜甲",
+          "text": "选真心话还是大冒险？",
+          "language": "zh-CN",
+          "start_seconds": 0.2,
+          "end_seconds": 1.8,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        },
+        {
+          "original_shot_id": "003",
+          "speaker": "柳如烟",
+          "text": "真心话。",
+          "language": "zh-CN",
+          "start_seconds": 2.1,
+          "end_seconds": 2.9,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        },
+        {
+          "original_shot_id": "004",
+          "speaker": "闺蜜乙",
+          "text": "那就说说，你今天穿的内裤是什么颜色？",
+          "language": "zh-CN",
+          "start_seconds": 3.3,
+          "end_seconds": 5.7,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        }
+      ],
+      "fallback_trigger": "Use only when native Wan audio fails exact-wording, speaker, or synchronization QC; replace failed native dialogue, never layer over successful native audio."
+    },
+    {
+      "shot_id": "003",
+      "original_shot_ids": [
+        "005",
+        "006"
+      ],
+      "video_duration_seconds": 5,
+      "type": "dialogue",
+      "native_wan_audio_required": true,
+      "enable_audio": true,
+      "dialogue_beats": [
+        {
+          "original_shot_id": "005",
+          "speaker": "伊藤诚",
+          "text": "粉红色。",
+          "language": "zh-CN",
+          "start_seconds": 0.1,
+          "end_seconds": 0.9,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        },
+        {
+          "original_shot_id": "006",
+          "speaker": "伊藤诚",
+          "text": "如烟一直拿我当姐妹。她的内裤，我以前都帮她洗过。",
+          "language": "zh-CN",
+          "start_seconds": 1.4,
+          "end_seconds": 4.6,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        }
+      ],
+      "fallback_trigger": "Use only when native Wan audio fails exact-wording, speaker, or synchronization QC; replace failed native dialogue, never layer over successful native audio."
+    },
+    {
+      "shot_id": "004",
+      "original_shot_ids": [
+        "007",
+        "008"
+      ],
+      "video_duration_seconds": 4,
+      "type": "dialogue",
+      "native_wan_audio_required": true,
+      "enable_audio": true,
+      "dialogue_beats": [
+        {
+          "original_shot_id": "007",
+          "speaker": "柳如烟",
+          "text": "你胡说什么呢？",
+          "language": "zh-CN",
+          "start_seconds": 0.2,
+          "end_seconds": 1.8,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        },
+        {
+          "original_shot_id": "008",
+          "speaker": "闺蜜甲",
+          "text": "姐夫，你可别多想。他们从小一起长大。",
+          "language": "zh-CN",
+          "start_seconds": 2.2,
+          "end_seconds": 3.8,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        }
+      ],
+      "fallback_trigger": "Use only when native Wan audio fails exact-wording, speaker, or synchronization QC; replace failed native dialogue, never layer over successful native audio."
+    },
+    {
+      "shot_id": "005",
+      "original_shot_ids": [
+        "009",
+        "010"
+      ],
+      "video_duration_seconds": 4,
+      "type": "dialogue",
+      "native_wan_audio_required": true,
+      "enable_audio": true,
+      "dialogue_beats": [
+        {
+          "original_shot_id": "009",
+          "speaker": "闺蜜乙",
+          "text": "就是，伊藤诚在我们眼里根本不算男人。",
+          "language": "zh-CN",
+          "start_seconds": 0.2,
+          "end_seconds": 1.8,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        },
+        {
+          "original_shot_id": "010",
+          "speaker": "闺蜜丙",
+          "text": "他们是纯友谊，关系好才这样。",
+          "language": "zh-CN",
+          "start_seconds": 2.2,
+          "end_seconds": 3.8,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        }
+      ],
+      "fallback_trigger": "Use only when native Wan audio fails exact-wording, speaker, or synchronization QC; replace failed native dialogue, never layer over successful native audio."
+    },
+    {
+      "shot_id": "006",
+      "original_shot_ids": [
+        "011"
+      ],
+      "video_duration_seconds": 4,
+      "type": "dialogue",
+      "native_wan_audio_required": true,
+      "enable_audio": true,
+      "dialogue_beats": [
+        {
+          "original_shot_id": "011",
+          "speaker": "季伯达",
+          "text": "小伊，不是我说你。一个大男人，洗什么内裤？",
+          "language": "zh-CN",
+          "start_seconds": 0.4,
+          "end_seconds": 3.6,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        }
+      ],
+      "fallback_trigger": "Use only when native Wan audio fails exact-wording, speaker, or synchronization QC; replace failed native dialogue, never layer over successful native audio."
+    },
+    {
+      "shot_id": "007",
+      "original_shot_ids": [
+        "012"
+      ],
+      "video_duration_seconds": 5,
+      "type": "dialogue",
+      "native_wan_audio_required": true,
+      "enable_audio": true,
+      "dialogue_beats": [
+        {
+          "original_shot_id": "012",
+          "speaker": "季伯达",
+          "text": "我的内裤，都是我女闺蜜帮我洗的。你下次也让如烟替你洗。",
+          "language": "zh-CN",
+          "start_seconds": 0.4,
+          "end_seconds": 4.6,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        }
+      ],
+      "fallback_trigger": "Use only when native Wan audio fails exact-wording, speaker, or synchronization QC; replace failed native dialogue, never layer over successful native audio."
+    },
+    {
+      "shot_id": "008",
+      "original_shot_ids": [
+        "013"
+      ],
+      "video_duration_seconds": 5,
+      "type": "dialogue",
+      "native_wan_audio_required": true,
+      "enable_audio": true,
+      "dialogue_beats": [
+        {
+          "original_shot_id": "013",
+          "speaker": "柳如烟",
+          "text": "季伯达，你恶不恶心？你怎么能让别的女人给你洗内裤？",
+          "language": "zh-CN",
+          "start_seconds": 0.4,
+          "end_seconds": 4.6,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        }
+      ],
+      "fallback_trigger": "Use only when native Wan audio fails exact-wording, speaker, or synchronization QC; replace failed native dialogue, never layer over successful native audio."
+    },
+    {
+      "shot_id": "009",
+      "original_shot_ids": [
+        "014",
+        "015"
+      ],
+      "video_duration_seconds": 5,
+      "type": "dialogue",
+      "native_wan_audio_required": true,
+      "enable_audio": true,
+      "dialogue_beats": [
+        {
+          "original_shot_id": "014",
+          "speaker": "闺蜜甲",
+          "text": "这也太过分了吧？",
+          "language": "zh-CN",
+          "start_seconds": 0.2,
+          "end_seconds": 1.8,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        },
+        {
+          "original_shot_id": "015",
+          "speaker": "闺蜜乙",
+          "text": "你都有女朋友了，怎么一点边界感都没有？",
+          "language": "zh-CN",
+          "start_seconds": 2.3,
+          "end_seconds": 4.7,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        }
+      ],
+      "fallback_trigger": "Use only when native Wan audio fails exact-wording, speaker, or synchronization QC; replace failed native dialogue, never layer over successful native audio."
+    },
+    {
+      "shot_id": "010",
+      "original_shot_ids": [
+        "016",
+        "017"
+      ],
+      "video_duration_seconds": 6,
+      "type": "dialogue",
+      "native_wan_audio_required": true,
+      "enable_audio": true,
+      "dialogue_beats": [
+        {
+          "original_shot_id": "016",
+          "speaker": "季伯达",
+          "text": "怎么了？她是我女闺蜜啊。",
+          "language": "zh-CN",
+          "start_seconds": 0.3,
+          "end_seconds": 2.7,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        },
+        {
+          "original_shot_id": "017",
+          "speaker": "伊藤诚",
+          "text": "女闺蜜也不行。男女之间得有分寸。",
+          "language": "zh-CN",
+          "start_seconds": 3.3,
+          "end_seconds": 5.7,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        }
+      ],
+      "fallback_trigger": "Use only when native Wan audio fails exact-wording, speaker, or synchronization QC; replace failed native dialogue, never layer over successful native audio."
+    },
+    {
+      "shot_id": "011",
+      "original_shot_ids": [
+        "018"
+      ],
+      "video_duration_seconds": 6,
+      "type": "dialogue",
+      "native_wan_audio_required": true,
+      "enable_audio": true,
+      "dialogue_beats": [
+        {
+          "original_shot_id": "018",
+          "speaker": "季伯达",
+          "text": "奇怪了。刚才你说自己替柳如烟洗过内裤，你们不是也说只是姐妹吗？",
+          "language": "zh-CN",
+          "start_seconds": 0.4,
+          "end_seconds": 5.6,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        }
+      ],
+      "fallback_trigger": "Use only when native Wan audio fails exact-wording, speaker, or synchronization QC; replace failed native dialogue, never layer over successful native audio."
+    },
+    {
+      "shot_id": "012",
+      "original_shot_ids": [
+        "019",
+        "020"
+      ],
+      "video_duration_seconds": 4,
+      "type": "dialogue",
+      "native_wan_audio_required": true,
+      "enable_audio": true,
+      "dialogue_beats": [
+        {
+          "original_shot_id": "019",
+          "speaker": "柳如烟",
+          "text": "那不一样。",
+          "language": "zh-CN",
+          "start_seconds": 0.2,
+          "end_seconds": 1.8,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        },
+        {
+          "original_shot_id": "020",
+          "speaker": "季伯达",
+          "text": "哪里不一样？",
+          "language": "zh-CN",
+          "start_seconds": 2.2,
+          "end_seconds": 3.8,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        }
+      ],
+      "fallback_trigger": "Use only when native Wan audio fails exact-wording, speaker, or synchronization QC; replace failed native dialogue, never layer over successful native audio."
+    },
+    {
+      "shot_id": "013",
+      "original_shot_ids": [
+        "021"
+      ],
+      "video_duration_seconds": 5,
+      "type": "dialogue",
+      "native_wan_audio_required": true,
+      "enable_audio": true,
+      "dialogue_beats": [
+        {
+          "original_shot_id": "021",
+          "speaker": "柳如烟",
+          "text": "我和伊藤诚只是纯友谊。我拿他当闺蜜，他也拿我当兄弟。",
+          "language": "zh-CN",
+          "start_seconds": 0.4,
+          "end_seconds": 4.6,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        }
+      ],
+      "fallback_trigger": "Use only when native Wan audio fails exact-wording, speaker, or synchronization QC; replace failed native dialogue, never layer over successful native audio."
+    },
+    {
+      "shot_id": "014",
+      "original_shot_ids": [
+        "022",
+        "023"
+      ],
+      "video_duration_seconds": 6,
+      "type": "dialogue",
+      "native_wan_audio_required": true,
+      "enable_audio": true,
+      "dialogue_beats": [
+        {
+          "original_shot_id": "022",
+          "speaker": "伊藤诚",
+          "text": "对，我们之间根本没有男女之情。",
+          "language": "zh-CN",
+          "start_seconds": 0.3,
+          "end_seconds": 2.7,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        },
+        {
+          "original_shot_id": "023",
+          "speaker": "闺蜜甲",
+          "text": "他们从小就这样，你一个大男人别这么小气。",
+          "language": "zh-CN",
+          "start_seconds": 3.3,
+          "end_seconds": 5.7,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        }
+      ],
+      "fallback_trigger": "Use only when native Wan audio fails exact-wording, speaker, or synchronization QC; replace failed native dialogue, never layer over successful native audio."
+    },
+    {
+      "shot_id": "015",
+      "original_shot_ids": [
+        "024",
+        "025"
+      ],
+      "video_duration_seconds": 6,
+      "type": "dialogue",
+      "native_wan_audio_required": true,
+      "enable_audio": true,
+      "dialogue_beats": [
+        {
+          "original_shot_id": "024",
+          "speaker": "闺蜜乙",
+          "text": "如烟要是真和伊藤诚有什么，还会和你在一起吗？",
+          "language": "zh-CN",
+          "start_seconds": 0.3,
+          "end_seconds": 2.7,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        },
+        {
+          "original_shot_id": "025",
+          "speaker": "闺蜜丙",
+          "text": "情侣之间最重要的是信任。",
+          "language": "zh-CN",
+          "start_seconds": 3.3,
+          "end_seconds": 5.7,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        }
+      ],
+      "fallback_trigger": "Use only when native Wan audio fails exact-wording, speaker, or synchronization QC; replace failed native dialogue, never layer over successful native audio."
+    },
+    {
+      "shot_id": "016",
+      "original_shot_ids": [
+        "026"
+      ],
+      "video_duration_seconds": 6,
+      "type": "dialogue",
+      "native_wan_audio_required": true,
+      "enable_audio": true,
+      "dialogue_beats": [
+        {
+          "original_shot_id": "026",
+          "speaker": "季伯达",
+          "text": "所以，伊藤诚可以紧挨着我的女朋友，可以知道她内裤的颜色，还可以替她洗——因为他们是纯友谊。",
+          "language": "zh-CN",
+          "start_seconds": 0.4,
+          "end_seconds": 5.6,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        }
+      ],
+      "fallback_trigger": "Use only when native Wan audio fails exact-wording, speaker, or synchronization QC; replace failed native dialogue, never layer over successful native audio."
+    },
+    {
+      "shot_id": "017",
+      "original_shot_ids": [
+        "027"
+      ],
+      "video_duration_seconds": 4,
+      "type": "dialogue",
+      "native_wan_audio_required": true,
+      "enable_audio": true,
+      "dialogue_beats": [
+        {
+          "original_shot_id": "027",
+          "speaker": "季伯达",
+          "text": "但我的女闺蜜替我洗内裤，就是没有分寸？",
+          "language": "zh-CN",
+          "start_seconds": 0.4,
+          "end_seconds": 3.6,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        }
+      ],
+      "fallback_trigger": "Use only when native Wan audio fails exact-wording, speaker, or synchronization QC; replace failed native dialogue, never layer over successful native audio."
+    },
+    {
+      "shot_id": "018",
+      "original_shot_ids": [
+        "028",
+        "029"
+      ],
+      "video_duration_seconds": 5,
+      "type": "dialogue",
+      "native_wan_audio_required": true,
+      "enable_audio": true,
+      "dialogue_beats": [
+        {
+          "original_shot_id": "028",
+          "speaker": "柳如烟",
+          "text": "季伯达！你故意的是不是？",
+          "language": "zh-CN",
+          "start_seconds": 0.3,
+          "end_seconds": 2.7,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        },
+        {
+          "original_shot_id": "029",
+          "speaker": "季伯达",
+          "text": "怎么会？",
+          "language": "zh-CN",
+          "start_seconds": 3.2,
+          "end_seconds": 4.8,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        }
+      ],
+      "fallback_trigger": "Use only when native Wan audio fails exact-wording, speaker, or synchronization QC; replace failed native dialogue, never layer over successful native audio."
+    },
+    {
+      "shot_id": "019",
+      "original_shot_ids": [
+        "030"
+      ],
+      "video_duration_seconds": 4,
+      "type": "dialogue",
+      "native_wan_audio_required": true,
+      "enable_audio": true,
+      "dialogue_beats": [
+        {
+          "original_shot_id": "030",
+          "speaker": "季伯达",
+          "text": "我只是按照你们的规矩做了一遍。",
+          "language": "zh-CN",
+          "start_seconds": 0.4,
+          "end_seconds": 3.6,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        }
+      ],
+      "fallback_trigger": "Use only when native Wan audio fails exact-wording, speaker, or synchronization QC; replace failed native dialogue, never layer over successful native audio."
+    },
+    {
+      "shot_id": "020",
+      "original_shot_ids": [
+        "031"
+      ],
+      "video_duration_seconds": 4,
+      "type": "dialogue",
+      "native_wan_audio_required": true,
+      "enable_audio": true,
+      "dialogue_beats": [
+        {
+          "original_shot_id": "031",
+          "speaker": "季伯达",
+          "text": "怎么轮到你们，规矩就变了？",
+          "language": "zh-CN",
+          "start_seconds": 0.4,
+          "end_seconds": 3.6,
+          "audio_generation": "external_tts_fallback_only",
+          "lip_sync": "fallback_post_production_required"
+        }
+      ],
+      "fallback_trigger": "Use only when native Wan audio fails exact-wording, speaker, or synchronization QC; replace failed native dialogue, never layer over successful native audio."
+    },
+    {
+      "shot_id": "021",
+      "original_shot_ids": [
+        "032"
+      ],
+      "video_duration_seconds": 3,
+      "type": "end_card",
+      "native_wan_audio_required": false,
+      "enable_audio": false,
+      "dialogue_beats": [],
+      "audio_generation": "none",
+      "end_card_text": "有些人要求的不是分寸，而是特权。",
+      "mix_notes": "No speech or generated sound. Add the exact visual end card only in post-production."
+    }
+  ]
+}
