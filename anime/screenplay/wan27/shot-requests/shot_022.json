@@ -1,0 +1,51 @@
+{
+  "model": "wan2.7-r2v-2026-06-12",
+  "input": {
+    "prompt": "WAN 2.7 REFERENCE-TO-VIDEO — SHOT 022 (01:02–01:05)\n\nREFERENCE MAP:\nThe supplied first frame is literal final rendered frame of Shot 021. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.\nImage 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.\nImage 2 is the KTV setting, lighting, furniture and spatial continuity. Use it only for that role and preserve supported visual details.\nImage 3 is the identity and wardrobe for 柳如烟. Use it only for that role and preserve supported visual details.\nImage 4 is the identity and wardrobe for 伊藤诚. Use it only for that role and preserve supported visual details.\n\nOUTPUT:\nCreate one continuous 3-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and synchronized Mandarin dialogue/audio. No cut, montage or transition.\n\nCOMPOSITION AND BLOCKING:\nFraming: Tight two-shot favoring 伊藤诚 with 柳如烟 beside him.\nVisible actors: Visible: 伊藤诚 seated immediately right of 柳如烟; 柳如烟 remains at frame left and a sofa friend may appear behind. Preserve their close seated spacing without adding contact.\nSet and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.\nKeep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.\n\nACTING:\n伊藤诚 nods and supports her claim, measured but slightly tense.\nNon-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.\n\nTIMELINE:\n0.0–0.4s: hold the established composition; 伊藤诚 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.4–2.7s: 伊藤诚 speaks the exact Mandarin line “对，我们之间根本没有男女之情。” once, with natural restrained lip sync and the shot-specific performance: 伊藤诚 nods and supports her claim, measured but slightly tense. 2.7–3.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.\n\nCAMERA:\nSlow 2% push toward 伊藤诚. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.\n\nDIALOGUE AND AUDIO:\nOnly 伊藤诚 speaks: “对，我们之间根本没有男女之情。”\nSpeak the exact Mandarin wording once with natural restrained lip sync. Do not paraphrase, shorten, expand, repeat, overlap or give it to another actor. Keep room tone subdued. Generate no visible text or subtitles.\n\nCONTINUITY:\nContinuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.",
+    "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI",
+    "media": [
+      {
+        "type": "first_frame",
+        "url": "{{previous_shot_last_frame_url}}",
+        "source_path": "frames/shot_021_last_frame.jpg",
+        "role": "literal final rendered frame of Shot 021"
+      },
+      {
+        "type": "reference_image",
+        "url": "{{asset_base_url}}/references/staging/shot_022.jpg",
+        "source_path": "references/staging/shot_022.jpg",
+        "role": "shot-specific composition, blocking and camera guide",
+        "prompt_identifier": "Image 1"
+      },
+      {
+        "type": "reference_image",
+        "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+        "source_path": "references/setting/ktv-continuity-sheet.jpg",
+        "role": "KTV setting, lighting, furniture and spatial continuity",
+        "prompt_identifier": "Image 2"
+      },
+      {
+        "type": "reference_image",
+        "url": "{{asset_base_url}}/references/characters/liuruyan.jpg",
+        "source_path": "references/characters/liuruyan.jpg",
+        "role": "identity and wardrobe for 柳如烟",
+        "prompt_identifier": "Image 3"
+      },
+      {
+        "type": "reference_image",
+        "url": "{{asset_base_url}}/references/characters/yitengcheng.jpg",
+        "source_path": "references/characters/yitengcheng.jpg",
+        "role": "identity and wardrobe for 伊藤诚",
+        "prompt_identifier": "Image 4"
+      }
+    ]
+  },
+  "parameters": {
+    "resolution": "720P",
+    "ratio": "16:9",
+    "duration": 3,
+    "prompt_extend": false,
+    "watermark": false,
+    "seed": 42
+  }
+}
