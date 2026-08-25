@@ -18,13 +18,14 @@
 - 时间：`00:00–00:03`
 - 时长：`3s`
 - 对白：闺蜜甲：如烟，你输了！
+- 说话者→对象：001 闺蜜甲→柳如烟
 - 音频：`enable_audio: true`
 - 内部硬切前原始镜号：无
 - 媒体输入（4/4）：
-  - `first_frame`: `references/staging/shot_001.jpg` — baseline opening frame with the exact complete six-person KTV composition
-  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV set, exact six-person seating, furniture, camera axis, lighting, and empty-table continuity
-  - `reference_image`: `references/characters/guimi-1.jpg` — identity and wardrobe for opening speaker 闺蜜甲
-  - `reference_image`: `references/characters/liuruyan.jpg` — identity and wardrobe for principal reactor 柳如烟
+  - `first_frame`: `references/staging/shot_001.jpg` — literal baseline opening composition with exactly six seated characters
+  - `reference_image`: `references/characters/character-reference-sheet.jpg` — consolidated six-character identity sheet with explicit 2x3 grid mapping
+  - `reference_image`: `references/setting/ktv-continuity-sheet.jpg` — KTV set, exact seating geography, empty-table state, lighting and camera-axis continuity
+  - `reference_image`: `references/characters/guimi-1.jpg` — close identity and wardrobe reference for speaking character 闺蜜甲
 - Prompt:
 
 ```text
@@ -43,7 +44,7 @@ SPEAKER–TARGET LOCK:
 SPEAKER = 闺蜜甲, the woman in the red blazer identified at bottom-left of Image 1 and reinforced by Image 3. TARGET / ADDRESSEE = 柳如烟, the woman identified at top-center of Image 1, seated at far screen-left in the first frame. 闺蜜甲 speaks directly TO 柳如烟; 柳如烟 does not speak. Before speaking, 闺蜜甲 turns her face and eyes toward 柳如烟, establishes a clear eyeline, leans forward slightly, and raises one hand. 柳如烟 looks back at 闺蜜甲 and reacts silently. Only 闺蜜甲's lips and jaw articulate words. 柳如烟, 伊藤诚, 闺蜜乙, 闺蜜丙, and 季伯达 keep closed or naturally resting mouths and must not lip-sync, whisper, answer, repeat, or mouth any part of the line. Do not transfer the voice or mouth motion to the target, the nearest face, a male character, or an off-screen source.
 
 AUDIO POLICY:
-Native audio is required because this unit contains dialogue. Generate only the exact Mandarin line specified in TIMED BEATS, synchronized exclusively to 闺蜜甲. The line is addressed to 柳如烟, but 柳如烟 remains silent. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording, speaker assignment, or sync QC; do not pre-mix TTS into a successful native-audio render.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin line specified in TIMED BEATS, synchronized exclusively to 闺蜜甲. The line is addressed to 柳如烟, but 柳如烟 remains silent. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording, speaker assignment, or sync QC; do not pre-mix TTS into a successful native-audio render. Each target/addressee stays silent during the active speaker's window and reacts silently when visible; a character assigned a separately timed later line remains silent until that later window. Only the active visible speaker articulates. Never transfer voice or lip motion to the addressee, the nearest face, another character, or an off-screen source, and never show multiple simultaneous talking mouths.
 
 OUTPUT:
 Create one 3-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
@@ -57,7 +58,7 @@ TIMED BEATS:
 Framing/staging: Wide ensemble establishing shot, eye level, preserving the full seating geography and coffee table. exactly six named people only—柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. No background guests, extras, duplicates, or missing people. Position continuity: screen-left seating—柳如烟 at far left and 伊藤诚 immediately to her right; central sofa—闺蜜甲 at left seat, 闺蜜乙 at center seat, 闺蜜丙 at right seat; screen-right seating—季伯达 at far right facing the group.
 Action/story beat: During the wide party tableau, 闺蜜甲 turns toward 柳如烟, leans forward slightly, raises one hand to claim attention, and delivers the assigned opening Mandarin line with playful excitement; 柳如烟 shifts her gaze toward her while the others quiet down and watch.
 Camera: Very slow 3% push-in with subtle parallax across the coffee table. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 0.3s–2.7s: SPEAKER 闺蜜甲 says “如烟，你输了！” exactly once TO TARGET 柳如烟. 闺蜜甲 looks directly at 柳如烟 while speaking and is the only character whose lips and jaw articulate the words. 柳如烟 looks back and reacts silently with her mouth closed. All other characters remain silent with closed or naturally resting mouths. The voice must originate from 闺蜜甲's visible performance; never assign the voice or lip movement to 柳如烟 or any other character.
+Native synchronized Mandarin audio 0.3s–2.7s: SPEAKER 闺蜜甲 says “如烟，你输了！” exactly once TO TARGET / ADDRESSEE 柳如烟. 闺蜜甲 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 柳如烟 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 闺蜜甲's visible on-screen performance; never assign its voice or lip motion to 柳如烟, the nearest face, another character, or any off-screen source.
 
 PERFORMANCE GUARDRAILS:
 Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
@@ -66,7 +67,7 @@ Dialogue belongs only to the named speaker during its exact time window. Preserv
 - Negative prompt:
 
 ```text
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI, additional males, background men, male silhouettes, waiters, patrons, reflected people, portrait mismatch, face blending, gender swap, target speaking, 柳如烟 speaking, wrong talker, voice assigned to addressee, addressee lip sync, multiple talking mouths, off-screen speaker, target speaking outside its own beat, addressee lip-sync, multiple simultaneous talking mouths
 ```
 
 - Request JSON: [`shot-requests/shot_001.json`](shot-requests/shot_001.json)
@@ -77,6 +78,7 @@ extra people, missing people, duplicated people, identity drift, face swap, ward
 - 时间：`00:03–00:09`
 - 时长：`6s`
 - 对白：闺蜜甲：选真心话还是大冒险？；柳如烟：真心话。；闺蜜乙：那就说说，你今天穿的内裤是什么颜色？
+- 说话者→对象：002 闺蜜甲→柳如烟；003 柳如烟→闺蜜甲；004 闺蜜乙→柳如烟
 - 音频：`enable_audio: true`
 - 内部硬切前原始镜号：003, 004
 - 媒体输入（4/4）：
@@ -98,8 +100,13 @@ Image 1 is the composition/blocking anchor for original shot 002. Use it only fo
 Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
 Image 3 is the composition/blocking anchor for original shot 004 and the later beat(s). Use it only for that role; the timed beat instructions control motion and cuts.
 
+SPEAKER–TARGET LOCKS:
+BEAT 1 — 0.2s–1.8s, ORIGINAL SHOT 002: SPEAKER = 闺蜜甲. TARGET / ADDRESSEE = 柳如烟. 闺蜜甲 addresses 柳如烟 and looks toward the target when composition permits. Only 闺蜜甲 articulates during this window. 柳如烟 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 闺蜜甲 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+BEAT 2 — 2.1s–2.9s, ORIGINAL SHOT 003: SPEAKER = 柳如烟. TARGET / ADDRESSEE = 闺蜜甲. 柳如烟 addresses 闺蜜甲 and looks toward the target when composition permits. Only 柳如烟 articulates during this window. 闺蜜甲 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 柳如烟 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+BEAT 3 — 3.3s–5.7s, ORIGINAL SHOT 004: SPEAKER = 闺蜜乙. TARGET / ADDRESSEE = 柳如烟. 闺蜜乙 addresses 柳如烟 and looks toward the target when composition permits. Only 闺蜜乙 articulates during this window. 柳如烟 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 闺蜜乙 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+
 AUDIO POLICY:
-Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render. Each target/addressee stays silent during the active speaker's window and reacts silently when visible; a character assigned a separately timed later line remains silent until that later window. Only the active visible speaker articulates. Never transfer voice or lip motion to the addressee, the nearest face, another character, or an off-screen source, and never show multiple simultaneous talking mouths.
 
 OUTPUT:
 Create one 6-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
@@ -112,19 +119,19 @@ TIMED BEATS:
 Framing/staging: Medium three-shot of the three girlfriends across the sofa; 闺蜜甲 is the visual lead. exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap. Position continuity: 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
 Action/story beat: 闺蜜甲 remains leaning forward after announcing the loss, keeps her attention on 柳如烟, and asks the assigned truth-or-dare question with playful excitement; 闺蜜乙 turns to listen and 闺蜜丙 relaxes with empty hands.
 Camera: Gentle 2% push-in toward 闺蜜甲; no pan. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 0.2s–1.8s: only 闺蜜甲 says “选真心话还是大冒险？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 0.2s–1.8s: SPEAKER 闺蜜甲 says “选真心话还是大冒险？” exactly once TO TARGET / ADDRESSEE 柳如烟. 闺蜜甲 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 柳如烟 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 闺蜜甲's visible on-screen performance; never assign its voice or lip motion to 柳如烟, the nearest face, another character, or any off-screen source.
 
 2.0s–3.0s — ORIGINAL SHOT 003 — HARD CUT AT THIS EXACT BOUNDARY.
 Framing/staging: Tight medium close-up on 柳如烟 at frame left; 伊藤诚 remains partially visible beside/behind her. exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
 Action/story beat: 柳如烟 answers promptly and evenly, a tiny nod and confident eye contact.
 Camera: Near-locked shot with a tiny 1% push-in. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 2.1s–2.9s: only 柳如烟 says “真心话。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 2.1s–2.9s: SPEAKER 柳如烟 says “真心话。” exactly once TO TARGET / ADDRESSEE 闺蜜甲. 柳如烟 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 闺蜜甲 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 柳如烟's visible on-screen performance; never assign its voice or lip motion to 闺蜜甲, the nearest face, another character, or any off-screen source.
 
 3.0s–6.0s — ORIGINAL SHOT 004 — HARD CUT AT THIS EXACT BOUNDARY.
 Framing/staging: Medium three-shot of the girlfriends; center emphasis on 闺蜜乙. exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap. Position continuity: 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
 Action/story beat: 闺蜜乙 taps/indicates the table lightly and teases; 闺蜜甲 turns toward her; 闺蜜丙 watches 柳如烟.
 Camera: Slow 3% push toward 闺蜜乙; keep all three faces stable. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 3.3s–5.7s: only 闺蜜乙 says “那就说说，你今天穿的内裤是什么颜色？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 3.3s–5.7s: SPEAKER 闺蜜乙 says “那就说说，你今天穿的内裤是什么颜色？” exactly once TO TARGET / ADDRESSEE 柳如烟. 闺蜜乙 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 柳如烟 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 闺蜜乙's visible on-screen performance; never assign its voice or lip motion to 柳如烟, the nearest face, another character, or any off-screen source.
 
 PERFORMANCE GUARDRAILS:
 Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
@@ -133,7 +140,7 @@ Dialogue belongs only to the named speaker during its exact time window. Preserv
 - Negative prompt:
 
 ```text
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI, wrong talker, target speaking outside its own beat, voice assigned to addressee, addressee lip-sync, multiple simultaneous talking mouths, off-screen speaker
 ```
 
 - Request JSON: [`shot-requests/shot_002.json`](shot-requests/shot_002.json)
@@ -144,6 +151,7 @@ extra people, missing people, duplicated people, identity drift, face swap, ward
 - 时间：`00:09–00:14`
 - 时长：`5s`
 - 对白：伊藤诚：粉红色。；伊藤诚：如烟一直拿我当姐妹。她的内裤，我以前都帮她洗过。
+- 说话者→对象：005 伊藤诚→闺蜜乙；006 伊藤诚→在场众人（柳如烟、闺蜜甲、闺蜜乙、闺蜜丙、季伯达）
 - 音频：`enable_audio: true`
 - 内部硬切前原始镜号：无
 - 媒体输入（4/4）：
@@ -165,8 +173,12 @@ Image 1 is the composition/blocking anchor for original shot 005. Use it only fo
 Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
 Image 3 is the identity and wardrobe for speaking character 伊藤诚. Use it only for that role; the timed beat instructions control motion and cuts.
 
+SPEAKER–TARGET LOCKS:
+BEAT 1 — 0.1s–0.9s, ORIGINAL SHOT 005: SPEAKER = 伊藤诚. TARGET / ADDRESSEE = 闺蜜乙. 伊藤诚 addresses 闺蜜乙 and looks toward the target when composition permits. Only 伊藤诚 articulates during this window. 闺蜜乙 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 伊藤诚 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+BEAT 2 — 1.4s–4.6s, ORIGINAL SHOT 006: SPEAKER = 伊藤诚. TARGET / ADDRESSEE = 在场众人（柳如烟、闺蜜甲、闺蜜乙、闺蜜丙、季伯达）. 伊藤诚 addresses 在场众人（柳如烟、闺蜜甲、闺蜜乙、闺蜜丙、季伯达） and looks toward the target when composition permits. Only 伊藤诚 articulates during this window. 在场众人（柳如烟、闺蜜甲、闺蜜乙、闺蜜丙、季伯达） remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 伊藤诚 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+
 AUDIO POLICY:
-Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render. Each target/addressee stays silent during the active speaker's window and reacts silently when visible; a character assigned a separately timed later line remains silent until that later window. Only the active visible speaker articulates. Never transfer voice or lip motion to the addressee, the nearest face, another character, or an off-screen source, and never show multiple simultaneous talking mouths.
 
 OUTPUT:
 Create one 5-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
@@ -179,13 +191,13 @@ TIMED BEATS:
 Framing/staging: Tight two-shot favoring 伊藤诚 beside 柳如烟; keep 柳如烟 visible for reaction. exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
 Action/story beat: 伊藤诚 answers too quickly with casual certainty; 柳如烟 registers immediate discomfort.
 Camera: Near-locked 1% push-in for comic timing. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 0.1s–0.9s: only 伊藤诚 says “粉红色。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 0.1s–0.9s: SPEAKER 伊藤诚 says “粉红色。” exactly once TO TARGET / ADDRESSEE 闺蜜乙. 伊藤诚 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 闺蜜乙 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 伊藤诚's visible on-screen performance; never assign its voice or lip motion to 闺蜜乙, the nearest face, another character, or any off-screen source.
 
 1.0s–5.0s — ORIGINAL SHOT 006 — CONTINUE IN THE SAME SHOT; NO CUT.
 Framing/staging: Tight two-shot favoring 伊藤诚 beside 柳如烟, with 闺蜜甲 softly present in deep background. exactly three named people only—柳如烟, 伊藤诚, and 闺蜜甲. No other friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right; 闺蜜甲 remains in her established central-sofa seat in deep background.
 Action/story beat: 伊藤诚 continues matter-of-factly with a small explanatory hand gesture; 柳如烟 stiffens while 闺蜜甲 watches from deep background.
 Camera: Slow 2% push-in, no reframing. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 1.4s–4.6s: only 伊藤诚 says “如烟一直拿我当姐妹。她的内裤，我以前都帮她洗过。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 1.4s–4.6s: SPEAKER 伊藤诚 says “如烟一直拿我当姐妹。她的内裤，我以前都帮她洗过。” exactly once TO TARGET / ADDRESSEE 在场众人（柳如烟、闺蜜甲、闺蜜乙、闺蜜丙、季伯达）. 伊藤诚 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 在场众人（柳如烟、闺蜜甲、闺蜜乙、闺蜜丙、季伯达） remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 伊藤诚's visible on-screen performance; never assign its voice or lip motion to 在场众人（柳如烟、闺蜜甲、闺蜜乙、闺蜜丙、季伯达）, the nearest face, another character, or any off-screen source.
 
 PERFORMANCE GUARDRAILS:
 Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
@@ -194,7 +206,7 @@ Dialogue belongs only to the named speaker during its exact time window. Preserv
 - Negative prompt:
 
 ```text
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI, wrong talker, target speaking outside its own beat, voice assigned to addressee, addressee lip-sync, multiple simultaneous talking mouths, off-screen speaker
 ```
 
 - Request JSON: [`shot-requests/shot_003.json`](shot-requests/shot_003.json)
@@ -205,6 +217,7 @@ extra people, missing people, duplicated people, identity drift, face swap, ward
 - 时间：`00:14–00:18`
 - 时长：`4s`
 - 对白：柳如烟：你胡说什么呢？；闺蜜甲：姐夫，你可别多想。他们从小一起长大。
+- 说话者→对象：007 柳如烟→伊藤诚；008 闺蜜甲→季伯达
 - 音频：`enable_audio: true`
 - 内部硬切前原始镜号：008
 - 媒体输入（4/4）：
@@ -226,8 +239,12 @@ Image 1 is the composition/blocking anchor for original shot 007. Use it only fo
 Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
 Image 3 is the composition/blocking anchor for original shot 008 and the later beat(s). Use it only for that role; the timed beat instructions control motion and cuts.
 
+SPEAKER–TARGET LOCKS:
+BEAT 1 — 0.2s–1.8s, ORIGINAL SHOT 007: SPEAKER = 柳如烟. TARGET / ADDRESSEE = 伊藤诚. 柳如烟 addresses 伊藤诚 and looks toward the target when composition permits. Only 柳如烟 articulates during this window. 伊藤诚 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 柳如烟 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+BEAT 2 — 2.2s–3.8s, ORIGINAL SHOT 008: SPEAKER = 闺蜜甲. TARGET / ADDRESSEE = 季伯达. 闺蜜甲 addresses 季伯达 and looks toward the target when composition permits. Only 闺蜜甲 articulates during this window. 季伯达 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 闺蜜甲 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+
 AUDIO POLICY:
-Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render. Each target/addressee stays silent during the active speaker's window and reacts silently when visible; a character assigned a separately timed later line remains silent until that later window. Only the active visible speaker articulates. Never transfer voice or lip motion to the addressee, the nearest face, another character, or an off-screen source, and never show multiple simultaneous talking mouths.
 
 OUTPUT:
 Create one 4-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
@@ -240,13 +257,13 @@ TIMED BEATS:
 Framing/staging: Tight medium close-up on 柳如烟, with 伊藤诚 partly visible beside her. exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
 Action/story beat: 柳如烟 snaps her gaze toward 伊藤诚, brows tightening; brief embarrassed protest.
 Camera: Brief 2% push-in synchronized to the protest. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 0.2s–1.8s: only 柳如烟 says “你胡说什么呢？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 0.2s–1.8s: SPEAKER 柳如烟 says “你胡说什么呢？” exactly once TO TARGET / ADDRESSEE 伊藤诚. 柳如烟 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 伊藤诚 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 柳如烟's visible on-screen performance; never assign its voice or lip motion to 伊藤诚, the nearest face, another character, or any off-screen source.
 
 2.0s–4.0s — ORIGINAL SHOT 008 — HARD CUT AT THIS EXACT BOUNDARY.
 Framing/staging: Medium three-shot of the girlfriends; 闺蜜甲 leads from sofa left. exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap. Position continuity: 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
 Action/story beat: 闺蜜甲 raises a calming palm toward 季伯达 and explains earnestly; the other two listen.
 Camera: Gentle 2% push toward 闺蜜甲. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 2.2s–3.8s: only 闺蜜甲 says “姐夫，你可别多想。他们从小一起长大。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 2.2s–3.8s: SPEAKER 闺蜜甲 says “姐夫，你可别多想。他们从小一起长大。” exactly once TO TARGET / ADDRESSEE 季伯达. 闺蜜甲 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 季伯达 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 闺蜜甲's visible on-screen performance; never assign its voice or lip motion to 季伯达, the nearest face, another character, or any off-screen source.
 
 PERFORMANCE GUARDRAILS:
 Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
@@ -255,7 +272,7 @@ Dialogue belongs only to the named speaker during its exact time window. Preserv
 - Negative prompt:
 
 ```text
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI, wrong talker, target speaking outside its own beat, voice assigned to addressee, addressee lip-sync, multiple simultaneous talking mouths, off-screen speaker
 ```
 
 - Request JSON: [`shot-requests/shot_004.json`](shot-requests/shot_004.json)
@@ -266,6 +283,7 @@ extra people, missing people, duplicated people, identity drift, face swap, ward
 - 时间：`00:18–00:22`
 - 时长：`4s`
 - 对白：闺蜜乙：就是，伊藤诚在我们眼里根本不算男人。；闺蜜丙：他们是纯友谊，关系好才这样。
+- 说话者→对象：009 闺蜜乙→季伯达；010 闺蜜丙→季伯达
 - 音频：`enable_audio: true`
 - 内部硬切前原始镜号：无
 - 媒体输入（4/4）：
@@ -287,8 +305,12 @@ Image 1 is the composition/blocking anchor for original shot 009. Use it only fo
 Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
 Image 3 is the composition/blocking anchor for original shot 010 and the later beat(s). Use it only for that role; the timed beat instructions control motion and cuts.
 
+SPEAKER–TARGET LOCKS:
+BEAT 1 — 0.2s–1.8s, ORIGINAL SHOT 009: SPEAKER = 闺蜜乙. TARGET / ADDRESSEE = 季伯达. 闺蜜乙 addresses 季伯达 and looks toward the target when composition permits. Only 闺蜜乙 articulates during this window. 季伯达 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 闺蜜乙 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+BEAT 2 — 2.2s–3.8s, ORIGINAL SHOT 010: SPEAKER = 闺蜜丙. TARGET / ADDRESSEE = 季伯达. 闺蜜丙 addresses 季伯达 and looks toward the target when composition permits. Only 闺蜜丙 articulates during this window. 季伯达 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 闺蜜丙 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+
 AUDIO POLICY:
-Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render. Each target/addressee stays silent during the active speaker's window and reacts silently when visible; a character assigned a separately timed later line remains silent until that later window. Only the active visible speaker articulates. Never transfer voice or lip motion to the addressee, the nearest face, another character, or an off-screen source, and never show multiple simultaneous talking mouths.
 
 OUTPUT:
 Create one 4-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
@@ -301,13 +323,13 @@ TIMED BEATS:
 Framing/staging: Medium three-shot of the girlfriends; 闺蜜乙 leads from sofa center. exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap. Position continuity: 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
 Action/story beat: 闺蜜乙 turns toward 季伯达 and adds reassurance; 闺蜜甲 settles back; 闺蜜丙 gives a restrained nod.
 Camera: Tiny lateral ease from left to center, ending on 闺蜜乙. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 0.2s–1.8s: only 闺蜜乙 says “就是，伊藤诚在我们眼里根本不算男人。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 0.2s–1.8s: SPEAKER 闺蜜乙 says “就是，伊藤诚在我们眼里根本不算男人。” exactly once TO TARGET / ADDRESSEE 季伯达. 闺蜜乙 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 季伯达 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 闺蜜乙's visible on-screen performance; never assign its voice or lip motion to 季伯达, the nearest face, another character, or any off-screen source.
 
 2.0s–4.0s — ORIGINAL SHOT 010 — CONTINUE IN THE SAME SHOT; NO CUT.
 Framing/staging: Medium three-shot of the girlfriends; 闺蜜丙 leads from sofa right. exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap. Position continuity: 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
 Action/story beat: 闺蜜丙 lowers her hand and concludes calmly; the other two turn to her.
 Camera: Tiny ease right to favor 闺蜜丙. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 2.2s–3.8s: only 闺蜜丙 says “他们是纯友谊，关系好才这样。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 2.2s–3.8s: SPEAKER 闺蜜丙 says “他们是纯友谊，关系好才这样。” exactly once TO TARGET / ADDRESSEE 季伯达. 闺蜜丙 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 季伯达 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 闺蜜丙's visible on-screen performance; never assign its voice or lip motion to 季伯达, the nearest face, another character, or any off-screen source.
 
 PERFORMANCE GUARDRAILS:
 Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
@@ -316,7 +338,7 @@ Dialogue belongs only to the named speaker during its exact time window. Preserv
 - Negative prompt:
 
 ```text
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI, wrong talker, target speaking outside its own beat, voice assigned to addressee, addressee lip-sync, multiple simultaneous talking mouths, off-screen speaker
 ```
 
 - Request JSON: [`shot-requests/shot_005.json`](shot-requests/shot_005.json)
@@ -327,6 +349,7 @@ extra people, missing people, duplicated people, identity drift, face swap, ward
 - 时间：`00:22–00:26`
 - 时长：`4s`
 - 对白：季伯达：小伊，不是我说你。一个大男人，洗什么内裤？
+- 说话者→对象：011 季伯达→伊藤诚
 - 音频：`enable_audio: true`
 - 内部硬切前原始镜号：无
 - 媒体输入（4/4）：
@@ -348,8 +371,11 @@ Image 1 is the composition/blocking anchor for original shot 011. Use it only fo
 Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
 Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role; the timed beat instructions control motion and cuts.
 
+SPEAKER–TARGET LOCKS:
+BEAT 1 — 0.4s–3.6s, ORIGINAL SHOT 011: SPEAKER = 季伯达. TARGET / ADDRESSEE = 伊藤诚. 季伯达 addresses 伊藤诚 and looks toward the target when composition permits. Only 季伯达 articulates during this window. 伊藤诚 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 季伯达 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+
 AUDIO POLICY:
-Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render. Each target/addressee stays silent during the active speaker's window and reacts silently when visible; a character assigned a separately timed later line remains silent until that later window. Only the active visible speaker articulates. Never transfer voice or lip motion to the addressee, the nearest face, another character, or an off-screen source, and never show multiple simultaneous talking mouths.
 
 OUTPUT:
 Create one 4-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
@@ -362,7 +388,7 @@ TIMED BEATS:
 Framing/staging: Over-shoulder/medium close-up favoring 季伯达 at the right foreground, facing left toward 伊藤诚. exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
 Action/story beat: 季伯达 begins controlled and faintly incredulous, looking toward 伊藤诚; one restrained open-palm gesture.
 Camera: Slow 3% push-in; stable eyeline. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 0.4s–3.6s: only 季伯达 says “小伊，不是我说你。一个大男人，洗什么内裤？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 0.4s–3.6s: SPEAKER 季伯达 says “小伊，不是我说你。一个大男人，洗什么内裤？” exactly once TO TARGET / ADDRESSEE 伊藤诚. 季伯达 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 伊藤诚 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 季伯达's visible on-screen performance; never assign its voice or lip motion to 伊藤诚, the nearest face, another character, or any off-screen source.
 
 PERFORMANCE GUARDRAILS:
 Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
@@ -371,7 +397,7 @@ Dialogue belongs only to the named speaker during its exact time window. Preserv
 - Negative prompt:
 
 ```text
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI, wrong talker, target speaking outside its own beat, voice assigned to addressee, addressee lip-sync, multiple simultaneous talking mouths, off-screen speaker
 ```
 
 - Request JSON: [`shot-requests/shot_006.json`](shot-requests/shot_006.json)
@@ -382,6 +408,7 @@ extra people, missing people, duplicated people, identity drift, face swap, ward
 - 时间：`00:26–00:31`
 - 时长：`5s`
 - 对白：季伯达：我的内裤，都是我女闺蜜帮我洗的。你下次也让如烟替你洗。
+- 说话者→对象：012 季伯达→伊藤诚
 - 音频：`enable_audio: true`
 - 内部硬切前原始镜号：无
 - 媒体输入（4/4）：
@@ -403,8 +430,11 @@ Image 1 is the composition/blocking anchor for original shot 012. Use it only fo
 Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
 Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role; the timed beat instructions control motion and cuts.
 
+SPEAKER–TARGET LOCKS:
+BEAT 1 — 0.4s–4.6s, ORIGINAL SHOT 012: SPEAKER = 季伯达. TARGET / ADDRESSEE = 伊藤诚. 季伯达 addresses 伊藤诚 and looks toward the target when composition permits. Only 季伯达 articulates during this window. 伊藤诚 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 季伯达 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+
 AUDIO POLICY:
-Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render. Each target/addressee stays silent during the active speaker's window and reacts silently when visible; a character assigned a separately timed later line remains silent until that later window. Only the active visible speaker articulates. Never transfer voice or lip motion to the addressee, the nearest face, another character, or an off-screen source, and never show multiple simultaneous talking mouths.
 
 OUTPUT:
 Create one 5-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
@@ -417,7 +447,7 @@ TIMED BEATS:
 Framing/staging: Matching medium close-up on 季伯达 from the same axis. exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
 Action/story beat: 季伯达 delivers the mirror example with deliberate calm, then subtly points the logic back toward 柳如烟.
 Camera: Slow 3% push-in, matching shot 011 axis. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 0.4s–4.6s: only 季伯达 says “我的内裤，都是我女闺蜜帮我洗的。你下次也让如烟替你洗。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 0.4s–4.6s: SPEAKER 季伯达 says “我的内裤，都是我女闺蜜帮我洗的。你下次也让如烟替你洗。” exactly once TO TARGET / ADDRESSEE 伊藤诚. 季伯达 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 伊藤诚 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 季伯达's visible on-screen performance; never assign its voice or lip motion to 伊藤诚, the nearest face, another character, or any off-screen source.
 
 PERFORMANCE GUARDRAILS:
 Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
@@ -426,7 +456,7 @@ Dialogue belongs only to the named speaker during its exact time window. Preserv
 - Negative prompt:
 
 ```text
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI, wrong talker, target speaking outside its own beat, voice assigned to addressee, addressee lip-sync, multiple simultaneous talking mouths, off-screen speaker
 ```
 
 - Request JSON: [`shot-requests/shot_007.json`](shot-requests/shot_007.json)
@@ -437,6 +467,7 @@ extra people, missing people, duplicated people, identity drift, face swap, ward
 - 时间：`00:31–00:36`
 - 时长：`5s`
 - 对白：柳如烟：季伯达，你恶不恶心？你怎么能让别的女人给你洗内裤？
+- 说话者→对象：013 柳如烟→季伯达
 - 音频：`enable_audio: true`
 - 内部硬切前原始镜号：无
 - 媒体输入（4/4）：
@@ -458,8 +489,11 @@ Image 1 is the composition/blocking anchor for original shot 013. Use it only fo
 Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
 Image 3 is the identity and wardrobe for speaking character 柳如烟. Use it only for that role; the timed beat instructions control motion and cuts.
 
+SPEAKER–TARGET LOCKS:
+BEAT 1 — 0.4s–4.6s, ORIGINAL SHOT 013: SPEAKER = 柳如烟. TARGET / ADDRESSEE = 季伯达. 柳如烟 addresses 季伯达 and looks toward the target when composition permits. Only 柳如烟 articulates during this window. 季伯达 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 柳如烟 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+
 AUDIO POLICY:
-Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render. Each target/addressee stays silent during the active speaker's window and reacts silently when visible; a character assigned a separately timed later line remains silent until that later window. Only the active visible speaker articulates. Never transfer voice or lip motion to the addressee, the nearest face, another character, or an off-screen source, and never show multiple simultaneous talking mouths.
 
 OUTPUT:
 Create one 5-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
@@ -472,7 +506,7 @@ TIMED BEATS:
 Framing/staging: Tight medium close-up on 柳如烟, 伊藤诚 partly visible beside her. exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
 Action/story beat: 柳如烟 recoils slightly, anger and disgust rising; she turns sharply toward 季伯达 and emphasizes the accusation.
 Camera: Controlled 3% push-in as anger rises. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 0.4s–4.6s: only 柳如烟 says “季伯达，你恶不恶心？你怎么能让别的女人给你洗内裤？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 0.4s–4.6s: SPEAKER 柳如烟 says “季伯达，你恶不恶心？你怎么能让别的女人给你洗内裤？” exactly once TO TARGET / ADDRESSEE 季伯达. 柳如烟 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 季伯达 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 柳如烟's visible on-screen performance; never assign its voice or lip motion to 季伯达, the nearest face, another character, or any off-screen source.
 
 PERFORMANCE GUARDRAILS:
 Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
@@ -481,7 +515,7 @@ Dialogue belongs only to the named speaker during its exact time window. Preserv
 - Negative prompt:
 
 ```text
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI, wrong talker, target speaking outside its own beat, voice assigned to addressee, addressee lip-sync, multiple simultaneous talking mouths, off-screen speaker
 ```
 
 - Request JSON: [`shot-requests/shot_008.json`](shot-requests/shot_008.json)
@@ -492,6 +526,7 @@ extra people, missing people, duplicated people, identity drift, face swap, ward
 - 时间：`00:36–00:41`
 - 时长：`5s`
 - 对白：闺蜜甲：这也太过分了吧？；闺蜜乙：你都有女朋友了，怎么一点边界感都没有？
+- 说话者→对象：014 闺蜜甲→季伯达；015 闺蜜乙→季伯达
 - 音频：`enable_audio: true`
 - 内部硬切前原始镜号：无
 - 媒体输入（4/4）：
@@ -513,8 +548,12 @@ Image 1 is the composition/blocking anchor for original shot 014. Use it only fo
 Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
 Image 3 is the composition/blocking anchor for original shot 015 and the later beat(s). Use it only for that role; the timed beat instructions control motion and cuts.
 
+SPEAKER–TARGET LOCKS:
+BEAT 1 — 0.2s–1.8s, ORIGINAL SHOT 014: SPEAKER = 闺蜜甲. TARGET / ADDRESSEE = 季伯达. 闺蜜甲 addresses 季伯达 and looks toward the target when composition permits. Only 闺蜜甲 articulates during this window. 季伯达 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 闺蜜甲 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+BEAT 2 — 2.3s–4.7s, ORIGINAL SHOT 015: SPEAKER = 闺蜜乙. TARGET / ADDRESSEE = 季伯达. 闺蜜乙 addresses 季伯达 and looks toward the target when composition permits. Only 闺蜜乙 articulates during this window. 季伯达 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 闺蜜乙 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+
 AUDIO POLICY:
-Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render. Each target/addressee stays silent during the active speaker's window and reacts silently when visible; a character assigned a separately timed later line remains silent until that later window. Only the active visible speaker articulates. Never transfer voice or lip motion to the addressee, the nearest face, another character, or an off-screen source, and never show multiple simultaneous talking mouths.
 
 OUTPUT:
 Create one 5-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
@@ -527,13 +566,13 @@ TIMED BEATS:
 Framing/staging: Medium three-shot of the girlfriends, favoring 闺蜜甲 at left. exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap. Position continuity: 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
 Action/story beat: 闺蜜甲 leans forward with a frown and challenges him; 闺蜜乙 watches his reaction; 闺蜜丙 raises one brow.
 Camera: Gentle 2% push toward 闺蜜甲. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 0.2s–1.8s: only 闺蜜甲 says “这也太过分了吧？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 0.2s–1.8s: SPEAKER 闺蜜甲 says “这也太过分了吧？” exactly once TO TARGET / ADDRESSEE 季伯达. 闺蜜甲 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 季伯达 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 闺蜜甲's visible on-screen performance; never assign its voice or lip motion to 季伯达, the nearest face, another character, or any off-screen source.
 
 2.0s–5.0s — ORIGINAL SHOT 015 — CONTINUE IN THE SAME SHOT; NO CUT.
 Framing/staging: Medium three-shot of the girlfriends, favoring 闺蜜乙 at center. exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap. Position continuity: 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
 Action/story beat: 闺蜜乙 sits upright and stresses “边界感”; 闺蜜甲 nods once; 闺蜜丙 shows agreement.
 Camera: Slow 3% push toward 闺蜜乙. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 2.3s–4.7s: only 闺蜜乙 says “你都有女朋友了，怎么一点边界感都没有？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 2.3s–4.7s: SPEAKER 闺蜜乙 says “你都有女朋友了，怎么一点边界感都没有？” exactly once TO TARGET / ADDRESSEE 季伯达. 闺蜜乙 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 季伯达 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 闺蜜乙's visible on-screen performance; never assign its voice or lip motion to 季伯达, the nearest face, another character, or any off-screen source.
 
 PERFORMANCE GUARDRAILS:
 Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
@@ -542,7 +581,7 @@ Dialogue belongs only to the named speaker during its exact time window. Preserv
 - Negative prompt:
 
 ```text
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI, wrong talker, target speaking outside its own beat, voice assigned to addressee, addressee lip-sync, multiple simultaneous talking mouths, off-screen speaker
 ```
 
 - Request JSON: [`shot-requests/shot_009.json`](shot-requests/shot_009.json)
@@ -553,6 +592,7 @@ extra people, missing people, duplicated people, identity drift, face swap, ward
 - 时间：`00:41–00:47`
 - 时长：`6s`
 - 对白：季伯达：怎么了？她是我女闺蜜啊。；伊藤诚：女闺蜜也不行。男女之间得有分寸。
+- 说话者→对象：016 季伯达→柳如烟、闺蜜甲、闺蜜乙、闺蜜丙；017 伊藤诚→季伯达
 - 音频：`enable_audio: true`
 - 内部硬切前原始镜号：017
 - 媒体输入（4/4）：
@@ -574,8 +614,12 @@ Image 1 is the composition/blocking anchor for original shot 016. Use it only fo
 Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
 Image 3 is the composition/blocking anchor for original shot 017 and the later beat(s). Use it only for that role; the timed beat instructions control motion and cuts.
 
+SPEAKER–TARGET LOCKS:
+BEAT 1 — 0.3s–2.7s, ORIGINAL SHOT 016: SPEAKER = 季伯达. TARGET / ADDRESSEE = 柳如烟、闺蜜甲、闺蜜乙、闺蜜丙. 季伯达 addresses 柳如烟、闺蜜甲、闺蜜乙、闺蜜丙 and looks toward the target when composition permits. Only 季伯达 articulates during this window. 柳如烟、闺蜜甲、闺蜜乙、闺蜜丙 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 季伯达 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+BEAT 2 — 3.3s–5.7s, ORIGINAL SHOT 017: SPEAKER = 伊藤诚. TARGET / ADDRESSEE = 季伯达. 伊藤诚 addresses 季伯达 and looks toward the target when composition permits. Only 伊藤诚 articulates during this window. 季伯达 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 伊藤诚 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+
 AUDIO POLICY:
-Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render. Each target/addressee stays silent during the active speaker's window and reacts silently when visible; a character assigned a separately timed later line remains silent until that later window. Only the active visible speaker articulates. Never transfer voice or lip motion to the addressee, the nearest face, another character, or an off-screen source, and never show multiple simultaneous talking mouths.
 
 OUTPUT:
 Create one 6-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
@@ -588,13 +632,13 @@ TIMED BEATS:
 Framing/staging: Matching medium close-up on 季伯达 at right foreground. exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
 Action/story beat: 季伯达 gives a mild shrug and repeats their premise without losing composure.
 Camera: Near-locked shot, tiny 2% pull-back after the shrug. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 0.3s–2.7s: only 季伯达 says “怎么了？她是我女闺蜜啊。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 0.3s–2.7s: SPEAKER 季伯达 says “怎么了？她是我女闺蜜啊。” exactly once TO TARGET / ADDRESSEE 柳如烟、闺蜜甲、闺蜜乙、闺蜜丙. 季伯达 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 柳如烟、闺蜜甲、闺蜜乙、闺蜜丙 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 季伯达's visible on-screen performance; never assign its voice or lip motion to 柳如烟、闺蜜甲、闺蜜乙、闺蜜丙, the nearest face, another character, or any off-screen source.
 
 3.0s–6.0s — ORIGINAL SHOT 017 — HARD CUT AT THIS EXACT BOUNDARY.
 Framing/staging: Tight two-shot favoring 伊藤诚 beside 柳如烟. exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
 Action/story beat: 伊藤诚 turns serious, gives a small head shake, and lectures about boundaries; 柳如烟 watches.
 Camera: Slow 2% push-in toward 伊藤诚. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 3.3s–5.7s: only 伊藤诚 says “女闺蜜也不行。男女之间得有分寸。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 3.3s–5.7s: SPEAKER 伊藤诚 says “女闺蜜也不行。男女之间得有分寸。” exactly once TO TARGET / ADDRESSEE 季伯达. 伊藤诚 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 季伯达 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 伊藤诚's visible on-screen performance; never assign its voice or lip motion to 季伯达, the nearest face, another character, or any off-screen source.
 
 PERFORMANCE GUARDRAILS:
 Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
@@ -603,7 +647,7 @@ Dialogue belongs only to the named speaker during its exact time window. Preserv
 - Negative prompt:
 
 ```text
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI, wrong talker, target speaking outside its own beat, voice assigned to addressee, addressee lip-sync, multiple simultaneous talking mouths, off-screen speaker
 ```
 
 - Request JSON: [`shot-requests/shot_010.json`](shot-requests/shot_010.json)
@@ -614,6 +658,7 @@ extra people, missing people, duplicated people, identity drift, face swap, ward
 - 时间：`00:47–00:53`
 - 时长：`6s`
 - 对白：季伯达：奇怪了。刚才你说自己替柳如烟洗过内裤，你们不是也说只是姐妹吗？
+- 说话者→对象：018 季伯达→伊藤诚（主要）及柳如烟、闺蜜甲、闺蜜乙、闺蜜丙
 - 音频：`enable_audio: true`
 - 内部硬切前原始镜号：无
 - 媒体输入（4/4）：
@@ -635,8 +680,11 @@ Image 1 is the composition/blocking anchor for original shot 018. Use it only fo
 Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
 Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role; the timed beat instructions control motion and cuts.
 
+SPEAKER–TARGET LOCKS:
+BEAT 1 — 0.4s–5.6s, ORIGINAL SHOT 018: SPEAKER = 季伯达. TARGET / ADDRESSEE = 伊藤诚（主要）及柳如烟、闺蜜甲、闺蜜乙、闺蜜丙. 季伯达 addresses 伊藤诚（主要）及柳如烟、闺蜜甲、闺蜜乙、闺蜜丙 and looks toward the target when composition permits. Only 季伯达 articulates during this window. 伊藤诚（主要）及柳如烟、闺蜜甲、闺蜜乙、闺蜜丙 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 季伯达 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+
 AUDIO POLICY:
-Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render. Each target/addressee stays silent during the active speaker's window and reacts silently when visible; a character assigned a separately timed later line remains silent until that later window. Only the active visible speaker articulates. Never transfer voice or lip motion to the addressee, the nearest face, another character, or an off-screen source, and never show multiple simultaneous talking mouths.
 
 OUTPUT:
 Create one 6-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
@@ -649,7 +697,7 @@ TIMED BEATS:
 Framing/staging: Medium close-up on 季伯达, same right-side axis. exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
 Action/story beat: 季伯达 calmly reconstructs the contradiction, gaze moving from 伊藤诚 to the group; gestures stay economical.
 Camera: Sustained 4% push-in over the full line. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 0.4s–5.6s: only 季伯达 says “奇怪了。刚才你说自己替柳如烟洗过内裤，你们不是也说只是姐妹吗？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 0.4s–5.6s: SPEAKER 季伯达 says “奇怪了。刚才你说自己替柳如烟洗过内裤，你们不是也说只是姐妹吗？” exactly once TO TARGET / ADDRESSEE 伊藤诚（主要）及柳如烟、闺蜜甲、闺蜜乙、闺蜜丙. 季伯达 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 伊藤诚（主要）及柳如烟、闺蜜甲、闺蜜乙、闺蜜丙 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 季伯达's visible on-screen performance; never assign its voice or lip motion to 伊藤诚（主要）及柳如烟、闺蜜甲、闺蜜乙、闺蜜丙, the nearest face, another character, or any off-screen source.
 
 PERFORMANCE GUARDRAILS:
 Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
@@ -658,7 +706,7 @@ Dialogue belongs only to the named speaker during its exact time window. Preserv
 - Negative prompt:
 
 ```text
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI, wrong talker, target speaking outside its own beat, voice assigned to addressee, addressee lip-sync, multiple simultaneous talking mouths, off-screen speaker
 ```
 
 - Request JSON: [`shot-requests/shot_011.json`](shot-requests/shot_011.json)
@@ -669,6 +717,7 @@ extra people, missing people, duplicated people, identity drift, face swap, ward
 - 时间：`00:53–00:57`
 - 时长：`4s`
 - 对白：柳如烟：那不一样。；季伯达：哪里不一样？
+- 说话者→对象：019 柳如烟→季伯达；020 季伯达→柳如烟
 - 音频：`enable_audio: true`
 - 内部硬切前原始镜号：020
 - 媒体输入（4/4）：
@@ -690,8 +739,12 @@ Image 1 is the composition/blocking anchor for original shot 019. Use it only fo
 Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
 Image 3 is the composition/blocking anchor for original shot 020 and the later beat(s). Use it only for that role; the timed beat instructions control motion and cuts.
 
+SPEAKER–TARGET LOCKS:
+BEAT 1 — 0.2s–1.8s, ORIGINAL SHOT 019: SPEAKER = 柳如烟. TARGET / ADDRESSEE = 季伯达. 柳如烟 addresses 季伯达 and looks toward the target when composition permits. Only 柳如烟 articulates during this window. 季伯达 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 柳如烟 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+BEAT 2 — 2.2s–3.8s, ORIGINAL SHOT 020: SPEAKER = 季伯达. TARGET / ADDRESSEE = 柳如烟. 季伯达 addresses 柳如烟 and looks toward the target when composition permits. Only 季伯达 articulates during this window. 柳如烟 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 季伯达 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+
 AUDIO POLICY:
-Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render. Each target/addressee stays silent during the active speaker's window and reacts silently when visible; a character assigned a separately timed later line remains silent until that later window. Only the active visible speaker articulates. Never transfer voice or lip motion to the addressee, the nearest face, another character, or an off-screen source, and never show multiple simultaneous talking mouths.
 
 OUTPUT:
 Create one 4-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
@@ -704,13 +757,13 @@ TIMED BEATS:
 Framing/staging: Tight reaction close-up on 柳如烟. exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
 Action/story beat: 柳如烟 answers defensively, lips tightening and eyes briefly averting.
 Camera: Near-locked shot with a 2% push-in. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 0.2s–1.8s: only 柳如烟 says “那不一样。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 0.2s–1.8s: SPEAKER 柳如烟 says “那不一样。” exactly once TO TARGET / ADDRESSEE 季伯达. 柳如烟 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 季伯达 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 柳如烟's visible on-screen performance; never assign its voice or lip motion to 季伯达, the nearest face, another character, or any off-screen source.
 
 2.0s–4.0s — ORIGINAL SHOT 020 — HARD CUT AT THIS EXACT BOUNDARY.
 Framing/staging: Tight medium close-up on 季伯达. exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
 Action/story beat: 季伯达 asks a clean follow-up, slight head tilt, then holds eye contact.
 Camera: Tiny 2% push-in, then hold. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 2.2s–3.8s: only 季伯达 says “哪里不一样？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 2.2s–3.8s: SPEAKER 季伯达 says “哪里不一样？” exactly once TO TARGET / ADDRESSEE 柳如烟. 季伯达 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 柳如烟 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 季伯达's visible on-screen performance; never assign its voice or lip motion to 柳如烟, the nearest face, another character, or any off-screen source.
 
 PERFORMANCE GUARDRAILS:
 Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
@@ -719,7 +772,7 @@ Dialogue belongs only to the named speaker during its exact time window. Preserv
 - Negative prompt:
 
 ```text
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI, wrong talker, target speaking outside its own beat, voice assigned to addressee, addressee lip-sync, multiple simultaneous talking mouths, off-screen speaker
 ```
 
 - Request JSON: [`shot-requests/shot_012.json`](shot-requests/shot_012.json)
@@ -730,6 +783,7 @@ extra people, missing people, duplicated people, identity drift, face swap, ward
 - 时间：`00:57–01:02`
 - 时长：`5s`
 - 对白：柳如烟：我和伊藤诚只是纯友谊。我拿他当闺蜜，他也拿我当兄弟。
+- 说话者→对象：021 柳如烟→季伯达
 - 音频：`enable_audio: true`
 - 内部硬切前原始镜号：无
 - 媒体输入（4/4）：
@@ -751,8 +805,11 @@ Image 1 is the composition/blocking anchor for original shot 021. Use it only fo
 Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
 Image 3 is the identity and wardrobe for speaking character 柳如烟. Use it only for that role; the timed beat instructions control motion and cuts.
 
+SPEAKER–TARGET LOCKS:
+BEAT 1 — 0.4s–4.6s, ORIGINAL SHOT 021: SPEAKER = 柳如烟. TARGET / ADDRESSEE = 季伯达. 柳如烟 addresses 季伯达 and looks toward the target when composition permits. Only 柳如烟 articulates during this window. 季伯达 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 柳如烟 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+
 AUDIO POLICY:
-Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render. Each target/addressee stays silent during the active speaker's window and reacts silently when visible; a character assigned a separately timed later line remains silent until that later window. Only the active visible speaker articulates. Never transfer voice or lip motion to the addressee, the nearest face, another character, or an off-screen source, and never show multiple simultaneous talking mouths.
 
 OUTPUT:
 Create one 5-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
@@ -765,7 +822,7 @@ TIMED BEATS:
 Framing/staging: Tight two-shot favoring 柳如烟 with 伊藤诚 beside her. exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
 Action/story beat: 柳如烟 explains quickly and defensively, indicating herself then 伊藤诚 without touching him.
 Camera: Slow 3% push-in, no pan. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 0.4s–4.6s: only 柳如烟 says “我和伊藤诚只是纯友谊。我拿他当闺蜜，他也拿我当兄弟。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 0.4s–4.6s: SPEAKER 柳如烟 says “我和伊藤诚只是纯友谊。我拿他当闺蜜，他也拿我当兄弟。” exactly once TO TARGET / ADDRESSEE 季伯达. 柳如烟 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 季伯达 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 柳如烟's visible on-screen performance; never assign its voice or lip motion to 季伯达, the nearest face, another character, or any off-screen source.
 
 PERFORMANCE GUARDRAILS:
 Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
@@ -774,7 +831,7 @@ Dialogue belongs only to the named speaker during its exact time window. Preserv
 - Negative prompt:
 
 ```text
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI, wrong talker, target speaking outside its own beat, voice assigned to addressee, addressee lip-sync, multiple simultaneous talking mouths, off-screen speaker
 ```
 
 - Request JSON: [`shot-requests/shot_013.json`](shot-requests/shot_013.json)
@@ -785,6 +842,7 @@ extra people, missing people, duplicated people, identity drift, face swap, ward
 - 时间：`01:02–01:08`
 - 时长：`6s`
 - 对白：伊藤诚：对，我们之间根本没有男女之情。；闺蜜甲：他们从小就这样，你一个大男人别这么小气。
+- 说话者→对象：022 伊藤诚→季伯达；023 闺蜜甲→季伯达
 - 音频：`enable_audio: true`
 - 内部硬切前原始镜号：023
 - 媒体输入（4/4）：
@@ -806,8 +864,12 @@ Image 1 is the composition/blocking anchor for original shot 022. Use it only fo
 Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
 Image 3 is the composition/blocking anchor for original shot 023 and the later beat(s). Use it only for that role; the timed beat instructions control motion and cuts.
 
+SPEAKER–TARGET LOCKS:
+BEAT 1 — 0.3s–2.7s, ORIGINAL SHOT 022: SPEAKER = 伊藤诚. TARGET / ADDRESSEE = 季伯达. 伊藤诚 addresses 季伯达 and looks toward the target when composition permits. Only 伊藤诚 articulates during this window. 季伯达 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 伊藤诚 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+BEAT 2 — 3.3s–5.7s, ORIGINAL SHOT 023: SPEAKER = 闺蜜甲. TARGET / ADDRESSEE = 季伯达. 闺蜜甲 addresses 季伯达 and looks toward the target when composition permits. Only 闺蜜甲 articulates during this window. 季伯达 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 闺蜜甲 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+
 AUDIO POLICY:
-Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render. Each target/addressee stays silent during the active speaker's window and reacts silently when visible; a character assigned a separately timed later line remains silent until that later window. Only the active visible speaker articulates. Never transfer voice or lip motion to the addressee, the nearest face, another character, or an off-screen source, and never show multiple simultaneous talking mouths.
 
 OUTPUT:
 Create one 6-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
@@ -820,13 +882,13 @@ TIMED BEATS:
 Framing/staging: Tight two-shot favoring 伊藤诚 with 柳如烟 beside him. exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
 Action/story beat: 伊藤诚 nods and supports her claim, measured but slightly tense.
 Camera: Slow 2% push toward 伊藤诚. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 0.3s–2.7s: only 伊藤诚 says “对，我们之间根本没有男女之情。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 0.3s–2.7s: SPEAKER 伊藤诚 says “对，我们之间根本没有男女之情。” exactly once TO TARGET / ADDRESSEE 季伯达. 伊藤诚 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 季伯达 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 伊藤诚's visible on-screen performance; never assign its voice or lip motion to 季伯达, the nearest face, another character, or any off-screen source.
 
 3.0s–6.0s — ORIGINAL SHOT 023 — HARD CUT AT THIS EXACT BOUNDARY.
 Framing/staging: Medium three-shot of girlfriends, favoring 闺蜜甲. exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap. Position continuity: 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
 Action/story beat: 闺蜜甲 opens both hands as if the conclusion is obvious; 闺蜜乙 listens; 闺蜜丙 observes.
 Camera: Gentle 2% push toward 闺蜜甲. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 3.3s–5.7s: only 闺蜜甲 says “他们从小就这样，你一个大男人别这么小气。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 3.3s–5.7s: SPEAKER 闺蜜甲 says “他们从小就这样，你一个大男人别这么小气。” exactly once TO TARGET / ADDRESSEE 季伯达. 闺蜜甲 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 季伯达 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 闺蜜甲's visible on-screen performance; never assign its voice or lip motion to 季伯达, the nearest face, another character, or any off-screen source.
 
 PERFORMANCE GUARDRAILS:
 Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
@@ -835,7 +897,7 @@ Dialogue belongs only to the named speaker during its exact time window. Preserv
 - Negative prompt:
 
 ```text
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI, wrong talker, target speaking outside its own beat, voice assigned to addressee, addressee lip-sync, multiple simultaneous talking mouths, off-screen speaker
 ```
 
 - Request JSON: [`shot-requests/shot_014.json`](shot-requests/shot_014.json)
@@ -846,6 +908,7 @@ extra people, missing people, duplicated people, identity drift, face swap, ward
 - 时间：`01:08–01:14`
 - 时长：`6s`
 - 对白：闺蜜乙：如烟要是真和伊藤诚有什么，还会和你在一起吗？；闺蜜丙：情侣之间最重要的是信任。
+- 说话者→对象：024 闺蜜乙→季伯达；025 闺蜜丙→季伯达
 - 音频：`enable_audio: true`
 - 内部硬切前原始镜号：无
 - 媒体输入（4/4）：
@@ -867,8 +930,12 @@ Image 1 is the composition/blocking anchor for original shot 024. Use it only fo
 Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
 Image 3 is the composition/blocking anchor for original shot 025 and the later beat(s). Use it only for that role; the timed beat instructions control motion and cuts.
 
+SPEAKER–TARGET LOCKS:
+BEAT 1 — 0.3s–2.7s, ORIGINAL SHOT 024: SPEAKER = 闺蜜乙. TARGET / ADDRESSEE = 季伯达. 闺蜜乙 addresses 季伯达 and looks toward the target when composition permits. Only 闺蜜乙 articulates during this window. 季伯达 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 闺蜜乙 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+BEAT 2 — 3.3s–5.7s, ORIGINAL SHOT 025: SPEAKER = 闺蜜丙. TARGET / ADDRESSEE = 季伯达. 闺蜜丙 addresses 季伯达 and looks toward the target when composition permits. Only 闺蜜丙 articulates during this window. 季伯达 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 闺蜜丙 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+
 AUDIO POLICY:
-Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render. Each target/addressee stays silent during the active speaker's window and reacts silently when visible; a character assigned a separately timed later line remains silent until that later window. Only the active visible speaker articulates. Never transfer voice or lip motion to the addressee, the nearest face, another character, or an off-screen source, and never show multiple simultaneous talking mouths.
 
 OUTPUT:
 Create one 6-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
@@ -881,13 +948,13 @@ TIMED BEATS:
 Framing/staging: Medium three-shot of girlfriends, favoring 闺蜜乙. exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap. Position continuity: 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
 Action/story beat: 闺蜜乙 leans in and challenges 季伯达 rhetorically; the other two track her.
 Camera: Gentle 3% push toward 闺蜜乙. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 0.3s–2.7s: only 闺蜜乙 says “如烟要是真和伊藤诚有什么，还会和你在一起吗？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 0.3s–2.7s: SPEAKER 闺蜜乙 says “如烟要是真和伊藤诚有什么，还会和你在一起吗？” exactly once TO TARGET / ADDRESSEE 季伯达. 闺蜜乙 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 季伯达 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 闺蜜乙's visible on-screen performance; never assign its voice or lip motion to 季伯达, the nearest face, another character, or any off-screen source.
 
 3.0s–6.0s — ORIGINAL SHOT 025 — CONTINUE IN THE SAME SHOT; NO CUT.
 Framing/staging: Medium three-shot of girlfriends, favoring 闺蜜丙. exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap. Position continuity: 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.
 Action/story beat: 闺蜜丙 sits straighter and delivers a summarizing maxim; the others go still to listen.
 Camera: Slow 2% push toward 闺蜜丙. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 3.3s–5.7s: only 闺蜜丙 says “情侣之间最重要的是信任。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 3.3s–5.7s: SPEAKER 闺蜜丙 says “情侣之间最重要的是信任。” exactly once TO TARGET / ADDRESSEE 季伯达. 闺蜜丙 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 季伯达 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 闺蜜丙's visible on-screen performance; never assign its voice or lip motion to 季伯达, the nearest face, another character, or any off-screen source.
 
 PERFORMANCE GUARDRAILS:
 Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
@@ -896,7 +963,7 @@ Dialogue belongs only to the named speaker during its exact time window. Preserv
 - Negative prompt:
 
 ```text
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI, wrong talker, target speaking outside its own beat, voice assigned to addressee, addressee lip-sync, multiple simultaneous talking mouths, off-screen speaker
 ```
 
 - Request JSON: [`shot-requests/shot_015.json`](shot-requests/shot_015.json)
@@ -907,6 +974,7 @@ extra people, missing people, duplicated people, identity drift, face swap, ward
 - 时间：`01:14–01:20`
 - 时长：`6s`
 - 对白：季伯达：所以，伊藤诚可以紧挨着我的女朋友，可以知道她内裤的颜色，还可以替她洗——因为他们是纯友谊。
+- 说话者→对象：026 季伯达→柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙
 - 音频：`enable_audio: true`
 - 内部硬切前原始镜号：无
 - 媒体输入（4/4）：
@@ -928,8 +996,11 @@ Image 1 is the composition/blocking anchor for original shot 026. Use it only fo
 Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
 Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role; the timed beat instructions control motion and cuts.
 
+SPEAKER–TARGET LOCKS:
+BEAT 1 — 0.4s–5.6s, ORIGINAL SHOT 026: SPEAKER = 季伯达. TARGET / ADDRESSEE = 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙. 季伯达 addresses 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙 and looks toward the target when composition permits. Only 季伯达 articulates during this window. 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 季伯达 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+
 AUDIO POLICY:
-Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render. Each target/addressee stays silent during the active speaker's window and reacts silently when visible; a character assigned a separately timed later line remains silent until that later window. Only the active visible speaker articulates. Never transfer voice or lip motion to the addressee, the nearest face, another character, or an off-screen source, and never show multiple simultaneous talking mouths.
 
 OUTPUT:
 Create one 6-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
@@ -942,7 +1013,7 @@ TIMED BEATS:
 Framing/staging: Sustained medium close-up on 季伯达, right foreground, addressing the sofa group. exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
 Action/story beat: 季伯达 enumerates each allowance with controlled hand beats and increasing precision, not shouting.
 Camera: Sustained 4% push-in, no cuts or axis change. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 0.4s–5.6s: only 季伯达 says “所以，伊藤诚可以紧挨着我的女朋友，可以知道她内裤的颜色，还可以替她洗——因为他们是纯友谊。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 0.4s–5.6s: SPEAKER 季伯达 says “所以，伊藤诚可以紧挨着我的女朋友，可以知道她内裤的颜色，还可以替她洗——因为他们是纯友谊。” exactly once TO TARGET / ADDRESSEE 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙. 季伯达 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 季伯达's visible on-screen performance; never assign its voice or lip motion to 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙, the nearest face, another character, or any off-screen source.
 
 PERFORMANCE GUARDRAILS:
 Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
@@ -951,7 +1022,7 @@ Dialogue belongs only to the named speaker during its exact time window. Preserv
 - Negative prompt:
 
 ```text
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI, wrong talker, target speaking outside its own beat, voice assigned to addressee, addressee lip-sync, multiple simultaneous talking mouths, off-screen speaker
 ```
 
 - Request JSON: [`shot-requests/shot_016.json`](shot-requests/shot_016.json)
@@ -962,6 +1033,7 @@ extra people, missing people, duplicated people, identity drift, face swap, ward
 - 时间：`01:20–01:24`
 - 时长：`4s`
 - 对白：季伯达：但我的女闺蜜替我洗内裤，就是没有分寸？
+- 说话者→对象：027 季伯达→柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙
 - 音频：`enable_audio: true`
 - 内部硬切前原始镜号：无
 - 媒体输入（4/4）：
@@ -983,8 +1055,11 @@ Image 1 is the composition/blocking anchor for original shot 027. Use it only fo
 Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
 Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role; the timed beat instructions control motion and cuts.
 
+SPEAKER–TARGET LOCKS:
+BEAT 1 — 0.4s–3.6s, ORIGINAL SHOT 027: SPEAKER = 季伯达. TARGET / ADDRESSEE = 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙. 季伯达 addresses 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙 and looks toward the target when composition permits. Only 季伯达 articulates during this window. 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 季伯达 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+
 AUDIO POLICY:
-Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render. Each target/addressee stays silent during the active speaker's window and reacts silently when visible; a character assigned a separately timed later line remains silent until that later window. Only the active visible speaker articulates. Never transfer voice or lip motion to the addressee, the nearest face, another character, or an off-screen source, and never show multiple simultaneous talking mouths.
 
 OUTPUT:
 Create one 4-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
@@ -997,7 +1072,7 @@ TIMED BEATS:
 Framing/staging: Matching medium close-up on 季伯达; hold the rhetorical challenge. exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
 Action/story beat: 季伯达 lands the contrast, palm open in a restrained “then why?” gesture, holding the group’s gaze.
 Camera: Slow 3% push-in that stops on the final question. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 0.4s–3.6s: only 季伯达 says “但我的女闺蜜替我洗内裤，就是没有分寸？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 0.4s–3.6s: SPEAKER 季伯达 says “但我的女闺蜜替我洗内裤，就是没有分寸？” exactly once TO TARGET / ADDRESSEE 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙. 季伯达 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 季伯达's visible on-screen performance; never assign its voice or lip motion to 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙, the nearest face, another character, or any off-screen source.
 
 PERFORMANCE GUARDRAILS:
 Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
@@ -1006,7 +1081,7 @@ Dialogue belongs only to the named speaker during its exact time window. Preserv
 - Negative prompt:
 
 ```text
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI, wrong talker, target speaking outside its own beat, voice assigned to addressee, addressee lip-sync, multiple simultaneous talking mouths, off-screen speaker
 ```
 
 - Request JSON: [`shot-requests/shot_017.json`](shot-requests/shot_017.json)
@@ -1017,6 +1092,7 @@ extra people, missing people, duplicated people, identity drift, face swap, ward
 - 时间：`01:24–01:29`
 - 时长：`5s`
 - 对白：柳如烟：季伯达！你故意的是不是？；季伯达：怎么会？
+- 说话者→对象：028 柳如烟→季伯达；029 季伯达→柳如烟
 - 音频：`enable_audio: true`
 - 内部硬切前原始镜号：029
 - 媒体输入（4/4）：
@@ -1038,8 +1114,12 @@ Image 1 is the composition/blocking anchor for original shot 028. Use it only fo
 Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
 Image 3 is the composition/blocking anchor for original shot 029 and the later beat(s). Use it only for that role; the timed beat instructions control motion and cuts.
 
+SPEAKER–TARGET LOCKS:
+BEAT 1 — 0.3s–2.7s, ORIGINAL SHOT 028: SPEAKER = 柳如烟. TARGET / ADDRESSEE = 季伯达. 柳如烟 addresses 季伯达 and looks toward the target when composition permits. Only 柳如烟 articulates during this window. 季伯达 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 柳如烟 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+BEAT 2 — 3.2s–4.8s, ORIGINAL SHOT 029: SPEAKER = 季伯达. TARGET / ADDRESSEE = 柳如烟. 季伯达 addresses 柳如烟 and looks toward the target when composition permits. Only 季伯达 articulates during this window. 柳如烟 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 季伯达 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+
 AUDIO POLICY:
-Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render. Each target/addressee stays silent during the active speaker's window and reacts silently when visible; a character assigned a separately timed later line remains silent until that later window. Only the active visible speaker articulates. Never transfer voice or lip motion to the addressee, the nearest face, another character, or an off-screen source, and never show multiple simultaneous talking mouths.
 
 OUTPUT:
 Create one 5-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
@@ -1052,13 +1132,13 @@ TIMED BEATS:
 Framing/staging: Tight medium close-up on 柳如烟; 伊藤诚 remains partly visible. exactly two named people only—柳如烟 and 伊藤诚. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left; 伊藤诚 immediately beside her at frame-right. No friend or other person may appear in foreground or background.
 Action/story beat: 柳如烟 erupts, leans forward and glares toward 季伯达; anger replaces embarrassment.
 Camera: Sharper but still smooth 4% push-in. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 0.3s–2.7s: only 柳如烟 says “季伯达！你故意的是不是？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 0.3s–2.7s: SPEAKER 柳如烟 says “季伯达！你故意的是不是？” exactly once TO TARGET / ADDRESSEE 季伯达. 柳如烟 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 季伯达 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 柳如烟's visible on-screen performance; never assign its voice or lip motion to 季伯达, the nearest face, another character, or any off-screen source.
 
 3.0s–5.0s — ORIGINAL SHOT 029 — HARD CUT AT THIS EXACT BOUNDARY.
 Framing/staging: Tight medium close-up on 季伯达. exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
 Action/story beat: 季伯达 answers softly with a tiny innocent head tilt, almost dryly amused.
 Camera: Near-locked shot; tiny 1% pull-back for dry irony. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 3.2s–4.8s: only 季伯达 says “怎么会？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 3.2s–4.8s: SPEAKER 季伯达 says “怎么会？” exactly once TO TARGET / ADDRESSEE 柳如烟. 季伯达 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 柳如烟 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 季伯达's visible on-screen performance; never assign its voice or lip motion to 柳如烟, the nearest face, another character, or any off-screen source.
 
 PERFORMANCE GUARDRAILS:
 Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
@@ -1067,7 +1147,7 @@ Dialogue belongs only to the named speaker during its exact time window. Preserv
 - Negative prompt:
 
 ```text
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI, wrong talker, target speaking outside its own beat, voice assigned to addressee, addressee lip-sync, multiple simultaneous talking mouths, off-screen speaker
 ```
 
 - Request JSON: [`shot-requests/shot_018.json`](shot-requests/shot_018.json)
@@ -1078,6 +1158,7 @@ extra people, missing people, duplicated people, identity drift, face swap, ward
 - 时间：`01:29–01:33`
 - 时长：`4s`
 - 对白：季伯达：我只是按照你们的规矩做了一遍。
+- 说话者→对象：030 季伯达→柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙
 - 音频：`enable_audio: true`
 - 内部硬切前原始镜号：无
 - 媒体输入（4/4）：
@@ -1099,8 +1180,11 @@ Image 1 is the composition/blocking anchor for original shot 030. Use it only fo
 Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
 Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role; the timed beat instructions control motion and cuts.
 
+SPEAKER–TARGET LOCKS:
+BEAT 1 — 0.4s–3.6s, ORIGINAL SHOT 030: SPEAKER = 季伯达. TARGET / ADDRESSEE = 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙. 季伯达 addresses 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙 and looks toward the target when composition permits. Only 季伯达 articulates during this window. 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 季伯达 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+
 AUDIO POLICY:
-Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render. Each target/addressee stays silent during the active speaker's window and reacts silently when visible; a character assigned a separately timed later line remains silent until that later window. Only the active visible speaker articulates. Never transfer voice or lip motion to the addressee, the nearest face, another character, or an off-screen source, and never show multiple simultaneous talking mouths.
 
 OUTPUT:
 Create one 4-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
@@ -1113,7 +1197,7 @@ TIMED BEATS:
 Framing/staging: Matching medium close-up on 季伯达, calm and controlled. exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
 Action/story beat: 季伯达 remains composed, one measured hand gesture marking “your rules,” then lets the point sit.
 Camera: Slow 3% push-in. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 0.4s–3.6s: only 季伯达 says “我只是按照你们的规矩做了一遍。” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 0.4s–3.6s: SPEAKER 季伯达 says “我只是按照你们的规矩做了一遍。” exactly once TO TARGET / ADDRESSEE 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙. 季伯达 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 季伯达's visible on-screen performance; never assign its voice or lip motion to 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙, the nearest face, another character, or any off-screen source.
 
 PERFORMANCE GUARDRAILS:
 Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
@@ -1122,7 +1206,7 @@ Dialogue belongs only to the named speaker during its exact time window. Preserv
 - Negative prompt:
 
 ```text
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI, wrong talker, target speaking outside its own beat, voice assigned to addressee, addressee lip-sync, multiple simultaneous talking mouths, off-screen speaker
 ```
 
 - Request JSON: [`shot-requests/shot_019.json`](shot-requests/shot_019.json)
@@ -1133,6 +1217,7 @@ extra people, missing people, duplicated people, identity drift, face swap, ward
 - 时间：`01:33–01:37`
 - 时长：`4s`
 - 对白：季伯达：怎么轮到你们，规矩就变了？
+- 说话者→对象：031 季伯达→柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙
 - 音频：`enable_audio: true`
 - 内部硬切前原始镜号：无
 - 媒体输入（4/4）：
@@ -1154,8 +1239,11 @@ Image 1 is the composition/blocking anchor for original shot 031. Use it only fo
 Image 2 is the KTV seating, furniture, camera axis, lighting, and empty-table continuity. Use it only for that role; the timed beat instructions control motion and cuts.
 Image 3 is the identity and wardrobe for speaking character 季伯达. Use it only for that role; the timed beat instructions control motion and cuts.
 
+SPEAKER–TARGET LOCKS:
+BEAT 1 — 0.4s–3.6s, ORIGINAL SHOT 031: SPEAKER = 季伯达. TARGET / ADDRESSEE = 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙. 季伯达 addresses 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙 and looks toward the target when composition permits. Only 季伯达 articulates during this window. 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙 remains silent during this beat and reacts silently when visible; if any addressee has a separately timed later line, that addressee stays silent until its own window. The voice and lip motion must remain on 季伯达 and must never transfer to the target/addressee, the nearest face, another character, or an off-screen source.
+
 AUDIO POLICY:
-Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render.
+Native audio is required because this unit contains dialogue. Generate only the exact Mandarin lines specified in TIMED BEATS, in that order, synchronized to the named on-screen speaker. No narration, translation, ad-libs, repeated words, overlapping speech, lyrics, or invented speech. Non-speakers do not mouth dialogue. Keep ambience minimal and never include music or off-screen voices. External Mandarin TTS is fallback-only if native generation fails exact-wording or sync QC; do not pre-mix TTS into a successful native-audio render. Each target/addressee stays silent during the active speaker's window and reacts silently when visible; a character assigned a separately timed later line remains silent until that later window. Only the active visible speaker articulates. Never transfer voice or lip motion to the addressee, the nearest face, another character, or an off-screen source, and never show multiple simultaneous talking mouths.
 
 OUTPUT:
 Create one 4-second cinematic 2D anime generation unit, 16:9, 720P, restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric response. Model: wan2.6-r2v. Keep timing exact. Do not add montage, transitions, subtitles, labels, logos, watermarks, or visible prompt text.
@@ -1168,7 +1256,7 @@ TIMED BEATS:
 Framing/staging: Matching medium close-up on 季伯达; strongest direct challenge. exactly three named people only—柳如烟, 伊藤诚, 季伯达. No friend, guest, extra, duplicate, or unnamed background person. Position continuity: 柳如烟 at frame-left background; 伊藤诚 at center-left background immediately to 柳如烟’s right; 季伯达 at frame-right foreground, seated and facing left toward them.
 Action/story beat: 季伯达’s expression hardens slightly; he asks the final question directly and holds still afterward.
 Camera: Slow 4% push-in, ending in a firm hold. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.
-Native synchronized Mandarin audio 0.4s–3.6s: only 季伯达 says “怎么轮到你们，规矩就变了？” exactly once. Match visible mouth motion precisely to this line; all other mouths remain closed except natural breathing.
+Native synchronized Mandarin audio 0.4s–3.6s: SPEAKER 季伯达 says “怎么轮到你们，规矩就变了？” exactly once TO TARGET / ADDRESSEE 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙. 季伯达 looks toward the target while speaking when composition permits and is the only character whose lips and jaw articulate this line. 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙 remains silent during this beat and, when visible, reacts silently; if any addressee has a separately timed later line, that addressee stays silent until its own window. Every other visible character remains silent with a closed or naturally resting mouth. The voice must originate from 季伯达's visible on-screen performance; never assign its voice or lip motion to 柳如烟（主要）及伊藤诚、闺蜜甲、闺蜜乙、闺蜜丙, the nearest face, another character, or any off-screen source.
 
 PERFORMANCE GUARDRAILS:
 Dialogue belongs only to the named speaker during its exact time window. Preserve the line wording, punctuation-level phrasing, speaker assignment, and order. Do not paraphrase, shorten, expand, repeat, overlap, or move a line to another beat. During silent intervals and the non-dialogue unit, generate no speech and no word-shaped mouth movement. Preserve restrained reactions and a stable final 0.4 seconds for the next unit's first-frame extraction.
@@ -1177,7 +1265,7 @@ Dialogue belongs only to the named speaker during its exact time window. Preserv
 - Negative prompt:
 
 ```text
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI, wrong talker, target speaking outside its own beat, voice assigned to addressee, addressee lip-sync, multiple simultaneous talking mouths, off-screen speaker
 ```
 
 - Request JSON: [`shot-requests/shot_020.json`](shot-requests/shot_020.json)
@@ -1188,6 +1276,7 @@ extra people, missing people, duplicated people, identity drift, face swap, ward
 - 时间：`01:37–01:40`
 - 时长：`3s`
 - 对白：无对白（后期片尾字卡）
+- 说话者→对象：无（静音单元）
 - 音频：`enable_audio: false`
 - 内部硬切前原始镜号：无
 - 媒体输入（3/4）：
@@ -1230,7 +1319,7 @@ Dialogue belongs only to the named speaker during its exact time window. Preserv
 - Negative prompt:
 
 ```text
-extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI
+extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, wrong speaker, listener mouthing dialogue, invented speech, extra dialogue, paraphrased dialogue, alcohol, bottles, drinks, beverages, cups, drinking glasses, prop movement, background morphing, camera shake, unplanned cuts, transitions, text, subtitles, logo, watermark, UI, wrong talker, target speaking outside its own beat, voice assigned to addressee, addressee lip-sync, multiple simultaneous talking mouths, off-screen speaker
 ```
 
 - Request JSON: [`shot-requests/shot_021.json`](shot-requests/shot_021.json)
