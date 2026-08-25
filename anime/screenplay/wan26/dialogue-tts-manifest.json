@@ -1,0 +1,222 @@
+[
+  {
+    "shot_id": "001",
+    "speaker": "伊藤诚",
+    "text": "粉红色。",
+    "language": "zh-CN",
+    "video_duration_seconds": 5,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  },
+  {
+    "shot_id": "002",
+    "speaker": "伊藤诚",
+    "text": "如烟一直拿我当姐妹，她内裤我都洗过，姐夫你别多想。",
+    "language": "zh-CN",
+    "video_duration_seconds": 6,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  },
+  {
+    "shot_id": "003",
+    "speaker": "季伯达",
+    "text": "傻逼吧你。",
+    "language": "zh-CN",
+    "video_duration_seconds": 4,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  },
+  {
+    "shot_id": "004",
+    "speaker": "柳如烟",
+    "text": "你说什么呢？我们是好姐妹。",
+    "language": "zh-CN",
+    "video_duration_seconds": 5,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  },
+  {
+    "shot_id": "006",
+    "speaker": "季伯达",
+    "text": "哎，小伊啊，不是我说你，大老爷们儿的洗什么内裤？",
+    "language": "zh-CN",
+    "video_duration_seconds": 6,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  },
+  {
+    "shot_id": "007",
+    "speaker": "季伯达",
+    "text": "我内裤都是我女闺蜜洗的，你下次也让如烟给你洗。",
+    "language": "zh-CN",
+    "video_duration_seconds": 6,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  },
+  {
+    "shot_id": "009",
+    "speaker": "伊藤诚",
+    "text": "你怎么能让其他女生给你洗内裤？",
+    "language": "zh-CN",
+    "video_duration_seconds": 5,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  },
+  {
+    "shot_id": "010",
+    "speaker": "柳如烟",
+    "text": "季伯达，你恶不恶心？怎么能让别的女人给你洗内裤？",
+    "language": "zh-CN",
+    "video_duration_seconds": 6,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  },
+  {
+    "shot_id": "011",
+    "speaker": "季伯达",
+    "text": "我和我女闺蜜从小穿一条裤子长大",
+    "language": "zh-CN",
+    "video_duration_seconds": 5,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  },
+  {
+    "shot_id": "012",
+    "speaker": "季伯达",
+    "text": "她拿我当闺蜜，我拿她当兄弟，我都没拿她当女的看，有什么不可以的？",
+    "language": "zh-CN",
+    "video_duration_seconds": 6,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  },
+  {
+    "shot_id": "013",
+    "speaker": "季伯达",
+    "text": "再说了，她跟我认识二十年了，要有点什么还轮得到你？放心吧，宝贝。",
+    "language": "zh-CN",
+    "video_duration_seconds": 6,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  },
+  {
+    "shot_id": "015",
+    "speaker": "伊藤诚",
+    "text": "烟烟，你别生气，姐夫就是心眼儿小，肯定是吃醋。",
+    "language": "zh-CN",
+    "video_duration_seconds": 6,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  },
+  {
+    "shot_id": "016",
+    "speaker": "伊藤诚",
+    "text": "说这些气你的，现在先别搭理他，一会儿回去让他跪搓衣板。",
+    "language": "zh-CN",
+    "video_duration_seconds": 6,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  },
+  {
+    "shot_id": "017",
+    "speaker": "柳如烟",
+    "text": "你非要和阿诚争个高下有什么意思？",
+    "language": "zh-CN",
+    "video_duration_seconds": 5,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  },
+  {
+    "shot_id": "018",
+    "speaker": "柳如烟",
+    "text": "你一个大男人不能大度点吗？阿诚他就是说话直了点。",
+    "language": "zh-CN",
+    "video_duration_seconds": 6,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  },
+  {
+    "shot_id": "019",
+    "speaker": "闺蜜甲",
+    "text": "就是啊，姐夫，这种玩笑可不能随便开。你一个大男人有了女朋友，就要跟异性保持距离啊。",
+    "language": "zh-CN",
+    "video_duration_seconds": 6,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  },
+  {
+    "shot_id": "020",
+    "speaker": "季伯达",
+    "text": "那柳如烟呢？你们怎么不让她跟异性保持距离？",
+    "language": "zh-CN",
+    "video_duration_seconds": 5,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  },
+  {
+    "shot_id": "021",
+    "speaker": "柳如烟",
+    "text": "那能一样吗？伊藤诚他不一样。",
+    "language": "zh-CN",
+    "video_duration_seconds": 5,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  },
+  {
+    "shot_id": "022",
+    "speaker": "季伯达",
+    "text": "不一样？你他妈没有鸟啊？",
+    "language": "zh-CN",
+    "video_duration_seconds": 5,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  },
+  {
+    "shot_id": "023",
+    "speaker": "柳如烟",
+    "text": "你疯了？",
+    "language": "zh-CN",
+    "video_duration_seconds": 4,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  },
+  {
+    "shot_id": "024",
+    "speaker": "季伯达",
+    "text": "不是好姐妹吗？看一下咋了？我约了女闺蜜去吃饭，走了。",
+    "language": "zh-CN",
+    "video_duration_seconds": 6,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  },
+  {
+    "shot_id": "025",
+    "speaker": "季伯达",
+    "text": "哦，对了，我女闺蜜比你胸大，摸着很舒服。吃点好的吧，伊藤诚。",
+    "language": "zh-CN",
+    "video_duration_seconds": 6,
+    "audio_generation": "external_tts",
+    "lip_sync": "post_production_recommended",
+    "type": "dialogue"
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "model": "wan2.6-r2v",
+  "input": {
+    "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 008 (00:36–00:40)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 007. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 4-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nWide ensemble reaction shot matching the room geography.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\nThe room falls silent; 柳如烟 and 伊藤诚 freeze; the friends exchange uneasy looks; 季伯达 remains composed.\nNo character speaks or mouths dialogue in this unit.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–3.3s: perform the specified silent reaction with restrained motion. 3.3–4.0s: hold a stable final pose for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+    "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+    "media": [
+      {
+        "type": "first_frame",
+        "url": "{{asset_base_url}}/references/staging/shot_032.jpg",
+        "source_path": "references/staging/shot_032.jpg",
+        "role": "literal staging/opening composition for production unit 008"
+      },
+      {
+        "type": "reference_image",
+        "url": "{{previous_shot_last_frame_url}}",
+        "source_path": "frames/shot_007_last_frame.jpg",
+        "role": "final frame of production unit 007; continuity and axis guide only",
+        "prompt_identifier": "Image 1"
+      },
+      {
+        "type": "reference_image",
+        "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+        "source_path": "references/setting/ktv-continuity-sheet.jpg",
+        "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+        "prompt_identifier": "Image 2"
+      },
+      {
+        "type": "reference_image",
+        "url": "{{asset_base_url}}/references/characters/character-reference-sheet.jpg",
+        "source_path": "references/characters/character-reference-sheet.jpg",
+        "role": "identity and wardrobe for ensemble cast",
+        "prompt_identifier": "Image 3"
+      }
+    ]
+  },
+  "parameters": {
+    "resolution": "720P",
+    "ratio": "16:9",
+    "duration": 4,
+    "prompt_extend": false,
+    "watermark": false,
+    "seed": 42,
+    "enable_audio": false
+  }
+}

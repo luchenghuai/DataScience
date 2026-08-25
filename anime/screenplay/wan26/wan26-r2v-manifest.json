@@ -1,0 +1,1581 @@
+[
+  {
+    "shot_id": "001",
+    "timestamp": "00:00–00:05",
+    "duration_seconds": 5,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "伊藤诚",
+    "dialogue": "粉红色。",
+    "staging_source": "references/staging/shot_001.jpg",
+    "request_file": "shot-requests/shot_001.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 001 (00:00–00:05)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the KTV continuity sheet. Use it to preserve six-person seating, furniture, lighting, camera axis and the empty-table state.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 5-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nWide ensemble establishing shot; preserve all six seated characters and the empty coffee table.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n伊藤诚 answers too quickly with casual certainty; 柳如烟 registers discomfort; the group reacts subtly.\nOnly 伊藤诚 performs silent mouth timing for the exact Mandarin line “粉红色。” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–4.3s: 伊藤诚 performs the exact line once with restrained mouth and body timing: “粉红色。”  4.3–5.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_001.jpg",
+            "source_path": "references/staging/shot_001.jpg",
+            "role": "literal staging/opening composition for production unit 001"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/yitengcheng.jpg",
+            "source_path": "references/characters/yitengcheng.jpg",
+            "role": "identity and wardrobe for 伊藤诚",
+            "prompt_identifier": "Image 2"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 5,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "002",
+    "timestamp": "00:05–00:11",
+    "duration_seconds": 6,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "伊藤诚",
+    "dialogue": "如烟一直拿我当姐妹，她内裤我都洗过，姐夫你别多想。",
+    "staging_source": "references/staging/shot_006.jpg",
+    "request_file": "shot-requests/shot_002.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 002 (00:05–00:11)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 001. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 6-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nStable medium two-shot favoring 伊藤诚 beside 柳如烟.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n伊藤诚 explains matter-of-factly with one restrained hand gesture; 柳如烟 stiffens.\nOnly 伊藤诚 performs silent mouth timing for the exact Mandarin line “如烟一直拿我当姐妹，她内裤我都洗过，姐夫你别多想。” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–5.3s: 伊藤诚 performs the exact line once with restrained mouth and body timing: “如烟一直拿我当姐妹，她内裤我都洗过，姐夫你别多想。”  5.3–6.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_006.jpg",
+            "source_path": "references/staging/shot_006.jpg",
+            "role": "literal staging/opening composition for production unit 002"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_001_last_frame.jpg",
+            "role": "final frame of production unit 001; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/yitengcheng.jpg",
+            "source_path": "references/characters/yitengcheng.jpg",
+            "role": "identity and wardrobe for 伊藤诚",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 6,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "003",
+    "timestamp": "00:11–00:15",
+    "duration_seconds": 4,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "季伯达",
+    "dialogue": "傻逼吧你。",
+    "staging_source": "references/staging/shot_011.jpg",
+    "request_file": "shot-requests/shot_003.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 003 (00:11–00:15)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 002. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 4-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nMedium close-up on 季伯达 across the established axis.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n季伯达 delivers the insult sharply but without lunging; hold the shocked reaction afterward.\nOnly 季伯达 performs silent mouth timing for the exact Mandarin line “傻逼吧你。” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–3.3s: 季伯达 performs the exact line once with restrained mouth and body timing: “傻逼吧你。”  3.3–4.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_011.jpg",
+            "source_path": "references/staging/shot_011.jpg",
+            "role": "literal staging/opening composition for production unit 003"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_002_last_frame.jpg",
+            "role": "final frame of production unit 002; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/jiboda.jpg",
+            "source_path": "references/characters/jiboda.jpg",
+            "role": "identity and wardrobe for 季伯达",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 4,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "004",
+    "timestamp": "00:15–00:20",
+    "duration_seconds": 5,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "柳如烟",
+    "dialogue": "你说什么呢？我们是好姐妹。",
+    "staging_source": "references/staging/shot_007.jpg",
+    "request_file": "shot-requests/shot_004.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 004 (00:15–00:20)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 003. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 5-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nTight medium two-shot favoring 柳如烟 with 伊藤诚 partly visible.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n柳如烟 turns toward 季伯达, embarrassed and defensive; 伊藤诚 stays still.\nOnly 柳如烟 performs silent mouth timing for the exact Mandarin line “你说什么呢？我们是好姐妹。” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–4.3s: 柳如烟 performs the exact line once with restrained mouth and body timing: “你说什么呢？我们是好姐妹。”  4.3–5.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_007.jpg",
+            "source_path": "references/staging/shot_007.jpg",
+            "role": "literal staging/opening composition for production unit 004"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_003_last_frame.jpg",
+            "role": "final frame of production unit 003; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/liuruyan.jpg",
+            "source_path": "references/characters/liuruyan.jpg",
+            "role": "identity and wardrobe for 柳如烟",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 5,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "005",
+    "timestamp": "00:20–00:24",
+    "duration_seconds": 4,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": null,
+    "dialogue": null,
+    "staging_source": "references/staging/shot_008.jpg",
+    "request_file": "shot-requests/shot_005.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 005 (00:20–00:24)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 004. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 4-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nMedium three-shot of the girlfriends on the central sofa.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\nThe friends react disapprovingly toward 季伯达 with restrained looks and small head shakes; no one mouths dialogue.\nNo character speaks or mouths dialogue in this unit.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–3.3s: perform the specified silent reaction with restrained motion. 3.3–4.0s: hold a stable final pose for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_008.jpg",
+            "source_path": "references/staging/shot_008.jpg",
+            "role": "literal staging/opening composition for production unit 005"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_004_last_frame.jpg",
+            "role": "final frame of production unit 004; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/character-reference-sheet.jpg",
+            "source_path": "references/characters/character-reference-sheet.jpg",
+            "role": "identity and wardrobe for ensemble cast",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 4,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "006",
+    "timestamp": "00:24–00:30",
+    "duration_seconds": 6,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "季伯达",
+    "dialogue": "哎，小伊啊，不是我说你，大老爷们儿的洗什么内裤？",
+    "staging_source": "references/staging/shot_011.jpg",
+    "request_file": "shot-requests/shot_006.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 006 (00:24–00:30)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 005. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 6-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nMedium close-up on 季伯达, facing left toward 伊藤诚.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n季伯达 begins controlled and faintly incredulous, using one open-palm gesture.\nOnly 季伯达 performs silent mouth timing for the exact Mandarin line “哎，小伊啊，不是我说你，大老爷们儿的洗什么内裤？” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–5.3s: 季伯达 performs the exact line once with restrained mouth and body timing: “哎，小伊啊，不是我说你，大老爷们儿的洗什么内裤？”  5.3–6.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_011.jpg",
+            "source_path": "references/staging/shot_011.jpg",
+            "role": "literal staging/opening composition for production unit 006"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_005_last_frame.jpg",
+            "role": "final frame of production unit 005; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/jiboda.jpg",
+            "source_path": "references/characters/jiboda.jpg",
+            "role": "identity and wardrobe for 季伯达",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 6,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "007",
+    "timestamp": "00:30–00:36",
+    "duration_seconds": 6,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "季伯达",
+    "dialogue": "我内裤都是我女闺蜜洗的，你下次也让如烟给你洗。",
+    "staging_source": "references/staging/shot_012.jpg",
+    "request_file": "shot-requests/shot_007.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 007 (00:30–00:36)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 006. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 6-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nMatching medium close-up on 季伯达 from the same axis.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n季伯达 gives the mirror example calmly and lets the point land.\nOnly 季伯达 performs silent mouth timing for the exact Mandarin line “我内裤都是我女闺蜜洗的，你下次也让如烟给你洗。” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–5.3s: 季伯达 performs the exact line once with restrained mouth and body timing: “我内裤都是我女闺蜜洗的，你下次也让如烟给你洗。”  5.3–6.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_012.jpg",
+            "source_path": "references/staging/shot_012.jpg",
+            "role": "literal staging/opening composition for production unit 007"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_006_last_frame.jpg",
+            "role": "final frame of production unit 006; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/jiboda.jpg",
+            "source_path": "references/characters/jiboda.jpg",
+            "role": "identity and wardrobe for 季伯达",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 6,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "008",
+    "timestamp": "00:36–00:40",
+    "duration_seconds": 4,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": null,
+    "dialogue": null,
+    "staging_source": "references/staging/shot_032.jpg",
+    "request_file": "shot-requests/shot_008.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 008 (00:36–00:40)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 007. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 4-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nWide ensemble reaction shot matching the room geography.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\nThe room falls silent; 柳如烟 and 伊藤诚 freeze; the friends exchange uneasy looks; 季伯达 remains composed.\nNo character speaks or mouths dialogue in this unit.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–3.3s: perform the specified silent reaction with restrained motion. 3.3–4.0s: hold a stable final pose for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_032.jpg",
+            "source_path": "references/staging/shot_032.jpg",
+            "role": "literal staging/opening composition for production unit 008"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_007_last_frame.jpg",
+            "role": "final frame of production unit 007; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/character-reference-sheet.jpg",
+            "source_path": "references/characters/character-reference-sheet.jpg",
+            "role": "identity and wardrobe for ensemble cast",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 4,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "009",
+    "timestamp": "00:40–00:45",
+    "duration_seconds": 5,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "伊藤诚",
+    "dialogue": "你怎么能让其他女生给你洗内裤？",
+    "staging_source": "references/staging/shot_017.jpg",
+    "request_file": "shot-requests/shot_009.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 009 (00:40–00:45)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 008. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 5-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nTight two-shot favoring 伊藤诚 beside 柳如烟.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n伊藤诚 turns serious and accusatory with a restrained head shake.\nOnly 伊藤诚 performs silent mouth timing for the exact Mandarin line “你怎么能让其他女生给你洗内裤？” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–4.3s: 伊藤诚 performs the exact line once with restrained mouth and body timing: “你怎么能让其他女生给你洗内裤？”  4.3–5.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_017.jpg",
+            "source_path": "references/staging/shot_017.jpg",
+            "role": "literal staging/opening composition for production unit 009"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_008_last_frame.jpg",
+            "role": "final frame of production unit 008; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/yitengcheng.jpg",
+            "source_path": "references/characters/yitengcheng.jpg",
+            "role": "identity and wardrobe for 伊藤诚",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 5,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "010",
+    "timestamp": "00:45–00:51",
+    "duration_seconds": 6,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "柳如烟",
+    "dialogue": "季伯达，你恶不恶心？怎么能让别的女人给你洗内裤？",
+    "staging_source": "references/staging/shot_013.jpg",
+    "request_file": "shot-requests/shot_010.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 010 (00:45–00:51)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 009. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 6-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nTight medium close-up on 柳如烟 with 伊藤诚 partly visible.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n柳如烟 recoils, frowns and challenges 季伯达; anger rises but blocking stays fixed.\nOnly 柳如烟 performs silent mouth timing for the exact Mandarin line “季伯达，你恶不恶心？怎么能让别的女人给你洗内裤？” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–5.3s: 柳如烟 performs the exact line once with restrained mouth and body timing: “季伯达，你恶不恶心？怎么能让别的女人给你洗内裤？”  5.3–6.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_013.jpg",
+            "source_path": "references/staging/shot_013.jpg",
+            "role": "literal staging/opening composition for production unit 010"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_009_last_frame.jpg",
+            "role": "final frame of production unit 009; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/liuruyan.jpg",
+            "source_path": "references/characters/liuruyan.jpg",
+            "role": "identity and wardrobe for 柳如烟",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 6,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "011",
+    "timestamp": "00:51–00:56",
+    "duration_seconds": 5,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "季伯达",
+    "dialogue": "我和我女闺蜜从小穿一条裤子长大",
+    "staging_source": "references/staging/shot_018.jpg",
+    "request_file": "shot-requests/shot_011.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 011 (00:51–00:56)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 010. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 5-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nMedium close-up on 季伯达 from the established right-side axis.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n季伯达 explains with dry composure and economical gestures.\nOnly 季伯达 performs silent mouth timing for the exact Mandarin line “我和我女闺蜜从小穿一条裤子长大” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–4.3s: 季伯达 performs the exact line once with restrained mouth and body timing: “我和我女闺蜜从小穿一条裤子长大”  4.3–5.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_018.jpg",
+            "source_path": "references/staging/shot_018.jpg",
+            "role": "literal staging/opening composition for production unit 011"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_010_last_frame.jpg",
+            "role": "final frame of production unit 010; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/jiboda.jpg",
+            "source_path": "references/characters/jiboda.jpg",
+            "role": "identity and wardrobe for 季伯达",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 5,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "012",
+    "timestamp": "00:56–01:02",
+    "duration_seconds": 6,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "季伯达",
+    "dialogue": "她拿我当闺蜜，我拿她当兄弟，我都没拿她当女的看，有什么不可以的？",
+    "staging_source": "references/staging/shot_018.jpg",
+    "request_file": "shot-requests/shot_012.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 012 (00:56–01:02)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 011. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 6-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nMatching medium close-up on 季伯达.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n季伯达 gives a small shrug and holds eye contact toward 柳如烟.\nOnly 季伯达 performs silent mouth timing for the exact Mandarin line “她拿我当闺蜜，我拿她当兄弟，我都没拿她当女的看，有什么不可以的？” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–5.3s: 季伯达 performs the exact line once with restrained mouth and body timing: “她拿我当闺蜜，我拿她当兄弟，我都没拿她当女的看，有什么不可以的？”  5.3–6.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_018.jpg",
+            "source_path": "references/staging/shot_018.jpg",
+            "role": "literal staging/opening composition for production unit 012"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_011_last_frame.jpg",
+            "role": "final frame of production unit 011; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/jiboda.jpg",
+            "source_path": "references/characters/jiboda.jpg",
+            "role": "identity and wardrobe for 季伯达",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 6,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "013",
+    "timestamp": "01:02–01:08",
+    "duration_seconds": 6,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "季伯达",
+    "dialogue": "再说了，她跟我认识二十年了，要有点什么还轮得到你？放心吧，宝贝。",
+    "staging_source": "references/staging/shot_018.jpg",
+    "request_file": "shot-requests/shot_013.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 013 (01:02–01:08)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 012. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 6-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nMatching medium close-up on 季伯达, with 柳如烟 readable opposite him.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n季伯达 lands the analogy with calm irony, then reaches only slightly toward 柳如烟; no touching unless anatomically stable.\nOnly 季伯达 performs silent mouth timing for the exact Mandarin line “再说了，她跟我认识二十年了，要有点什么还轮得到你？放心吧，宝贝。” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–5.3s: 季伯达 performs the exact line once with restrained mouth and body timing: “再说了，她跟我认识二十年了，要有点什么还轮得到你？放心吧，宝贝。”  5.3–6.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_018.jpg",
+            "source_path": "references/staging/shot_018.jpg",
+            "role": "literal staging/opening composition for production unit 013"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_012_last_frame.jpg",
+            "role": "final frame of production unit 012; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/jiboda.jpg",
+            "source_path": "references/characters/jiboda.jpg",
+            "role": "identity and wardrobe for 季伯达",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 6,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "014",
+    "timestamp": "01:08–01:12",
+    "duration_seconds": 4,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": null,
+    "dialogue": null,
+    "staging_source": "references/staging/shot_019.jpg",
+    "request_file": "shot-requests/shot_014.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 014 (01:08–01:12)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 013. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 4-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nTight reaction close-up on 柳如烟.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n柳如烟 turns red with anger and embarrassment; 季伯达’s hand may briefly enter frame near her hair, but avoid malformed contact.\nNo character speaks or mouths dialogue in this unit.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–3.3s: perform the specified silent reaction with restrained motion. 3.3–4.0s: hold a stable final pose for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_019.jpg",
+            "source_path": "references/staging/shot_019.jpg",
+            "role": "literal staging/opening composition for production unit 014"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_013_last_frame.jpg",
+            "role": "final frame of production unit 013; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/character-reference-sheet.jpg",
+            "source_path": "references/characters/character-reference-sheet.jpg",
+            "role": "identity and wardrobe for ensemble cast",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 4,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "015",
+    "timestamp": "01:12–01:18",
+    "duration_seconds": 6,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "伊藤诚",
+    "dialogue": "烟烟，你别生气，姐夫就是心眼儿小，肯定是吃醋。",
+    "staging_source": "references/staging/shot_006.jpg",
+    "request_file": "shot-requests/shot_015.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 015 (01:12–01:18)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 014. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 6-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nStable two-shot of 伊藤诚 and 柳如烟.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n伊藤诚 leans slightly toward 柳如烟 and consoles her; 柳如烟 remains angry; no embrace yet.\nOnly 伊藤诚 performs silent mouth timing for the exact Mandarin line “烟烟，你别生气，姐夫就是心眼儿小，肯定是吃醋。” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–5.3s: 伊藤诚 performs the exact line once with restrained mouth and body timing: “烟烟，你别生气，姐夫就是心眼儿小，肯定是吃醋。”  5.3–6.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_006.jpg",
+            "source_path": "references/staging/shot_006.jpg",
+            "role": "literal staging/opening composition for production unit 015"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_014_last_frame.jpg",
+            "role": "final frame of production unit 014; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/yitengcheng.jpg",
+            "source_path": "references/characters/yitengcheng.jpg",
+            "role": "identity and wardrobe for 伊藤诚",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 6,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "016",
+    "timestamp": "01:18–01:24",
+    "duration_seconds": 6,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "伊藤诚",
+    "dialogue": "说这些气你的，现在先别搭理他，一会儿回去让他跪搓衣板。",
+    "staging_source": "references/staging/shot_006.jpg",
+    "request_file": "shot-requests/shot_016.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 016 (01:18–01:24)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 015. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 6-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nMatching stable two-shot of 伊藤诚 and 柳如烟.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n伊藤诚 continues softly and reassuringly; 柳如烟 does not push him away; keep contact minimal and anatomically safe.\nOnly 伊藤诚 performs silent mouth timing for the exact Mandarin line “说这些气你的，现在先别搭理他，一会儿回去让他跪搓衣板。” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–5.3s: 伊藤诚 performs the exact line once with restrained mouth and body timing: “说这些气你的，现在先别搭理他，一会儿回去让他跪搓衣板。”  5.3–6.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_006.jpg",
+            "source_path": "references/staging/shot_006.jpg",
+            "role": "literal staging/opening composition for production unit 016"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_015_last_frame.jpg",
+            "role": "final frame of production unit 015; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/yitengcheng.jpg",
+            "source_path": "references/characters/yitengcheng.jpg",
+            "role": "identity and wardrobe for 伊藤诚",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 6,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "017",
+    "timestamp": "01:24–01:29",
+    "duration_seconds": 5,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "柳如烟",
+    "dialogue": "你非要和阿诚争个高下有什么意思？",
+    "staging_source": "references/staging/shot_013.jpg",
+    "request_file": "shot-requests/shot_017.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 017 (01:24–01:29)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 016. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 5-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nTight medium close-up favoring 柳如烟 beside 伊藤诚.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n柳如烟 looks toward 季伯达 with impatient accusation.\nOnly 柳如烟 performs silent mouth timing for the exact Mandarin line “你非要和阿诚争个高下有什么意思？” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–4.3s: 柳如烟 performs the exact line once with restrained mouth and body timing: “你非要和阿诚争个高下有什么意思？”  4.3–5.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_013.jpg",
+            "source_path": "references/staging/shot_013.jpg",
+            "role": "literal staging/opening composition for production unit 017"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_016_last_frame.jpg",
+            "role": "final frame of production unit 016; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/liuruyan.jpg",
+            "source_path": "references/characters/liuruyan.jpg",
+            "role": "identity and wardrobe for 柳如烟",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 5,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "018",
+    "timestamp": "01:29–01:35",
+    "duration_seconds": 6,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "柳如烟",
+    "dialogue": "你一个大男人不能大度点吗？阿诚他就是说话直了点。",
+    "staging_source": "references/staging/shot_013.jpg",
+    "request_file": "shot-requests/shot_018.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 018 (01:29–01:35)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 017. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 6-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nMatching close-up on 柳如烟.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n柳如烟 adopts a condescending, conciliatory posture, as if offering 季伯达 a way out.\nOnly 柳如烟 performs silent mouth timing for the exact Mandarin line “你一个大男人不能大度点吗？阿诚他就是说话直了点。” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–5.3s: 柳如烟 performs the exact line once with restrained mouth and body timing: “你一个大男人不能大度点吗？阿诚他就是说话直了点。”  5.3–6.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_013.jpg",
+            "source_path": "references/staging/shot_013.jpg",
+            "role": "literal staging/opening composition for production unit 018"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_017_last_frame.jpg",
+            "role": "final frame of production unit 017; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/liuruyan.jpg",
+            "source_path": "references/characters/liuruyan.jpg",
+            "role": "identity and wardrobe for 柳如烟",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 6,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "019",
+    "timestamp": "01:35–01:41",
+    "duration_seconds": 6,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "闺蜜甲",
+    "dialogue": "就是啊，姐夫，这种玩笑可不能随便开。你一个大男人有了女朋友，就要跟异性保持距离啊。",
+    "staging_source": "references/staging/shot_008.jpg",
+    "request_file": "shot-requests/shot_019.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 019 (01:35–01:41)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 018. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 6-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nMedium three-shot of the girlfriends; 闺蜜甲 is the speaking lead.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n闺蜜甲 speaks for the group with a calming palm; the other two nod subtly and do not mouth the line.\nOnly 闺蜜甲 performs silent mouth timing for the exact Mandarin line “就是啊，姐夫，这种玩笑可不能随便开。你一个大男人有了女朋友，就要跟异性保持距离啊。” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–5.3s: 闺蜜甲 performs the exact line once with restrained mouth and body timing: “就是啊，姐夫，这种玩笑可不能随便开。你一个大男人有了女朋友，就要跟异性保持距离啊。”  5.3–6.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_008.jpg",
+            "source_path": "references/staging/shot_008.jpg",
+            "role": "literal staging/opening composition for production unit 019"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_018_last_frame.jpg",
+            "role": "final frame of production unit 018; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/guimi-1.jpg",
+            "source_path": "references/characters/guimi-1.jpg",
+            "role": "identity and wardrobe for 闺蜜甲",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 6,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "020",
+    "timestamp": "01:41–01:46",
+    "duration_seconds": 5,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "季伯达",
+    "dialogue": "那柳如烟呢？你们怎么不让她跟异性保持距离？",
+    "staging_source": "references/staging/shot_020.jpg",
+    "request_file": "shot-requests/shot_020.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 020 (01:41–01:46)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 019. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 5-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nTight medium close-up on 季伯达.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n季伯达 asks directly, slight head tilt, then holds eye contact.\nOnly 季伯达 performs silent mouth timing for the exact Mandarin line “那柳如烟呢？你们怎么不让她跟异性保持距离？” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–4.3s: 季伯达 performs the exact line once with restrained mouth and body timing: “那柳如烟呢？你们怎么不让她跟异性保持距离？”  4.3–5.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_020.jpg",
+            "source_path": "references/staging/shot_020.jpg",
+            "role": "literal staging/opening composition for production unit 020"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_019_last_frame.jpg",
+            "role": "final frame of production unit 019; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/jiboda.jpg",
+            "source_path": "references/characters/jiboda.jpg",
+            "role": "identity and wardrobe for 季伯达",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 5,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "021",
+    "timestamp": "01:46–01:51",
+    "duration_seconds": 5,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "柳如烟",
+    "dialogue": "那能一样吗？伊藤诚他不一样。",
+    "staging_source": "references/staging/shot_019.jpg",
+    "request_file": "shot-requests/shot_021.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 021 (01:46–01:51)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 020. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 5-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nTight reaction close-up on 柳如烟 with 伊藤诚 beside her.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n柳如烟 answers impatiently and defensively, glancing toward 伊藤诚.\nOnly 柳如烟 performs silent mouth timing for the exact Mandarin line “那能一样吗？伊藤诚他不一样。” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–4.3s: 柳如烟 performs the exact line once with restrained mouth and body timing: “那能一样吗？伊藤诚他不一样。”  4.3–5.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_019.jpg",
+            "source_path": "references/staging/shot_019.jpg",
+            "role": "literal staging/opening composition for production unit 021"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_020_last_frame.jpg",
+            "role": "final frame of production unit 020; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/liuruyan.jpg",
+            "source_path": "references/characters/liuruyan.jpg",
+            "role": "identity and wardrobe for 柳如烟",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 5,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "022",
+    "timestamp": "01:51–01:56",
+    "duration_seconds": 5,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "季伯达",
+    "dialogue": "不一样？你他妈没有鸟啊？",
+    "staging_source": "references/staging/shot_028.jpg",
+    "request_file": "shot-requests/shot_022.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 022 (01:51–01:56)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 021. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 5-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nMedium action shot preserving the established axis; frame upper bodies and faces, not explicit anatomy.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n季伯达 abruptly reaches toward 伊藤诚’s waistband as a comedic confrontation; 伊藤诚 recoils and secures his trousers. Keep all intimate anatomy fully off-screen and clothed.\nOnly 季伯达 performs silent mouth timing for the exact Mandarin line “不一样？你他妈没有鸟啊？” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–4.3s: 季伯达 performs the exact line once with restrained mouth and body timing: “不一样？你他妈没有鸟啊？”  4.3–5.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_028.jpg",
+            "source_path": "references/staging/shot_028.jpg",
+            "role": "literal staging/opening composition for production unit 022"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_021_last_frame.jpg",
+            "role": "final frame of production unit 021; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/jiboda.jpg",
+            "source_path": "references/characters/jiboda.jpg",
+            "role": "identity and wardrobe for 季伯达",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 5,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "023",
+    "timestamp": "01:56–02:00",
+    "duration_seconds": 4,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "柳如烟",
+    "dialogue": "你疯了？",
+    "staging_source": "references/staging/shot_028.jpg",
+    "request_file": "shot-requests/shot_023.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 023 (01:56–02:00)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 022. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 4-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nTight medium shot on 柳如烟 stepping between the men.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n柳如烟 blocks 季伯达 and shouts in shock; 伊藤诚 remains behind her fixing his clothing, fully covered.\nOnly 柳如烟 performs silent mouth timing for the exact Mandarin line “你疯了？” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–3.3s: 柳如烟 performs the exact line once with restrained mouth and body timing: “你疯了？”  3.3–4.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_028.jpg",
+            "source_path": "references/staging/shot_028.jpg",
+            "role": "literal staging/opening composition for production unit 023"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_022_last_frame.jpg",
+            "role": "final frame of production unit 022; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/liuruyan.jpg",
+            "source_path": "references/characters/liuruyan.jpg",
+            "role": "identity and wardrobe for 柳如烟",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 4,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "024",
+    "timestamp": "02:00–02:06",
+    "duration_seconds": 6,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "季伯达",
+    "dialogue": "不是好姐妹吗？看一下咋了？我约了女闺蜜去吃饭，走了。",
+    "staging_source": "references/staging/shot_030.jpg",
+    "request_file": "shot-requests/shot_024.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 024 (02:00–02:06)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 023. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 6-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nMedium shot on 季伯达 turning toward the KTV door.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n季伯达 shrugs, gestures goodbye, stands and begins leaving while everyone else stays seated.\nOnly 季伯达 performs silent mouth timing for the exact Mandarin line “不是好姐妹吗？看一下咋了？我约了女闺蜜去吃饭，走了。” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–5.3s: 季伯达 performs the exact line once with restrained mouth and body timing: “不是好姐妹吗？看一下咋了？我约了女闺蜜去吃饭，走了。”  5.3–6.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_030.jpg",
+            "source_path": "references/staging/shot_030.jpg",
+            "role": "literal staging/opening composition for production unit 024"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_023_last_frame.jpg",
+            "role": "final frame of production unit 023; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/jiboda.jpg",
+            "source_path": "references/characters/jiboda.jpg",
+            "role": "identity and wardrobe for 季伯达",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 6,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "025",
+    "timestamp": "02:06–02:12",
+    "duration_seconds": 6,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": "季伯达",
+    "dialogue": "哦，对了，我女闺蜜比你胸大，摸着很舒服。吃点好的吧，伊藤诚。",
+    "staging_source": "references/staging/shot_031.jpg",
+    "request_file": "shot-requests/shot_025.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 025 (02:06–02:12)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 024. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 6-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nDoorway medium shot on 季伯达 looking back into the room.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n季伯达 delivers the final taunt dryly, points briefly toward 柳如烟 without touching anyone, then withdraws through the door.\nOnly 季伯达 performs silent mouth timing for the exact Mandarin line “哦，对了，我女闺蜜比你胸大，摸着很舒服。吃点好的吧，伊藤诚。” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–5.3s: 季伯达 performs the exact line once with restrained mouth and body timing: “哦，对了，我女闺蜜比你胸大，摸着很舒服。吃点好的吧，伊藤诚。”  5.3–6.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_031.jpg",
+            "source_path": "references/staging/shot_031.jpg",
+            "role": "literal staging/opening composition for production unit 025"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_024_last_frame.jpg",
+            "role": "final frame of production unit 024; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/jiboda.jpg",
+            "source_path": "references/characters/jiboda.jpg",
+            "role": "identity and wardrobe for 季伯达",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 6,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  },
+  {
+    "shot_id": "026",
+    "timestamp": "02:12–02:16",
+    "duration_seconds": 4,
+    "source_script": "anime/screenshotwithdesc/complete-script.md",
+    "source_timestamps_ignored": true,
+    "speaker": null,
+    "dialogue": null,
+    "staging_source": "references/staging/shot_032.jpg",
+    "request_file": "shot-requests/shot_026.json",
+    "request": {
+      "model": "wan2.6-r2v",
+      "input": {
+        "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 026 (02:12–02:16)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 025. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 4-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nWide ensemble aftermath matching the established room geography.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\nThe door shuts firmly; everyone remains stunned in awkward silence. No new person or prop appears.\nNo character speaks or mouths dialogue in this unit.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–3.3s: perform the specified silent reaction with restrained motion. 3.3–4.0s: hold a stable final pose for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
+        "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+        "media": [
+          {
+            "type": "first_frame",
+            "url": "{{asset_base_url}}/references/staging/shot_032.jpg",
+            "source_path": "references/staging/shot_032.jpg",
+            "role": "literal staging/opening composition for production unit 026"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{previous_shot_last_frame_url}}",
+            "source_path": "frames/shot_025_last_frame.jpg",
+            "role": "final frame of production unit 025; continuity and axis guide only",
+            "prompt_identifier": "Image 1"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
+            "source_path": "references/setting/ktv-continuity-sheet.jpg",
+            "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+            "prompt_identifier": "Image 2"
+          },
+          {
+            "type": "reference_image",
+            "url": "{{asset_base_url}}/references/characters/character-reference-sheet.jpg",
+            "source_path": "references/characters/character-reference-sheet.jpg",
+            "role": "identity and wardrobe for ensemble cast",
+            "prompt_identifier": "Image 3"
+          }
+        ]
+      },
+      "parameters": {
+        "resolution": "720P",
+        "ratio": "16:9",
+        "duration": 4,
+        "prompt_extend": false,
+        "watermark": false,
+        "seed": 42,
+        "enable_audio": false
+      }
+    },
+    "postprocess": {
+      "trim_as_needed": true,
+      "extract_last_frame": true,
+      "download_before_url_expiry_hours": 24
+    }
+  }
+]
