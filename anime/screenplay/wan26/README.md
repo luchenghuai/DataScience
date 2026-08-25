@@ -42,7 +42,7 @@ The two short-duration exceptions are deliberate: Unit 001 is the untouched 3-se
 
 ## Non-negotiable production rules
 
-- **Unit 001:** opening ensemble contains exactly six people in the established seats. Only 闺蜜甲 says `如烟，你输了！`. `粉红色。` occurs later in Unit 003 (original shot 005), never in Unit 001.
+- **Unit 001:** opening ensemble contains exactly six people in the established seats. Only 闺蜜甲 says `如烟，你输了！`. `粉红色。` occurs later in Unit 003 (original shot 005), never in Unit 001. Its four media inputs are the literal staging frame, the consolidated 2×3 cast sheet (with every grid position explicitly mapped in the prompt), the KTV continuity sheet, and a close 闺蜜甲 identity reference.
 - Dialogue units set `enable_audio: true`. Wan must generate each listed Mandarin line exactly once, in order, from the named visible speaker, synchronized to the in-shot mouth performance. No paraphrase, repeats, overlap, narration, translation, off-screen voice, or invented speech.
 - Unit 021 is non-dialogue and sets `enable_audio: false`; no one speaks or mouths words. Its exact end-card text is added visually in post-production.
 - External TTS is fallback-only after a native audio render fails exact-wording, speaker, or synchronization QC. It replaces the failed native dialogue and is never layered over a passing native track.
