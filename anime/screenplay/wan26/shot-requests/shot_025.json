@@ -1,20 +1,20 @@
 {
   "model": "wan2.6-r2v",
   "input": {
-    "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 025 (02:06–02:12)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the final rendered frame of generation unit 024. Use it only as an editorial continuity guide for identity, wardrobe, seating geography, eyelines, lighting and set state. This unit begins after an intentional hard cut to its supplied staging angle; never morph from Image 1 into the new angle.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 6-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nDoorway medium shot on 季伯达 looking back into the room.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n季伯达 delivers the final taunt dryly, points briefly toward 柳如烟 without touching anyone, then withdraws through the door.\nOnly 季伯达 performs silent mouth timing for the exact Mandarin line “哦，对了，我女闺蜜比你胸大，摸着很舒服。吃点好的吧，伊藤诚。” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–5.3s: 季伯达 performs the exact line once with restrained mouth and body timing: “哦，对了，我女闺蜜比你胸大，摸着很舒服。吃点好的吧，伊藤诚。”  5.3–6.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
-    "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+    "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — SHOT 025 (01:11–01:14)\n\nREFERENCE MAP:\nThe supplied first frame is literal final rendered frame of Shot 024. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.\nImage 1 is the shot-specific composition, blocking and camera guide. Use it only for that role and preserve supported visual details.\nImage 2 is the KTV setting, seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.\nImage 3 is the identity and wardrobe for speaking character 闺蜜丙. Use it only for that role and preserve supported visual details.\n\nAUDIO POLICY:\nGenerate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.\n\nOUTPUT:\nCreate one continuous 3-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.\n\nCOMPOSITION AND BLOCKING:\nFraming: Medium three-shot of girlfriends, favoring 闺蜜丙.\nVisible actors: exactly three named people only—闺蜜甲, 闺蜜乙, 闺蜜丙. No fourth person, background guest, duplicate, or seat swap.\nON-SCREEN CAST (EXACT, NAMED): exactly three people—闺蜜甲, 闺蜜乙, 闺蜜丙.\nPOSITION MAP (viewer screen-left to screen-right): 闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.\nSTART-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):\n闺蜜甲 at frame-left/sofa-left; 闺蜜乙 at frame-center/sofa-center; 闺蜜丙 at frame-right/sofa-right.\nThese named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.\nSet and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.\nKeep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.\n\nACTING:\n闺蜜丙 sits straighter and delivers a summarizing maxim; the others go still to listen.\nNon-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.\n\nTIMELINE:\n0.0–0.4s: hold the established composition; 闺蜜丙 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.4–2.7s: 闺蜜丙 speaks the exact Mandarin line “情侣之间最重要的是信任。” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: 闺蜜丙 sits straighter and delivers a summarizing maxim; the others go still to listen. 2.7–3.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.\n\nCAMERA:\nSlow 2% push toward 闺蜜丙. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.\n\nPOST-PRODUCTION DIALOGUE GUIDE:\nOnly 闺蜜丙 speaks: “情侣之间最重要的是信任。”\nUse the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.\n\nCONTINUITY:\nContinuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.",
+    "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI",
     "media": [
       {
         "type": "first_frame",
-        "url": "{{asset_base_url}}/references/staging/shot_031.jpg",
-        "source_path": "references/staging/shot_031.jpg",
-        "role": "literal staging/opening composition for production unit 025"
+        "url": "{{previous_shot_last_frame_url}}",
+        "source_path": "frames/shot_024_last_frame.jpg",
+        "role": "literal final rendered frame of Shot 024"
       },
       {
         "type": "reference_image",
-        "url": "{{previous_shot_last_frame_url}}",
-        "source_path": "frames/shot_024_last_frame.jpg",
-        "role": "final frame of production unit 024; continuity and axis guide only",
+        "url": "{{asset_base_url}}/references/staging/shot_025.jpg",
+        "source_path": "references/staging/shot_025.jpg",
+        "role": "shot-specific composition, blocking and camera guide",
         "prompt_identifier": "Image 1"
       },
       {
@@ -26,9 +26,9 @@
       },
       {
         "type": "reference_image",
-        "url": "{{asset_base_url}}/references/characters/jiboda.jpg",
-        "source_path": "references/characters/jiboda.jpg",
-        "role": "identity and wardrobe for 季伯达",
+        "url": "{{asset_base_url}}/references/characters/guimi-3.jpg",
+        "source_path": "references/characters/guimi-3.jpg",
+        "role": "identity and wardrobe for speaking character 闺蜜丙",
         "prompt_identifier": "Image 3"
       }
     ]
@@ -36,7 +36,7 @@
   "parameters": {
     "resolution": "720P",
     "ratio": "16:9",
-    "duration": 6,
+    "duration": 3,
     "prompt_extend": false,
     "watermark": false,
     "seed": 42,

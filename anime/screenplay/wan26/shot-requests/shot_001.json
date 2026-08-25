@@ -1,35 +1,42 @@
 {
   "model": "wan2.6-r2v",
   "input": {
-    "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — PRODUCTION UNIT 001 (00:00–00:05)\n\nSOURCE AUTHORITY:\nRecreate the opening KTV scene from anime/screenshotwithdesc/complete-script.md. Preserve the exact quoted dialogue below; inherited source-document timestamps are intentionally ignored. Do not invent, paraphrase or add story events.\n\nREFERENCE MAP:\nThe supplied first frame is the shot-specific staging frame for this unit. Preserve its composition, camera height, lens feel, character identities, wardrobe, seating, props and lighting at 0.0s.\nImage 1 is the KTV continuity sheet. Use it to preserve six-person seating, furniture, lighting, camera axis and the empty-table state.\nImage 2 is the KTV setting and continuity sheet. Image 3 is the principal speaker identity reference when present.\n\nOUTPUT:\nCreate one continuous 5-second silent cinematic 2D anime shot, 16:9 at 720P. Use restrained realistic acting, stable faces and hands, natural breathing and blinks, and subtle hair/fabric motion. No internal cut, montage, audio, subtitles or text. Keep at least 0.5 seconds stable at both ends for evaluation and editing.\n\nCOMPOSITION AND BLOCKING:\nWide ensemble establishing shot; preserve all six seated characters and the empty coffee table.\nMaintain the established 180-degree axis, left/right seating geography, matching eyelines, wardrobe, warm amber/cool blue lighting, furniture and empty coffee-table state. The table contains no alcohol, bottles, glasses or drinks. Angle changes happen only as editorial hard cuts between generated units; never morph, pan or slide between setups inside a unit.\n\nACTING:\n伊藤诚 answers too quickly with casual certainty; 柳如烟 registers discomfort; the group reacts subtly.\nOnly 伊藤诚 performs silent mouth timing for the exact Mandarin line “粉红色。” once. All other characters keep closed or naturally resting mouths.\n\nTIMELINE:\n0.0–0.5s: stable opening hold. 0.5–4.3s: 伊藤诚 performs the exact line once with restrained mouth and body timing: “粉红色。”  4.3–5.0s: close the mouth, resolve the gesture and hold a stable reaction for editing.\n\nCAMERA:\nLocked or extremely slow push-in of no more than 2%. No reframe, shake, zoom pumping, axis change or background morph.\n\nPOST-PRODUCTION:\nWan output must be silent. Exact Mandarin dialogue is generated separately with controlled TTS and optional lip sync. Preserve the final 0.5 seconds as a clean edit handle and continuity reference for the following unit.",
-    "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, explicit nudity, visible genitals, sexualized framing, malformed anatomy, extra limbs, warped hands, unwanted physical contact, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, in-shot angle transition, text, subtitles, logo, watermark, UI",
+    "prompt": "WAN 2.6 REFERENCE-TO-VIDEO — SHOT 001 (00:00–00:03)\n\nREFERENCE MAP:\nThe supplied first frame is baseline staging frame containing the complete six-person composition and KTV set. Preserve its opening composition, identities, poses, expressions, wardrobe, seating, props, lighting, camera angle and screen direction, then begin the new action smoothly without a pose reset.\nImage 1 is the KTV setting, six-person seating, furniture, lighting and empty-table continuity. Use it only for that role and preserve supported visual details.\nImage 2 is the identity and wardrobe for speaking character 闺蜜甲. Use it only for that role and preserve supported visual details.\nImage 3 is the identity and wardrobe for principal reacting character 柳如烟. Use it only for that role and preserve supported visual details.\n\nAUDIO POLICY:\nGenerate a completely silent video. Never speak, narrate, translate, or vocalize any English or Chinese prompt text. Dialogue is post-production only.\n\nOUTPUT:\nCreate one continuous 3-second cinematic 2D anime shot, 16:9, restrained realistic acting, stable faces and hands, natural breathing and blinks, subtle hair and fabric response, and a silent dialogue performance timed for post-production Mandarin dubbing. No cut, montage or transition.\n\nCOMPOSITION AND BLOCKING:\nFraming: Wide ensemble establishing shot, eye level, preserving the full seating geography and coffee table.\nVisible actors: exactly six named people only—柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达. No background guests, extras, duplicates, or missing people.\nON-SCREEN CAST (EXACT, NAMED): exactly six people—柳如烟, 伊藤诚, 闺蜜甲, 闺蜜乙, 闺蜜丙, 季伯达.\nPOSITION MAP (viewer screen-left to screen-right): screen-left seating—柳如烟 at far left and 伊藤诚 immediately to her right; central sofa—闺蜜甲 at left seat, 闺蜜乙 at center seat, 闺蜜丙 at right seat; screen-right seating—季伯达 at far right facing the group.\nSTART-FRAME CHARACTER LOCATIONS (0.0s; lock before motion begins):\nscreen-left seating—柳如烟 at far left and 伊藤诚 immediately to her right; central sofa—闺蜜甲 at left seat, 闺蜜乙 at center seat, 闺蜜丙 at right seat; screen-right seating—季伯达 at far right facing the group.\nThese named locations describe the supplied start frame. At the first frame, every visible character must already occupy exactly this screen position, depth plane, seat and facing direction. Preserve those placements through the opening hold; do not slide, teleport, swap seats, cross the axis or reset poses when motion begins.\nSet and lighting: Modern high-rise KTV/lounge at night: warm amber practical lamps and ceiling light, cool blue city windows, dark curtains, neutral sofa, low dark coffee table with cards and small snack plates. Preserve source-JPG object placement and warm/cool contrast; do not invent a new location.\nKeep every actor in the assigned seat and on the established side of the camera axis. Never swap, merge, duplicate or replace identities. The table has no alcohol or beverage props.\n\nACTING:\nDuring the wide party tableau, 闺蜜甲 turns toward 柳如烟, leans forward slightly, raises one hand to claim attention, and says “如烟，你输了！” with playful excitement; 柳如烟 shifts her gaze toward her while the others quiet down and watch.\nNon-speaking actors remain in position and react only with directed eyelines, breathing, blinks and restrained micro-expressions. They must not mouth the dialogue or add independent gestures.\n\nTIMELINE:\n0.0–0.4s: hold the established composition; 闺蜜甲 takes a subtle breath and acquires the established eyeline while listeners remain attentive. 0.4–2.7s: 闺蜜甲 speaks the exact Mandarin line “如烟，你输了！” once, with natural restrained silent mouth timing for later lip sync and the shot-specific performance: During the wide party tableau, 闺蜜甲 turns toward 柳如烟, leans forward slightly, raises one hand to claim attention, and says “如烟，你输了！” with playful excitement; 柳如烟 shifts her gaze toward her while the others quiet down and watch. 2.7–3.0s: the speaker closes the mouth and resolves the gesture; listeners give only the restrained reaction described by the shot, then everyone holds their positions for the cut. Do not overlap, repeat, paraphrase, shorten, or extend the line.\n\nCAMERA:\nVery slow 3% push-in with subtle parallax across the coffee table. Maintain one continuous subtle move with no reframe, shake, zoom pumping or axis change.\n\nPOST-PRODUCTION DIALOGUE GUIDE:\nOnly 闺蜜甲 speaks: “如烟，你输了！”\nUse the exact Mandarin wording once only as a silent mouth-timing target for later lip sync. Do not paraphrase, shorten, expand, repeat, overlap, or assign it to another actor. Generate no audio, visible text, or subtitles.\n\nCONTINUITY:\nContinuity is best effort, not guaranteed. Prioritize identity, then seating/blocking and camera axis, then wardrobe/props/lighting, then exact micro-pose matching. Preserve a stable final 0.3–0.5 seconds for extraction as the next shot's first frame.",
+    "negative_prompt": "extra people, missing people, duplicated people, identity drift, face swap, wardrobe change, seat swap, wrong eyeline, axis change, malformed anatomy, extra limbs, warped hands, lip-sync error, listener mouthing dialogue, alcohol, bottles, glasses, drinks, prop movement, background morphing, camera shake, cuts, transitions, text, subtitles, logo, watermark, UI",
     "media": [
       {
         "type": "first_frame",
         "url": "{{asset_base_url}}/references/staging/shot_001.jpg",
         "source_path": "references/staging/shot_001.jpg",
-        "role": "literal staging/opening composition for production unit 001"
+        "role": "baseline staging frame containing the complete six-person composition and KTV set"
       },
       {
         "type": "reference_image",
         "url": "{{asset_base_url}}/references/setting/ktv-continuity-sheet.jpg",
         "source_path": "references/setting/ktv-continuity-sheet.jpg",
-        "role": "KTV setting, seating, furniture, lighting and empty-table continuity",
+        "role": "KTV setting, six-person seating, furniture, lighting and empty-table continuity",
         "prompt_identifier": "Image 1"
       },
       {
         "type": "reference_image",
-        "url": "{{asset_base_url}}/references/characters/yitengcheng.jpg",
-        "source_path": "references/characters/yitengcheng.jpg",
-        "role": "identity and wardrobe for 伊藤诚",
+        "url": "{{asset_base_url}}/references/characters/guimi-1.jpg",
+        "source_path": "references/characters/guimi-1.jpg",
+        "role": "identity and wardrobe for speaking character 闺蜜甲",
         "prompt_identifier": "Image 2"
+      },
+      {
+        "type": "reference_image",
+        "url": "{{asset_base_url}}/references/characters/liuruyan.jpg",
+        "source_path": "references/characters/liuruyan.jpg",
+        "role": "identity and wardrobe for principal reacting character 柳如烟",
+        "prompt_identifier": "Image 3"
       }
     ]
   },
   "parameters": {
     "resolution": "720P",
     "ratio": "16:9",
-    "duration": 5,
+    "duration": 3,
     "prompt_extend": false,
     "watermark": false,
     "seed": 42,
