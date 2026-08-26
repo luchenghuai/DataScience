@@ -8,4 +8,10 @@
 
 Each prompt is adapted from the detailed Seedance production prompt. Upload only the references listed for that shot, in the exact order shown.
 
-Continuity is explicitly best effort: prefer the preceding shot’s real final frame when Dreamina permits it with the required references; otherwise use the fixed Omni staging, setting, and portrait references.
+Every shot includes explicit camera choreography and a boundary decision:
+
+- `BASELINE`: establish the opening composition and continuity anchors.
+- `CHAIN`: continuity is required; use the preceding shot’s real final rendered frame as this shot’s First Frame, then execute the specified camera move smoothly.
+- `RESET`: an intentional camera/composition change; do not use the preceding final frame. Use this shot’s staging image while preserving character, wardrobe, set, prop, lighting, screen-direction, and axis continuity.
+
+The structured decision, reason, confidence, and optional First Frame path are stored in `transition_from_previous` in `dreamina-omni-prompts.json`.
