@@ -1,0 +1,23 @@
+{
+  "shot_id": "002",
+  "model": "wan2.6-r2v",
+  "region": "us-virginia",
+  "endpoint": "https://dashscope-us.aliyuncs.com/api/v1",
+  "task_id": "090c98db-477d-40a3-8d6b-d934c5b74b24",
+  "prompt_source": "../shot-requests/shot_002.json",
+  "dialogue_revision": "The third line replaces underwear with coat: 那就说说，你今天穿的外套是什么颜色？",
+  "references": [
+    "../references/staging/shot_002.jpg",
+    "../references/staging/shot_003.jpg",
+    "../references/setting/ktv-continuity-sheet.jpg",
+    "../references/staging/shot_004.jpg"
+  ],
+  "parameters": {
+    "size": "1280*720",
+    "aspect_ratio": "16:9",
+    "duration": 6,
+    "audio": true,
+    "shot_type": "multi",
+    "watermark": false
+  }
+}
