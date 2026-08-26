@@ -3,9 +3,9 @@
   "model": "wan2.6-r2v",
   "region": "us-virginia",
   "endpoint": "https://dashscope-us.aliyuncs.com/api/v1",
-  "task_id": "090c98db-477d-40a3-8d6b-d934c5b74b24",
+  "task_id": "b234072f-c5c7-4954-96fe-4e3c8853b665",
   "prompt_source": "../shot-requests/shot_002.json",
-  "dialogue_revision": "The third line replaces underwear with coat: 那就说说，你今天穿的外套是什么颜色？",
+  "dialogue_revision": "Speaker-lock regeneration: 柳如烟 alone says 真心话。; 闺蜜乙 alone says 那就说说，你今天穿的外套是什么颜色？",
   "references": [
     "../references/staging/shot_002.jpg",
     "../references/staging/shot_003.jpg",
